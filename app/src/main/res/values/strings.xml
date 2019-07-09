@@ -7,4 +7,6 @@
     <string name="title_activity_tabbed_">Tabbed_Activity</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
+    <string name="conditions">By logging in you agree to Zomato\'s Terms of Service,</string>
+    <string name="conditionsContinued">Privacy Policy and Content Policy.</string>
 </resources>
