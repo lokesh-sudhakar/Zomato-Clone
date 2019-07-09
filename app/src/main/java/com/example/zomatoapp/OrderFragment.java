@@ -43,7 +43,18 @@ public class OrderFragment extends Fragment {
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabLayout = orderFragmentLayout.findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
-
+        setUpIcons(tabLayout);
         return orderFragmentLayout;
+    }
+
+    private void setUpIcons(TabLayout tabLayout) {
+        TextView deliveryTab = (TextView) LayoutInflater.from(context).inflate(R.layout.custom_tab_layout, null);
+        deliveryTab.setText("Delivery  ");
+        deliveryTab.setCompoundDrawablesWithIntrinsicBounds(0,0, R.drawable.ic_delivery_scooter_icon, 0);
+        tabLayout.getTabAt(0).setCustomView(deliveryTab);
+        TextView selfPickUpTab = (TextView) LayoutInflater.from(context).inflate(R.layout.custom_tab_layout, null);
+        selfPickUpTab.setText("Self Pickup  ");
+        selfPickUpTab.setCompoundDrawablesWithIntrinsicBounds(0,0, R.drawable.ic_self_pickup_paper_bag, 0);
+        tabLayout.getTabAt(1).setCustomView(selfPickUpTab);
     }
 }

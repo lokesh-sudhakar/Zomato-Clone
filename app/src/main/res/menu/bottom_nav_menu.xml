@@ -11,7 +11,7 @@
 
     <item
         android:id="@+id/navigation_go_out"
-        android:icon="@drawable/ic_go_out_colored_2"
+        android:icon="@drawable/ic_go_out"
         app:showAsAction="always"
         android:title="Go Out"
         tools:ignore="AlwaysShowAction" />
