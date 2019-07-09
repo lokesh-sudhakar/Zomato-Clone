@@ -10,21 +10,76 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="vertical"
+            android:paddingLeft="20dp"
+            android:layout_marginBottom="5dp"
+            android:background="#F1EFEF">
 
-        <EditText
-            android:id="@+id/title"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:minHeight="?actionBarSize"
-            android:padding="@dimen/appbar_padding"
-            android:hint="location"
-            android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title" />
+            <ImageView
+                android:id="@+id/location_img"
+                android:layout_width="9dp"
+                android:layout_height="13dp"
+                android:layout_marginStart="5dp"
+                android:paddingTop="2dp"
+                android:src="@drawable/ic_location_on_black_24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
 
+                />
+            <TextView
+                android:id="@+id/your_location_text"
+                android:layout_width="wrap_content"
+                android:layout_height="13dp"
+                android:text="your location"
+                android:textSize="10sp"
+                android:textColor="@color/light_grey"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/location_img"
+                />
+
+            <TextView
+                android:id="@+id/title_location"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:lines="1"
+                android:text="location"
+                android:textSize="18sp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textAlignment="viewStart"
+                android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/your_location_text" />
+        <View
+            android:id="@+id/dotted_line_view"
+            android:layout_width="250dp"
+            android:layout_height="5dp"
+            android:layout_marginStart="5dp"
+            android:background="@drawable/edit_text_dotted_lines"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title_location"
+            />
+
+            <ImageView
+                android:id="@+id/bookmark_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/ic_bookmark_border_black_24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:tabTextColor="@color/dark_black"
+            style="@style/MyCustomTabLayout"
             android:background="?attr/colorPrimary" />
     </com.google.android.material.appbar.AppBarLayout>
 
