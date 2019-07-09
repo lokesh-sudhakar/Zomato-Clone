@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/navigation_order"
+        android:icon="@drawable/ic_order_inactive"
+        app:showAsAction="always"
+        android:title="Order" />
+
+    <item
+        android:id="@+id/navigation_go_out"
+        android:icon="@drawable/ic_go_out_colored_2"
+        app:showAsAction="always"
+        android:title="Go Out"
+        tools:ignore="AlwaysShowAction" />
+
+    <item
+        android:id="@+id/navigation_gold"
+        android:icon="@drawable/ic_gold"
+        app:showAsAction="always"
+        android:title="Gold" />
+    <item
+        android:id="@+id/navigation_search"
+        android:icon="@drawable/ic_search"
+        app:showAsAction="always"
+        android:title="Search" />
+    <item
+        android:id="@+id/navigation_profile"
+        android:icon="@drawable/ic_profile"
+        app:showAsAction="always"
+        android:title="Profile" />
+
+</menu>
