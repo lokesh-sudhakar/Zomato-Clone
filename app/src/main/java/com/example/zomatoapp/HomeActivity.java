@@ -24,8 +24,10 @@ public class HomeActivity extends AppCompatActivity {
                 case R.id.navigation_order:
                     Toast.makeText(getApplicationContext(),"home selected",Toast.LENGTH_SHORT).show();
                     //for testing purpose
-                    Intent intent = new Intent(HomeActivity.this,Tabbed_Activity.class);
-                    startActivity(intent);
+                    OrderFragment orderFragment = new OrderFragment();
+                    getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.fragment_frame,orderFragment)
+                            .commit();
                     return true;
                 case R.id.navigation_go_out:
                     Toast.makeText(getApplicationContext(),"dashboard selected",Toast.LENGTH_SHORT).show();
@@ -51,8 +53,8 @@ public class HomeActivity extends AppCompatActivity {
         BottomNavigationView navView = findViewById(R.id.nav_view);
         mTextMessage = findViewById(R.id.message);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
         getSupportActionBar().hide();
+
     }
 
 }
