@@ -30,10 +30,10 @@ public class HomeActivity extends AppCompatActivity {
                             .commit();
                     return true;
                 case R.id.navigation_go_out:
-                    Toast.makeText(getApplicationContext(),"dashboard selected",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"go_out selected",Toast.LENGTH_SHORT).show();
                     return true;
                 case R.id.navigation_gold:
-                    Toast.makeText(getApplicationContext(),"notification selected",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"gold selected",Toast.LENGTH_SHORT).show();
                     return true;
                 case R.id.navigation_search:
                     Toast.makeText(getApplicationContext(),"search selected",Toast.LENGTH_SHORT).show();
@@ -54,6 +54,10 @@ public class HomeActivity extends AppCompatActivity {
         mTextMessage = findViewById(R.id.message);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         getSupportActionBar().hide();
+        OrderFragment orderFragment = new OrderFragment();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_frame,orderFragment)
+                .commit();
 
     }
 
