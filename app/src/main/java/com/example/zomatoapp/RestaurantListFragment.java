@@ -5,32 +5,36 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.zomatoapp.model.RestaurantApi;
-import com.example.zomatoapp.network.RetrofitRestaurantClientInstance;
-import com.example.zomatoapp.services.RestaurantService;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import com.example.zomatoapp.adapter.RestaurantRvAdapter;
+import com.example.zomatoapp.viewModels.RestaurantListViewModel;
 
 public class RestaurantListFragment extends Fragment {
 
-    private final String SEARCH = "search";
-    private final String KEY = "17e3de8473825e5b134932479c395958";
 
     private RecyclerView mRecyclerView;
-    //private MoviesRecyclerViewAdapter mMoviesRecyclerViewAdapter;
+    private RestaurantRvAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-
-    private RestaurantService services;
+    private RestaurantListViewModel viewModel;
 
     public RestaurantListFragment() {
+
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        viewModel = ViewModelProviders.of(this).get(RestaurantListViewModel.class);
+        viewModel.getRestaurant();
     }
 
     @Nullable
@@ -39,30 +43,39 @@ public class RestaurantListFragment extends Fragment {
 
         final View rootView = inflater.inflate(R.layout.fragment_restaurant_list_rv, container, false);
         mRecyclerView = rootView.findViewById(R.id.restaurant_list_rv);
-        services = RetrofitRestaurantClientInstance.getRestaurantRetrofitInstance().create(RestaurantService.class);
-        networkCall(services);
+        if(viewModel.restaurants != null){
+            generateRestaurantList();
+        }
         return rootView;
     }
 
-    private void networkCall(RestaurantService service) {
-        Call<RestaurantApi> call = service.getRestaurant(SEARCH, KEY,5008,"subzone", 10);
-        call.enqueue(new Callback<RestaurantApi>() {
-
+    public void generateRestaurantList() {
+        mAdapter.restaurantList = viewModel.restaurants;
+        mLayoutManager = new LinearLayoutManager(getContext());
+        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
-            public void onResponse(@NonNull Call<RestaurantApi> call, @NonNull Response<RestaurantApi> response) {
-                if(response.isSuccessful()){
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                int visibleItemCount;
+                int totalItemCount;
+                int pastVisibleItems;
+                if (dy > 0) {
+                    visibleItemCount = mLayoutManager.getChildCount();
+                    totalItemCount = mLayoutManager.getItemCount();
+                    pastVisibleItems = ((GridLayoutManager) mLayoutManager).findFirstVisibleItemPosition();
+                    if ((visibleItemCount + pastVisibleItems) >= totalItemCount) {
+                        if(viewModel.getRestaurant()){
+                            int numberOfItem = mAdapter.restaurantList.size();
+                            mAdapter.restaurantList.addAll(viewModel.restaurants.subList(numberOfItem-1,numberOfItem+9));
+                            mRecyclerView.getAdapter().notifyItemInserted(numberOfItem);
+                        }
+                    }
 
-
-                } else {
-                    Log.v("NetworkCall", "failedResponse");
                 }
-
-            }
-
-            @Override
-            public void onFailure(@NonNull Call<RestaurantApi> call, @NonNull Throwable t) {
-                Log.v("NetworkCall", "failed");
             }
         });
+
     }
+
 }
