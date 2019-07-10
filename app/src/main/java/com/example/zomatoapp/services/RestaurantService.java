@@ -11,5 +11,5 @@ public interface RestaurantService {
     @GET("/api/v2.1/{category}")
     Call<RestaurantApi> getRestaurant(@Path("category") String cat, @Query("apikey") String key,
                                       @Query("entity_id") int id, @Query("entity_type") String type,
-                                      @Query("count") int num);
+                                      @Query("start") int start, @Query("count") int num);
 }
