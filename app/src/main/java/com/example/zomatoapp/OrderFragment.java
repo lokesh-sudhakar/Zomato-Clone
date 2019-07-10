@@ -43,7 +43,6 @@ public class OrderFragment extends Fragment {
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabLayout = orderFragmentLayout.findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
-
         return orderFragmentLayout;
     }
 }
