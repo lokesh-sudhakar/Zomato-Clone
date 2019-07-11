@@ -38,7 +38,7 @@ public class OrderFragment extends Fragment {
         title =orderFragmentLayout.findViewById(R.id.title_location);
         title.setText("Dollar Layout, Phase 4, J.P.Nagar,Bengaluru");
         title.setTextColor(getResources().getColor(R.color.dark_black));
-        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(context,getFragmentManager() );
+        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(context,getChildFragmentManager());
         ViewPager viewPager = orderFragmentLayout.findViewById(R.id.view_pager);
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabLayout = orderFragmentLayout.findViewById(R.id.tabs);

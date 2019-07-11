@@ -48,11 +48,7 @@ public class RestaurantRepository {
             @Override
             public void onResponse(@NonNull Call<RestaurantApi> call, @NonNull Response<RestaurantApi> response) {
                 if (response.isSuccessful()) {
-                    Log.v("NetworkCall", "repository ncs");
-                    Log.v("NetworkCall", "repository ncs" + response.body().getRestaurants().get(1).getRestaurant().getName());
                     restaurantApiMutableLiveData.setValue(response.body());
-//                    restaurantApi = response.body();
-                    //pageStart = response.body().observe();
                    } else {
                     Log.v("NetworkCall", "failedResponse");
                 }

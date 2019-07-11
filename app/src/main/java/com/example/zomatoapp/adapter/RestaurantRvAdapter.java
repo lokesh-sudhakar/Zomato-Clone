@@ -13,9 +13,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.zomatoapp.R;
 import com.example.zomatoapp.model.Restaurant;
 import com.example.zomatoapp.model.RestaurantData;
+import com.google.android.material.shape.RoundedCornerTreatment;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+
+import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
 
 public class RestaurantRvAdapter extends RecyclerView.Adapter<RestaurantRvAdapter.RestaurantViewHolder> {
 
@@ -40,14 +43,13 @@ public class RestaurantRvAdapter extends RecyclerView.Adapter<RestaurantRvAdapte
         holder.mCuisines.setText(restaurantList.get(position).getRestaurant().getCuisines());
         holder.mPerPersonCost.setText("" + restaurantList.get(position).getRestaurant().getAverageCostForTwo() / 2);
         holder.mRating.setText(restaurantList.get(position).getRestaurant().getUserRating().getAggregateRating());
-        Picasso.with(context).load(restaurantList.get(position).getRestaurant().getThumb()).into(holder.mPoster);
+        Picasso.with(context).load(restaurantList.get(position).getRestaurant().getThumb()).transform(new RoundedCornersTransformation(10,1)).into(holder.mPoster);
     }
 
     @Override
     public int getItemCount() {
         return restaurantList.size();
     }
-
 
     class RestaurantViewHolder extends RecyclerView.ViewHolder {
         TextView mTitle;
