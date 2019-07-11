@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     package="com.example.zomatoapp">
 
     <application
@@ -11,16 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+
         <activity
-            android:name=".Tabbed_Activity"
-            android:label="@string/title_activity_tabbed_"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".LoginActivity"
+            android:name=".LoginActivity"
             android:label="Login_Activity"
-            android:theme="@style/AppThemeForLogin"></activity>
+            android:theme="@style/AppThemeForLogin" />
         <activity
             android:name=".HomeActivity"
-            android:label="@string/title_activity_home" />
+            android:label="@string/title_activity_home"
+            android:theme="@style/HomeActivityTheme"
+            />
         <activity
             android:name=".SplashScreen"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">

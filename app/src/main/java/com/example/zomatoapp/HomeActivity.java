@@ -23,7 +23,6 @@ public class HomeActivity extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.navigation_order:
                     Toast.makeText(getApplicationContext(),"home selected",Toast.LENGTH_SHORT).show();
-                    //for testing purpose
                     OrderFragment orderFragment = new OrderFragment();
                     getSupportFragmentManager().beginTransaction()
                             .replace(R.id.fragment_frame,orderFragment)
@@ -31,6 +30,10 @@ public class HomeActivity extends AppCompatActivity {
                     return true;
                 case R.id.navigation_go_out:
                     Toast.makeText(getApplicationContext(),"go_out selected",Toast.LENGTH_SHORT).show();
+                    GoOutFragment goOutFragment = new GoOutFragment();
+                    getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.fragment_frame,goOutFragment)
+                            .commit();
                     return true;
                 case R.id.navigation_gold:
                     Toast.makeText(getApplicationContext(),"gold selected",Toast.LENGTH_SHORT).show();
@@ -40,6 +43,11 @@ public class HomeActivity extends AppCompatActivity {
                     return true;
                 case R.id.navigation_profile:
                     Toast.makeText(getApplicationContext(),"profile selected",Toast.LENGTH_SHORT).show();
+                    ProfileFragment profileFragment = new ProfileFragment();
+                    getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.fragment_frame,profileFragment)
+                            .commit();
+
                     return true;
             }
             return false;
@@ -50,15 +58,13 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        BottomNavigationView navView = findViewById(R.id.nav_view);
+        BottomNavigationView navView = findViewById(R.id.bottom_nav_view);
         mTextMessage = findViewById(R.id.message);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        getSupportActionBar().hide();
         OrderFragment orderFragment = new OrderFragment();
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_frame,orderFragment)
+                .add(R.id.fragment_frame,orderFragment)
                 .commit();
-
     }
 
 }
