@@ -1,18 +1,20 @@
-package com.example.zomatoapp.ui.order;
+package com.example.zomatoapp.profile_tabbed_adapter;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.zomatoapp.R;
+import com.example.zomatoapp.ui.order_tab_adapter.PageViewModel;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -47,13 +49,15 @@ public class PlaceholderFragment extends Fragment {
             @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_tabbed_, container, false);
-        final TextView textView = root.findViewById(R.id.section_label);
-        pageViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+        ImageView sectionImage = root.findViewById(R.id.section_Image_view);
+
+        sectionImage.setImageResource(R.mipmap.sleeping_panda_imageview);
+//        pageViewModel.getText().observe(this, new Observer<String>() {
+//            @Override
+//            public void onChanged(@Nullable String s) {
+//                textView.setText(s);
+//            }
+//        });
         return root;
     }
 }

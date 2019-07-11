@@ -10,20 +10,23 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp">
+        android:layout_height="wrap_content"
+        android:elevation="1px"
+        android:background="@color/colorPrimary"
+        >
 
         <TextView
             android:id="@+id/user_name_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="20dp"
+            android:text="Lokesh"
             android:textColor="@color/dark_black"
             android:textSize="22sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:text="Lokesh" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/user_followers_text_view"
@@ -31,19 +34,19 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="10dp"
+            android:text="1 Followers"
             android:textColor="@color/dark_black"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/user_name_text_view"
-            android:text="1 Followers" />
+            app:layout_constraintTop_toBottomOf="@id/user_name_text_view" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/location_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="16dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/user_followers_text_view">
 
@@ -63,19 +66,21 @@
                 android:text="Mumbai"
                 android:textColor="@color/dark_black"
                 android:textSize="12sp"
-                app:layout_constraintStart_toEndOf="@id/loaction_icon"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                />
+                app:layout_constraintStart_toEndOf="@id/loaction_icon"
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp"
+            android:id="@+id/foodie_level_view"
+            android:layout_width="71dp"
+            android:layout_height="19dp"
             android:layout_marginLeft="16dp"
-            android:background="#EBD3A9"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/foodie_level_rounded_corner"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/location_layout">
 
@@ -83,6 +88,9 @@
                 android:id="@+id/level_icon"
                 android:layout_width="19dp"
                 android:layout_height="0dp"
+                android:paddingLeft="2dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
                 android:src="@drawable/ic_foodie_level_icon"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -92,15 +100,65 @@
                 android:id="@+id/user_location_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:paddingTop="2dp"
+                android:paddingRight="2dp"
+                android:paddingBottom="2dp"
                 android:text=" 1 Foodie"
-                android:textStyle="bold"
                 android:textColor="#FDB73D"
                 android:textSize="12sp"
-                app:layout_constraintStart_toEndOf="@id/level_icon"
-                app:layout_constraintTop_toTopOf="parent"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/level_icon"
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/profile_pic"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:src="@mipmap/ic_zomato_gold_icon"
+            app:civ_shadow_radius="10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/edit"
+            android:layout_width="40dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/edit_button_border"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="Edit"
+            android:textColor="@color/light_grey"
+            android:textSize="8dp"
+
+            app:layout_constraintEnd_toEndOf="@+id/profile_pic"
+            app:layout_constraintStart_toStartOf="@+id/profile_pic"
+            app:layout_constraintTop_toBottomOf="@+id/profile_pic" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabs"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        app:tabTextColor="@color/dark_black"
+        style="@style/MyCustomTabLayout"
+        app:tabIndicatorFullWidth="false"
+        app:tabIndicatorHeight="4dp"
+        app:tabMode="scrollable"
+        android:background="?attr/colorPrimary" />
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
 
 </LinearLayout>

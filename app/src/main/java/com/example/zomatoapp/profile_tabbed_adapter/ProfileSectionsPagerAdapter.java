@@ -1,4 +1,4 @@
-package com.example.zomatoapp.ui.order;
+package com.example.zomatoapp.profile_tabbed_adapter;
 
 import android.content.Context;
 
@@ -9,18 +9,19 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.example.zomatoapp.R;
+import com.example.zomatoapp.profile_tabbed_adapter.PlaceholderFragment;
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
  * one of the sections/tabs/pages.
  */
-public class SectionsPagerAdapter extends FragmentPagerAdapter {
+public class ProfileSectionsPagerAdapter extends FragmentPagerAdapter {
 
     @StringRes
-    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2};
+    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2,R.string.tab_text_2,R.string.tab_text_2};
     private final Context mContext;
 
-    public SectionsPagerAdapter(Context context, FragmentManager fm) {
+    public ProfileSectionsPagerAdapter(Context context, FragmentManager fm) {
         super(fm);
         mContext = context;
     }
@@ -39,6 +40,6 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     @Override
     public int getCount() {
         // Show 2 total pages.
-        return 2;
+        return 4;
     }
 }

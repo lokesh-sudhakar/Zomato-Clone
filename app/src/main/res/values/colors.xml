@@ -9,8 +9,6 @@
     <color name="solidBlack">#000</color>
     <color name="facebookBlue">#FF1C30A3</color>
     <color name="transparent">#00000000</color>
-    <color name="dark_black">#2D2D2D</color>
-    <color name="light_grey">#4B4343</color>
     <color name="dark_green">#008000</color>
     <color name="green">#008000</color>
 </resources>
