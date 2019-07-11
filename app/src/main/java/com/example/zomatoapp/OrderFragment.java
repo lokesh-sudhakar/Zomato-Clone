@@ -9,11 +9,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
-import com.example.zomatoapp.ui.order.SectionsPagerAdapter;
+import com.example.zomatoapp.ui.order_tab_adapter.SectionsPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 
 public class OrderFragment extends Fragment {
