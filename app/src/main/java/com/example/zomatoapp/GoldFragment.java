@@ -17,7 +17,7 @@ public class GoldFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View goldFragmentLayout=inflater.inflate(R.layout.gold_fragment,container,false);
         View cardViewForStarter=goldFragmentLayout.findViewById(R.id.cardViewForStarter);
-        View cardViewForAnnual=goldFragmentLayout.findViewById(R.id.cardViewForAnnual)
+        View cardViewForAnnual=goldFragmentLayout.findViewById(R.id.cardViewForAnnual);
         return goldFragmentLayout;
     }
 }
