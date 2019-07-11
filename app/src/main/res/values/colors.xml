@@ -7,7 +7,9 @@
     <color name="light_grey">#4B4343</color>
     <color name="black">#aa000000</color>
     <color name="solidBlack">#000</color>
-    <color name="facebookBlue">#FF1C30A3</color>
+    <color name="gold_options_background_selected">#F1E4A2</color>
+    <color name="gold_options_background_not_selected">#C0BEBE</color>
+    <color name="facebookBlue">#3F51B5</color>
     <color name="transparent">#00000000</color>
     <color name="green">#008000</color>
 </resources>
