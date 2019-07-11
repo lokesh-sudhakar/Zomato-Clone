@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitRestaurantClientInstance {
         private static Retrofit retrofit;
-        private static final String BASE_URL = "https://developers.zomato.com/api/v2.1";
+        private static final String BASE_URL = "https://developers.zomato.com";
 
         public static Retrofit getRestaurantRetrofitInstance() {
             if (retrofit == null) {
