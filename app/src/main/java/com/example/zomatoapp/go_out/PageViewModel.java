@@ -1,4 +1,4 @@
-package com.example.zomatoapp.ui.main;
+package com.example.zomatoapp.go_out;
 
 import androidx.arch.core.util.Function;
 import androidx.lifecycle.LiveData;
