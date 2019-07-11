@@ -12,16 +12,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.zomatoapp.R;
 import com.example.zomatoapp.model.Restaurant;
+import com.example.zomatoapp.model.RestaurantData;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class RestaurantRvAdapter extends RecyclerView.Adapter<RestaurantRvAdapter.RestaurantViewHolder> {
 
-    public List<Restaurant> restaurantList;
+    public List<RestaurantData> restaurantList;
     private Context context;
 
-    public RestaurantRvAdapter(List<Restaurant> restaurantList, Context context) {
+    public RestaurantRvAdapter(List<RestaurantData> restaurantList, Context context) {
         this.restaurantList = restaurantList;
         this.context = context;
     }
@@ -35,11 +36,11 @@ public class RestaurantRvAdapter extends RecyclerView.Adapter<RestaurantRvAdapte
 
     @Override
     public void onBindViewHolder(RestaurantViewHolder holder, int position) {
-        holder.mTitle.setText(restaurantList.get(position).getName());
-        holder.mCuisines.setText(restaurantList.get(position).getCuisines());
-        holder.mPerPersonCost.setText("" + restaurantList.get(position).getAverageCostForTwo() / 2);
-        holder.mRating.setText(restaurantList.get(position).getUserRating().getAggregateRating());
-        Picasso.with(context).load(restaurantList.get(position).getThumb()).into(holder.mPoster);
+        holder.mTitle.setText(restaurantList.get(position).getRestaurant().getName());
+        holder.mCuisines.setText(restaurantList.get(position).getRestaurant().getCuisines());
+        holder.mPerPersonCost.setText("" + restaurantList.get(position).getRestaurant().getAverageCostForTwo() / 2);
+        holder.mRating.setText(restaurantList.get(position).getRestaurant().getUserRating().getAggregateRating());
+        Picasso.with(context).load(restaurantList.get(position).getRestaurant().getThumb()).into(holder.mPoster);
     }
 
     @Override
