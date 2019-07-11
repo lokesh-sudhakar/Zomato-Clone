@@ -1,4 +1,4 @@
-package com.example.zomatoapp.ui.main;
+package com.example.zomatoapp.go_out;
 
 import android.content.Context;
 
@@ -9,7 +9,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.example.zomatoapp.R;
-import com.example.zomatoapp.RestaurantListFragment;
+import com.example.zomatoapp.ui.order.PlaceholderFragment;
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
@@ -18,7 +18,7 @@ import com.example.zomatoapp.RestaurantListFragment;
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @StringRes
-    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2};
+    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2,R.string.tab_text_1, R.string.tab_text_2,R.string.tab_text_1};
     private final Context mContext;
 
     public SectionsPagerAdapter(Context context, FragmentManager fm) {
@@ -28,17 +28,6 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        // getItem is called to instantiate the fragment for the given page.
-        // Return a PlaceholderFragment (defined as a static inner class below).
-        switch (position){
-            case 0:{
-                return new RestaurantListFragment();
-            }
-            case 1:{
-                return PlaceholderFragment.newInstance(position + 1);
-            }
-
-        }
         return PlaceholderFragment.newInstance(position + 1);
     }
 
@@ -50,7 +39,6 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        // Show 2 total pages.
-        return 2;
+        return 5;
     }
 }

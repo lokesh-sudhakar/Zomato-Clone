@@ -1,4 +1,4 @@
-package com.example.zomatoapp.ui.main;
+package com.example.zomatoapp.go_out;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -6,13 +6,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.zomatoapp.R;
+import com.example.zomatoapp.ui.order.PageViewModel;
 
 /**
  * A placeholder fragment containing a simple view.
