@@ -17,7 +17,7 @@ public class RestaurantApi {
     private Integer resultsShown;
     @SerializedName("restaurants")
     @Expose
-    private List<Restaurant> restaurants = null;
+    private List<RestaurantData> restaurants = null;
 
     public Integer getResultsFound() {
         return resultsFound;
@@ -43,12 +43,11 @@ public class RestaurantApi {
         this.resultsShown = resultsShown;
     }
 
-    public List<Restaurant> getRestaurants() {
+    public List<RestaurantData> getRestaurants() {
         return restaurants;
     }
 
-    public void setRestaurants(List<Restaurant> restaurants) {
+    public void setRestaurants(List<RestaurantData> restaurants) {
         this.restaurants = restaurants;
     }
-
 }
