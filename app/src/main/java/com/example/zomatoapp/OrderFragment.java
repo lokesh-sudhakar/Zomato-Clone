@@ -12,11 +12,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
-import com.example.zomatoapp.ui.order.SectionsPagerAdapter;
+import com.example.zomatoapp.ui.order_tab_adapter.SectionsPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 
 public class OrderFragment extends Fragment {
@@ -40,7 +39,7 @@ public class OrderFragment extends Fragment {
         TextView setLocation= orderFragmentLayout.findViewById(R.id.title_location);
         title =orderFragmentLayout.findViewById(R.id.title_location);
         title.setTextColor(getResources().getColor(R.color.dark_black));
-        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(context,getChildFragmentManager() );
+        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(context,getChildFragmentManager());
         ViewPager viewPager = orderFragmentLayout.findViewById(R.id.view_pager);
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabLayout = orderFragmentLayout.findViewById(R.id.tabs);
