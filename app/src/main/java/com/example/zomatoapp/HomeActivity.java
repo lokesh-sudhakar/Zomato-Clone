@@ -5,9 +5,11 @@ import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.NonNull;
 
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -73,6 +75,22 @@ public class HomeActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.fragment_frame,orderFragment)
                 .commit();
-    }
+        Bundle bundle=getIntent().getBundleExtra("locationBundle");
+        if(bundle!=null){
+            Log.d("Message","onStart is called"+bundle.getString("place"));
+            orderFragment.setArguments(bundle);
+        }
+      }
 
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if(requestCode==1){
+//        if(resultCode==12){
+//            Log.d("message", "the problem is not here");
+//            Bundle bundle=data.getBundleExtra("locationBundle");
+//            OrderFragment orderFragment=new OrderFragment();
+//            orderFragment.setArguments(bundle);
+//        }
+//    }}
 }
