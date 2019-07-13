@@ -157,8 +157,6 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="500dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-
-
 </LinearLayout>

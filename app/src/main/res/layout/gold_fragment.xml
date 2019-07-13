@@ -11,25 +11,25 @@
     android:background="@color/gold_options_background_not_selected">
 
         <FrameLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/goldBanner"
-                android:layout_width="wrap_content"
-                android:layout_height="300dp"
-                android:scaleType="centerCrop"
+                android:layout_width="match_parent"
+                android:layout_height="280dp"
+                android:scaleType="fitXY"
                 android:adjustViewBounds="true"
-                android:src="@drawable/red_banner" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18dp"
-                android:text="Save every time you eat out!"
-                android:fontFamily="sans-serif-medium"
-                android:paddingBottom="15dp"
-                android:textColor="#ffff"
-                android:layout_gravity="bottom|center_horizontal"/>
+                android:src="@drawable/zomato_gold" />
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:textSize="18dp"-->
+                <!--android:text="Save every time you eat out!"-->
+                <!--android:fontFamily="sans-serif-medium"-->
+                <!--android:paddingBottom="15dp"-->
+                <!--android:textColor="#ffff"-->
+                <!--android:layout_gravity="bottom|center_horizontal"/>-->
         </FrameLayout>
 
     <androidx.cardview.widget.CardView

@@ -24,8 +24,10 @@ public class PlaceholderFragment extends Fragment {
     private static final String ARG_SECTION_NUMBER = "section_number";
 
     private PageViewModel pageViewModel;
+    int index;
 
     public static PlaceholderFragment newInstance(int index) {
+        index = index;
         PlaceholderFragment fragment = new PlaceholderFragment();
         Bundle bundle = new Bundle();
         bundle.putInt(ARG_SECTION_NUMBER, index);
@@ -37,7 +39,7 @@ public class PlaceholderFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         pageViewModel = ViewModelProviders.of(this).get(PageViewModel.class);
-        int index = 1;
+//        int index = 1;
         if (getArguments() != null) {
             index = getArguments().getInt(ARG_SECTION_NUMBER);
         }
@@ -50,9 +52,25 @@ public class PlaceholderFragment extends Fragment {
             Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_tabbed_, container, false);
         ImageView sectionImage = root.findViewById(R.id.section_Image_view);
-        TextView sectionText = root.findViewById(R.id.section_label);
-        sectionText.setText("Add your first review or photo to get started");
-        sectionImage.setImageResource(R.mipmap.kitty_sleeping_foreground);
+        switch(index){
+            case 1:{
+                sectionImage.setImageResource(R.drawable.profile_deadline);
+                break;
+            }
+            case 2:{
+                sectionImage.setImageResource(R.drawable.profile_review);
+                break;
+            }
+            case 3:{
+                sectionImage.setImageResource(R.drawable.profile_photos);
+                break;
+            }
+            case 4:{
+                sectionImage.setImageResource(R.drawable.profile_been_there);
+                break;
+            }
+
+        }
 
         return root;
     }
