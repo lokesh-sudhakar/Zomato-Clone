@@ -28,4 +28,10 @@
     <string name="collections">Collections</string>
     <string name="events">Events</string>
     <string name="cuisines">Cuisines</string>
+    <string name="your_location">your location</string>
+    <string name="default_location_text">location</string>
+    <string name="default_user_name">Lokesh</string>
+    <string name="default_followers">1 Followers</string>
+    <string name="default_foodie_level_1">1 Foodie</string>
+    <string name="edit_profile_text">Edit</string>
 </resources>
