@@ -1,10 +1,13 @@
 package com.example.zomatoapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -39,8 +42,8 @@ public class OrderFragment extends Fragment {
         View orderFragmentLayout = inflater.inflate(R.layout.fragment_order_home,container,false);
         Toolbar toolbar = orderFragmentLayout.findViewById(R.id.toolbar);
         ((AppCompatActivity) Objects.requireNonNull(getActivity())).setSupportActionBar(toolbar);
+        TextView setLocation= orderFragmentLayout.findViewById(R.id.title_location);
         title =orderFragmentLayout.findViewById(R.id.title_location);
-        title.setText("Dollar Layout, Phase 4, J.P.Nagar,Bengaluru");
         title.setTextColor(getResources().getColor(R.color.dark_black));
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(context,getChildFragmentManager());
         ViewPager viewPager = orderFragmentLayout.findViewById(R.id.view_pager);
@@ -48,7 +51,28 @@ public class OrderFragment extends Fragment {
         TabLayout tabLayout = orderFragmentLayout.findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
         setUpIcons(tabLayout);
+        setLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getActivity(),MapsActivity.class);
+                startActivityForResult(intent,1);
+            }
+        });
         return orderFragmentLayout;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Bundle bundle=getArguments();
+        if(bundle!=null){
+            updateLocationTextView(bundle.getString("place"));
+        }
+    }
+
+    public void updateLocationTextView(String location){
+        TextView setLocation= getActivity().findViewById(R.id.title_location);
+        setLocation.setText(location);
     }
 
     private void setUpIcons(TabLayout tabLayout) {
