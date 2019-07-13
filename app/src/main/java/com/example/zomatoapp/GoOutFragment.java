@@ -15,6 +15,8 @@ import androidx.viewpager.widget.ViewPager;
 import com.example.zomatoapp.go_out.SectionsPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 
+import java.util.Objects;
+
 public class GoOutFragment extends Fragment {
 
     private TextView title;
@@ -48,23 +50,23 @@ public class GoOutFragment extends Fragment {
     private void setUpIcons(TabLayout tabLayout) {
         TextView forYouTab = (TextView) LayoutInflater.from(context).inflate(R.layout.custom_tab_layout, null);
         forYouTab.setText(getResources().getString(R.string.for_you));
-        tabLayout.getTabAt(0).setCustomView(forYouTab);
+        Objects.requireNonNull(tabLayout.getTabAt(0)).setCustomView(forYouTab);
 
         TextView sneakPeekTab = (TextView) LayoutInflater.from(context).inflate(R.layout.custom_tab_layout, null);
         sneakPeekTab.setText(getResources().getString(R.string.sneak_peek));
         sneakPeekTab.setCompoundDrawablesWithIntrinsicBounds(0,0, R.drawable.ic_sneak_peekoutline_videocam_24px, 0);
-        tabLayout.getTabAt(1).setCustomView(sneakPeekTab);
+        Objects.requireNonNull(tabLayout.getTabAt(1)).setCustomView(sneakPeekTab);
 
         TextView collectionsTab = (TextView) LayoutInflater.from(context).inflate(R.layout.custom_tab_layout, null);
         collectionsTab.setText(getResources().getString(R.string.collections));
-        tabLayout.getTabAt(2).setCustomView(collectionsTab);
+        Objects.requireNonNull(tabLayout.getTabAt(2)).setCustomView(collectionsTab);
 
         TextView eventsTab = (TextView) LayoutInflater.from(context).inflate(R.layout.custom_tab_layout, null);
         eventsTab.setText(getString(R.string.events));
-        tabLayout.getTabAt(3).setCustomView(eventsTab);
+        Objects.requireNonNull(tabLayout.getTabAt(3)).setCustomView(eventsTab);
 
         TextView cuisinesTab = (TextView) LayoutInflater.from(context).inflate(R.layout.custom_tab_layout, null);
         cuisinesTab.setText(getResources().getString(R.string.cuisines));
-        tabLayout.getTabAt(4).setCustomView(cuisinesTab);
+        Objects.requireNonNull(tabLayout.getTabAt(4)).setCustomView(cuisinesTab);
     }
 }

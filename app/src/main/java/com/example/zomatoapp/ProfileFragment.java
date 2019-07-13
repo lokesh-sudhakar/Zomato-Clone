@@ -8,6 +8,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,6 +19,12 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
+
+import com.example.zomatoapp.profile_tabbed_adapter.ProfileSectionsPagerAdapter;
+import com.google.android.material.tabs.TabLayout;
+
+import java.util.Objects;
 
 public class ProfileFragment extends Fragment {
 
@@ -40,8 +48,10 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View profileLayoutView = inflater.inflate(R.layout.profile_fragment_with_navigation_drawer,container,false);
 
+        //setting up toolbar
         Toolbar toolbar = profileLayoutView.findViewById(R.id.toolbar);
-        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+        ((AppCompatActivity) Objects.requireNonNull(getActivity())).setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.drawable.hamburger_icon_for_navigation_drawer);
 
         DrawerLayout drawer = profileLayoutView.findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -49,12 +59,31 @@ public class ProfileFragment extends Fragment {
         toggle.setDrawerIndicatorEnabled(true);
         drawer.addDrawerListener(toggle);
         toggle.getDrawerArrowDrawable().setColor(ContextCompat.getColor(context,R.color.dark_black));
-        toolbar.setNavigationIcon(R.drawable.hamburger_icon_for_navigation_drawer);
         toggle.syncState();
 
+        ProfileSectionsPagerAdapter sectionsPagerAdapter = new ProfileSectionsPagerAdapter(context,getChildFragmentManager() );
+        ViewPager viewPager = profileLayoutView.findViewById(R.id.view_pager);
+        viewPager.setAdapter(sectionsPagerAdapter);
+        TabLayout tabLayout = profileLayoutView.findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(viewPager);
+        setUpIcons(tabLayout);
         return profileLayoutView;
     }
 
+    private void setUpIcons(TabLayout tabLayout) {
+        TextView dinelineTab = (TextView) LayoutInflater.from(context).inflate(R.layout.custom_tab_layout, null);
+        dinelineTab.setText("Dineline");
+        tabLayout.getTabAt(0).setCustomView(dinelineTab);
+        TextView reviewsTab = (TextView) LayoutInflater.from(context).inflate(R.layout.custom_tab_layout, null);
+        reviewsTab.setText("Reviews");
+        tabLayout.getTabAt(1).setCustomView(reviewsTab);
+        TextView photosTab = (TextView) LayoutInflater.from(context).inflate(R.layout.custom_tab_layout, null);
+        photosTab.setText("Photos");
+        tabLayout.getTabAt(2).setCustomView(photosTab);
+        TextView beenThereTab = (TextView) LayoutInflater.from(context).inflate(R.layout.custom_tab_layout, null);
+        beenThereTab.setText("Been There");
+        tabLayout.getTabAt(3).setCustomView(beenThereTab);
+    }
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
@@ -63,9 +92,15 @@ public class ProfileFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
+        switch (item.getItemId()){
+            case R.id.action_share:{
+                Toast.makeText(context,"share selected",Toast.LENGTH_SHORT).show();
+                return true;
+            }
+            case R.id.notification_item:{
+
+                return true;
+            }
         }
         return super.onOptionsItemSelected(item);
     }

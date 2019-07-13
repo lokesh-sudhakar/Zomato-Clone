@@ -12,12 +12,12 @@
         android:layout_marginTop="10dp"
         android:background="@color/colorPrimary"
         >
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:orientation="horizontal"
-        android:background="@color/colorPrimary"
-        >
+        android:clickable="true"
+        android:focusable="true">
 
         <ImageView
             android:id="@+id/zomato_gold_logo"
@@ -26,17 +26,36 @@
             android:layout_marginLeft="15dp"
             android:layout_marginTop="12dp"
             android:src="@mipmap/ic_zomato_gold_icon_round"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="5dp"
             android:layout_margin="10dp"
+            android:textStyle="bold"
             android:textColor="@color/dark_black"
             android:text="Zomato Gold"
             android:textSize="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/zomato_gold_logo"
+            app:layout_constraintTop_toTopOf="parent"
             />
-    </LinearLayout>
+
+        <ImageView
+            android:id="@+id/arrow_point_right"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="200dp"
+            android:layout_margin="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/ic_arrow_point_to_right"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
@@ -49,6 +68,9 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:orientation="horizontal"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?attr/selectableItemBackground"
         >
 
         <ImageView
@@ -66,11 +88,25 @@
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:layout_marginStart="12dp"
+            android:layout_marginBottom="8dp"
             android:padding="5dp"
             android:text="Zomato Piggybank"
             android:textColor="@color/dark_black"
             android:textSize="15dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/zomato_piggy"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/piggy_bank_arrow_point_right"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_margin="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/ic_arrow_point_to_right"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
@@ -102,7 +138,8 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/dark_black"
                 android:text="Food Orders"
-                android:textSize="15dp"
+                android:textSize="18dp"
+                android:textStyle="bold"
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="12dp"
                 app:layout_constraintStart_toEndOf="@id/food_Order"
@@ -113,7 +150,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Your Orders, Address Book etc."
-                android:textSize="8dp"
+                android:textSize="10dp"
                 android:textColor="@color/light_grey"
                 android:layout_marginStart="12dp"
                 app:layout_constraintStart_toEndOf="@id/food_Order"
@@ -129,12 +166,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground"
             android:orientation="horizontal">
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="15dp"
                 android:src="@drawable/ic_shopping_bag_your_orders"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/food_Order"
@@ -147,19 +187,22 @@
                 android:layout_margin="15dp"
                 android:text="Your Orders"
                 android:textColor="@color/light_grey"
-                android:textSize="12dp"
+                android:textSize="15dp"
                 app:layout_constraintStart_toEndOf="@id/food_Order"
                 app:layout_constraintTop_toBottomOf="@id/food_Order_suggestion" />
         </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
                     android:orientation="horizontal">
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_marginStart="15dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="15dp"
                         android:src="@drawable/ic_favorite_orders_24dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/food_Order"
@@ -172,19 +215,22 @@
                         android:layout_margin="15dp"
                         android:text="Favourite Orders"
                         android:textColor="@color/light_grey"
-                        android:textSize="12dp"
+                        android:textSize="15dp"
                         app:layout_constraintStart_toEndOf="@id/food_Order"
                         app:layout_constraintTop_toBottomOf="@id/food_Order_suggestion" />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
                     android:orientation="horizontal">
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_marginStart="15dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="15dp"
                         android:src="@drawable/ic_address_book"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/food_Order"
@@ -197,19 +243,22 @@
                         android:layout_margin="15dp"
                         android:text="Manage Address Book"
                         android:textColor="@color/light_grey"
-                        android:textSize="12dp"
+                        android:textSize="15dp"
                         app:layout_constraintStart_toEndOf="@id/food_Order"
                         app:layout_constraintTop_toBottomOf="@id/food_Order_suggestion" />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
                     android:orientation="horizontal">
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_marginStart="15dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="15dp"
                         android:src="@drawable/ic_support_chat"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/food_Order"
@@ -222,7 +271,7 @@
                         android:layout_margin="15dp"
                         android:text="Delivery Support"
                         android:textColor="@color/light_grey"
-                        android:textSize="12dp"
+                        android:textSize="15dp"
                         app:layout_constraintStart_toEndOf="@id/food_Order"
                         app:layout_constraintTop_toBottomOf="@id/food_Order_suggestion" />
                 </LinearLayout>
@@ -257,7 +306,8 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/dark_black"
                 android:text="Table Bookings"
-                android:textSize="15dp"
+                android:textSize="18dp"
+                android:textStyle="bold"
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="12dp"
                 app:layout_constraintStart_toEndOf="@id/table_booking_image_view"
@@ -268,7 +318,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Your Bookings, Support"
-                android:textSize="8dp"
+                android:textSize="10dp"
                 android:textColor="@color/light_grey"
                 android:layout_marginStart="12dp"
                 app:layout_constraintStart_toEndOf="@id/table_booking_image_view"
@@ -284,12 +334,15 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
                     android:orientation="horizontal">
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_marginStart="15dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="15dp"
                         android:src="@drawable/ic_calendar_black"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/food_Order"
@@ -302,19 +355,22 @@
                         android:layout_margin="15dp"
                         android:text="Your Bookings"
                         android:textColor="@color/light_grey"
-                        android:textSize="12dp"
+                        android:textSize="15dp"
                         app:layout_constraintStart_toEndOf="@id/food_Order"
                         app:layout_constraintTop_toBottomOf="@id/food_Order_suggestion" />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
                     android:orientation="horizontal">
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_marginStart="15dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="15dp"
                         android:src="@drawable/ic_support_chat"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/food_Order"
@@ -327,7 +383,7 @@
                         android:layout_margin="15dp"
                         android:text="Table Booking Support"
                         android:textColor="@color/light_grey"
-                        android:textSize="12dp"
+                        android:textSize="15dp"
                         app:layout_constraintStart_toEndOf="@id/food_Order"
                         app:layout_constraintTop_toBottomOf="@id/food_Order_suggestion" />
                 </LinearLayout>
@@ -374,7 +430,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Payment options, Sign Out etc"
-                android:textSize="8dp"
+                android:textSize="10dp"
                 android:textColor="@color/light_grey"
                 android:layout_marginStart="12dp"
                 app:layout_constraintStart_toEndOf="@id/settings_image_view"
@@ -390,12 +446,15 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
                     android:orientation="horizontal">
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_marginStart="15dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="15dp"
                         android:src="@drawable/ic_payment_credit_card"
                         />
 
@@ -406,17 +465,20 @@
                         android:layout_margin="15dp"
                         android:text="Manage Payment Options"
                         android:textColor="@color/light_grey"
-                        android:textSize="12dp" />
+                        android:textSize="15dp" />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
                     android:orientation="horizontal">
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_marginStart="15dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="15dp"
                         android:src="@drawable/ic_add_a_place_icon"/>
 
                     <TextView
@@ -426,17 +488,20 @@
                         android:layout_margin="15dp"
                         android:text="Add a Place"
                         android:textColor="@color/light_grey"
-                        android:textSize="12dp" />
+                        android:textSize="15dp" />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
                     android:orientation="horizontal">
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_marginStart="15dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="15dp"
                         android:src="@drawable/ic_places_you_have_added_icon"/>
 
                     <TextView
@@ -446,17 +511,20 @@
                         android:layout_margin="15dp"
                         android:text="Places You've added"
                         android:textColor="@color/light_grey"
-                        android:textSize="12dp" />
+                        android:textSize="15dp" />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
                     android:orientation="horizontal">
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_marginStart="15dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="15dp"
                         android:src="@drawable/ic_add_friend"/>
 
                     <TextView
@@ -466,17 +534,20 @@
                         android:layout_margin="15dp"
                         android:text="Find Friends on Zomato"
                         android:textColor="@color/light_grey"
-                        android:textSize="12dp" />
+                        android:textSize="15dp" />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
                     android:orientation="horizontal">
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_marginStart="15dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="15dp"
                         android:src="@drawable/ic_more_settings_black_24dp"/>
 
                     <TextView
@@ -486,17 +557,20 @@
                         android:layout_margin="15dp"
                         android:text="More Settings"
                         android:textColor="@color/light_grey"
-                        android:textSize="12dp" />
+                        android:textSize="15dp" />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
                     android:orientation="horizontal">
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_marginStart="15dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="15dp"
                         android:src="@drawable/ic_sign_out_icon"/>
 
                     <TextView
@@ -506,7 +580,7 @@
                         android:layout_margin="15dp"
                         android:text="Sign Out"
                         android:textColor="@color/light_grey"
-                        android:textSize="12dp" />
+                        android:textSize="15dp" />
                 </LinearLayout>
 
                 <TextView
@@ -514,45 +588,60 @@
                     android:id="@+id/send_feedback_text_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
+                    android:paddingLeft="15dp"
                     android:text="Send Feedback"
                     android:textColor="@color/light_grey"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
                     />
                 <TextView
                     android:layout_marginTop="10dp"
                     android:id="@+id/report_text_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
+                    android:paddingLeft="15dp"
                     android:text="Report a Safety Emergency"
                     android:textColor="@color/light_grey"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
                     />
                 <TextView
                     android:layout_marginTop="10dp"
                     android:id="@+id/rate_us_text_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
+                    android:paddingLeft="15dp"
                     android:text="Rate us on Play Store"
                     android:textColor="@color/light_grey"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
                     />
                 <TextView
                     android:layout_marginTop="10dp"
                     android:id="@+id/privacy_policy_text_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
+                    android:paddingLeft="15dp"
                     android:text="Privacy Policy"
                     android:textColor="@color/light_grey"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
                     />
                 <TextView
                     android:layout_marginTop="10dp"
                     android:id="@+id/about_text_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
+                    android:paddingLeft="15dp"
                     android:text="About"
                     android:textColor="@color/light_grey"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
                     />
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>

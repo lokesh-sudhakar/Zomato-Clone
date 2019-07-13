@@ -45,7 +45,6 @@ public class RestaurantRepository {
                 } else {
                 }
             }
-
             @Override
             public void onFailure(@NonNull Call<RestaurantApi> call, @NonNull Throwable t) {
                 restaurantApiMutableLiveData.setValue(null);

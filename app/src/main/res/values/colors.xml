@@ -16,5 +16,7 @@
     <color name="lime_green">#32CD32</color>
     <color name="very_light_gray">#DCDCDC</color>
     <color name="gold">#C48949</color>
+    <color name="appbar_background_color">#F1EFEF</color>
+    <color name="yellowish_orange">#FDB73D</color>
 </resources>
 

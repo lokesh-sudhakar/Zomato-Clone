@@ -9,7 +9,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.example.zomatoapp.R;
-import com.example.zomatoapp.ui.order.PlaceholderFragment;
+import com.example.zomatoapp.ui.order_tab_adapter.PlaceholderFragment;
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to

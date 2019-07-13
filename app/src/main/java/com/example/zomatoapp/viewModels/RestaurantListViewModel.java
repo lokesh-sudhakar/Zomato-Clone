@@ -1,13 +1,21 @@
 package com.example.zomatoapp.viewModels;
 
+
+import android.app.Application;
+
 import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+import com.example.zomatoapp.model.Restaurant;
 
 import com.example.zomatoapp.repository.RestaurantRepository;
 import com.example.zomatoapp.model.RestaurantApi;
 import com.example.zomatoapp.model.RestaurantData;
+
+
+import com.example.zomatoapp.repository.RestaurantRepository;
+import com.example.zomatoapp.model.RestaurantApi;
 
 import java.util.List;
 
@@ -19,6 +27,7 @@ public class RestaurantListViewModel extends ViewModel {
     private int start = 0;
     private boolean loading = true;
     private int category;
+
 
     public boolean isLoading() {
         return loading;

@@ -1,4 +1,4 @@
-package com.example.zomatoapp.ui.order;
+package com.example.zomatoapp.ui.order_tab_adapter;
 
 import android.content.Context;
 
