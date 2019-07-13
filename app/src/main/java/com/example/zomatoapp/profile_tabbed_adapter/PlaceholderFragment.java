@@ -50,14 +50,10 @@ public class PlaceholderFragment extends Fragment {
             Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_tabbed_, container, false);
         ImageView sectionImage = root.findViewById(R.id.section_Image_view);
+        TextView sectionText = root.findViewById(R.id.section_label);
+        sectionText.setText("Add your first review or photo to get started");
+        sectionImage.setImageResource(R.mipmap.kitty_sleeping_foreground);
 
-        sectionImage.setImageResource(R.mipmap.sleeping_panda_imageview);
-//        pageViewModel.getText().observe(this, new Observer<String>() {
-//            @Override
-//            public void onChanged(@Nullable String s) {
-//                textView.setText(s);
-//            }
-//        });
         return root;
     }
 }

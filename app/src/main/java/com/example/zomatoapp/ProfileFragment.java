@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -91,9 +92,15 @@ public class ProfileFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
+        switch (item.getItemId()){
+            case R.id.action_share:{
+                Toast.makeText(context,"share selected",Toast.LENGTH_SHORT).show();
+                return true;
+            }
+            case R.id.notification_item:{
+
+                return true;
+            }
         }
         return super.onOptionsItemSelected(item);
     }
