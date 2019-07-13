@@ -40,4 +40,6 @@
     <dimen name="edit_text_view_width">40dp</dimen>
     <dimen name="edit_text_view_height_20dp">20dp</dimen>
     <dimen name="margin_8dp">8dp</dimen>
+    <dimen name="text_size_22sp">22sp</dimen>
+    <dimen name="text_size_18sp">18sp</dimen>
 </resources>
