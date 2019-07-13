@@ -14,7 +14,7 @@ public class UserRating {
     @SerializedName("rating_color")
     @Expose
     private String ratingColor;
-//    @SerializedName("rating_obj")
+    //    @SerializedName("rating_obj")
 //    @Expose
 //    private RatingObj ratingObj;
     @SerializedName("votes")

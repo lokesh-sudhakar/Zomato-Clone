@@ -6,197 +6,30 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="dataFetching" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7031a537-85ce-42ca-a981-f03ac37c5c47" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/ic_order_cart_icon-web.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/ic_piggy_bank_logo-web.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/ic_support_icon-web.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/ic_zomato_gold_icon-web.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/GoOutFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/GoldFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/ProfileFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/go_out/PlaceholderFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/ui/order/PageViewModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/piggy_bank_icon-web.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/drawable/drinks.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/drawable/food.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/drawable/gold_star_filled.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/drawable/hamburger_icon_for_navigation_drawer.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/drawable/ic_add_a_place_icon.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/drawable/ic_add_friend.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/drawable/ic_address_book.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/drawable/ic_calendar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/drawable/ic_calendar_black.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/drawable/ic_favorite_orders_24dp.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/drawable/ic_foodie_level_icon.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/drawable/ic_menu_camera.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/drawable/ic_menu_gallery.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/drawable/ic_menu_manage.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/drawable/ic_menu_send.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/drawable/ic_menu_share.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/drawable/ic_menu_slideshow.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/drawable/ic_more_settings_black_24dp.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/drawable/ic_navigaton_drawer_icon_black_24dp.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/drawable/ic_notification_empty_24dp.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/drawable/ic_payment_credit_card.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/drawable/ic_places_you_have_added_icon.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/drawable/ic_share__white_icon.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/drawable/ic_shopping_bag_your_orders.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/drawable/ic_sign_out_icon.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/drawable/ic_sneak_peak_video_camera.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/drawable/ic_sneak_peekoutline_videocam_24px.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/drawable/ic_support_chat.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/drawable/red_banner.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/drawable/side_nav_bar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/layout/app_bar_navigation_drawer.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/layout/content_navigation_drawer.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/layout/gold_fragment.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/layout/nav_header_navigation_drawer.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/layout/profile_fragment_with_navigation_drawer.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/menu/navigation_drawer.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-anydpi-v26/ic_order_cart_icon.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-anydpi-v26/ic_order_cart_icon_round.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-anydpi-v26/ic_piggy_bank_logo.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-anydpi-v26/ic_piggy_bank_logo_round.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-anydpi-v26/ic_support_icon.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-anydpi-v26/ic_support_icon_round.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-anydpi-v26/ic_zomato_gold_icon.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-anydpi-v26/ic_zomato_gold_icon_round.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-anydpi-v26/piggy_bank_icon.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-anydpi-v26/piggy_bank_icon_round.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-anydpi-v26/settings_white_icon_grey.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-anydpi-v26/settings_white_icon_grey_round.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-hdpi/food_order_cart.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-hdpi/grey_settings.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-hdpi/ic_launcher_foreground.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-hdpi/ic_order_cart_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-hdpi/ic_order_cart_icon_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-hdpi/ic_piggy_bank_logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-hdpi/ic_piggy_bank_logo_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-hdpi/ic_support_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-hdpi/ic_support_icon_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-hdpi/ic_zomato_gold_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-hdpi/ic_zomato_gold_icon_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-hdpi/piggy_bank.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-hdpi/piggy_bank_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-hdpi/piggy_bank_icon_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-hdpi/settings_white_icon_grey.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-hdpi/settings_white_icon_grey_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-hdpi/support.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-mdpi/food_order_cart.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-mdpi/grey_settings.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-mdpi/ic_launcher_foreground.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-mdpi/ic_order_cart_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-mdpi/ic_order_cart_icon_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-mdpi/ic_piggy_bank_logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-mdpi/ic_piggy_bank_logo_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-mdpi/ic_support_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-mdpi/ic_support_icon_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-mdpi/ic_zomato_gold_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-mdpi/ic_zomato_gold_icon_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-mdpi/piggy_bank.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-mdpi/piggy_bank_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-mdpi/piggy_bank_icon_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-mdpi/settings_white_icon_grey.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-mdpi/settings_white_icon_grey_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-mdpi/support.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-xhdpi/food_order_cart.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-xhdpi/grey_settings.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-xhdpi/ic_order_cart_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-xhdpi/ic_order_cart_icon_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-xhdpi/ic_piggy_bank_logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-xhdpi/ic_piggy_bank_logo_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-xhdpi/ic_support_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-xhdpi/ic_support_icon_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-xhdpi/ic_zomato_gold_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-xhdpi/ic_zomato_gold_icon_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-xhdpi/piggy_bank.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-xhdpi/piggy_bank_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-xhdpi/piggy_bank_icon_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-xhdpi/settings_white_icon_grey.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-xhdpi/settings_white_icon_grey_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-xhdpi/support.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-xxhdpi/food_order_cart.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-xxhdpi/grey_settings.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-xxhdpi/ic_order_cart_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-xxhdpi/ic_order_cart_icon_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-xxhdpi/ic_piggy_bank_logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-xxhdpi/ic_piggy_bank_logo_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-xxhdpi/ic_support_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-xxhdpi/ic_support_icon_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-xxhdpi/ic_zomato_gold_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-xxhdpi/ic_zomato_gold_icon_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-xxhdpi/piggy_bank.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-xxhdpi/piggy_bank_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-xxhdpi/piggy_bank_icon_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-xxhdpi/settings_white_icon_grey.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-xxhdpi/settings_white_icon_grey_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-xxhdpi/support.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-xxxhdpi/food_order_cart.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-xxxhdpi/grey_settings.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-xxxhdpi/ic_order_cart_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-xxxhdpi/ic_order_cart_icon_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-xxxhdpi/ic_piggy_bank_logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-xxxhdpi/ic_piggy_bank_logo_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-xxxhdpi/ic_support_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-xxxhdpi/ic_support_icon_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-xxxhdpi/ic_zomato_gold_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-xxxhdpi/ic_zomato_gold_icon_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-xxxhdpi/piggy_bank.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-xxxhdpi/piggy_bank_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-xxxhdpi/piggy_bank_icon_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-xxxhdpi/settings_white_icon_grey.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-xxxhdpi/settings_white_icon_grey_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/mipmap-xxxhdpi/support.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/values-v21/styles.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/values/ic_launcher_background.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/values/ic_order_cart_background.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/values/ic_piggy_background.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/values/ic_settings_background.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/values/ic_support_background.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/settings_white_icon_grey-web.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/HomeActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/HomeActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/OrderFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/OrderFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/Tabbed_Activity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/ui/main/PageViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/go_out/PageViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/ui/main/PlaceholderFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/ui/order/PlaceholderFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/ui/main/SectionsPagerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/go_out/SectionsPagerAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/Repository/RestaurantRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/repository/RestaurantRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/RestaurantListFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/RestaurantListFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/adapter/RestaurantRvAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/adapter/RestaurantRvAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/model/Restaurant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/model/Restaurant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/model/UserRating.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/model/UserRating.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/network/RetrofitRestaurantClientInstance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/network/RetrofitRestaurantClientInstance.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/ui/order/SectionsPagerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/ui/order/SectionsPagerAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/drawable/edit_text_dotted_lines.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable/edit_text_dotted_lines.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/viewModels/RestaurantListViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/viewModels/RestaurantListViewModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/res/drawable/ic_delivery_scooter_icon.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable/ic_delivery_scooter_icon.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/layout/activity_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/activity_home.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/layout/activity_tabbed_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/layout/fragment_go_out.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/fragment_go_out.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/layout/fragment_order_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/fragment_order_home.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/layout/fragment_tabbed_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/fragment_tabbed_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/mipmap-hdpi/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/mipmap-hdpi/ic_launcher_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/mipmap-hdpi/ic_launcher_round.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/mipmap-mdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/mipmap-mdpi/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/mipmap-mdpi/ic_launcher_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/mipmap-mdpi/ic_launcher_round.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/mipmap-xhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/mipmap-xhdpi/ic_launcher_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/mipmap-xhdpi/ic_launcher_round.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/mipmap-xxhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/mipmap-xxxhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable/rounded_corner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable/rounded_corner_green.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/fragment_restaurant_list_rv.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/fragment_restaurant_list_rv.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/restaurant_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/restaurant_list.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/values/colors.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/values/dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/values/dimens.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/values/styles.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -212,57 +45,50 @@
     </system>
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/zomatoapp/OrderFragment.java">
+        <entry file="file://$PROJECT_DIR$/src/main/res/values/colors.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="38" column="72" selection-start-line="38" selection-start-column="72" selection-end-line="38" selection-end-column="72" />
+            <state relative-caret-position="45">
+              <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/zomatoapp/GoldFragment.java">
+        <entry file="file://$PROJECT_DIR$/src/main/res/layout/restaurant_list.xml">
+          <provider editor-type-id="android-designer2" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/zomatoapp/GoOutFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/zomatoapp/ProfileFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="34" column="62" selection-start-line="34" selection-start-column="62" selection-end-line="34" selection-end-column="62" />
+            <state relative-caret-position="85">
+              <caret line="5" column="39" selection-start-line="5" selection-start-column="39" selection-end-line="5" selection-end-column="39" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/zomatoapp/ui/order/SectionsPagerAdapter.java">
+        <entry file="file://$PROJECT_DIR$/src/main/res/layout/fragment_restaurant_list_rv.xml">
+          <provider editor-type-id="android-designer2" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="41">
-              <caret line="29" column="43" selection-start-line="29" selection-start-column="43" selection-end-line="29" selection-end-column="43" />
+            <state relative-caret-position="119">
+              <caret line="7" column="39" lean-forward="true" selection-start-line="7" selection-start-column="39" selection-end-line="7" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/zomatoapp/RestaurantListFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="79">
+              <caret line="38" column="13" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/zomatoapp/adapter/RestaurantRvAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="278">
+              <caret line="50" column="13" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -292,29 +118,39 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/main/res/layout/fragment_order_home.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/model/UserRating.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/network/RetrofitRestaurantClientInstance.java" />
-        <option value="$PROJECT_DIR$/src/main/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/HomeActivity.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/model/RestaurantList.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/model/RestaurantApi.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/model/RestaurantData.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/model/Restaurant.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/services/RestaurantService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/viewModels/RestaurantListViewModel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/RestaurantListFragment.java" />
-        <option value="$PROJECT_DIR$/src/main/res/drawable/dotted_black_lines.xml" />
-        <option value="$PROJECT_DIR$/src/main/res/layout/fragment_restaurant_list_rv.xml" />
         <option value="$PROJECT_DIR$/src/main/res/values/rounded_corner.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/Repository/RestaurantRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/adapter/RestaurantRvAdapter.java" />
         <option value="$PROJECT_DIR$/src/main/res/drawable/rounded_corner.xml" />
-        <option value="$PROJECT_DIR$/src/main/res/layout/restaurant_list.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/ui/main/SectionsPagerAdapter.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/OrderFragment.java" />
-        <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/Repository/RestaurantRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/ui/order/SectionsPagerAdapter.java" />
+        <option value="$PROJECT_DIR$/src/main/res/drawable/delivery_scooter_icon_blue.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/drawable/ic_delivery_scooter_icon.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/drawable/ic_indian.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/drawable/ic_compass.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/drawable/ic_motorbike.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/drawable/dotted_black_lines.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/drawable/rounded_corner_lime_green.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/model/Restaurant.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/model/UserRating.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/adapter/RestaurantRvAdapter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/network/RetrofitRestaurantClientInstance.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/repository/RestaurantRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/services/RestaurantService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/viewModels/RestaurantListViewModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/HomeActivity.java" />
+        <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/src/main/res/values/colors.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/fragment_go_out.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/restaurant_list.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/drawable/ic_settings.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/drawable/ic_search_black_24dp.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/zomatoapp/RestaurantListFragment.java" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/fragment_restaurant_list_rv.xml" />
       </list>
     </option>
   </component>
@@ -331,9 +167,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -359,6 +195,27 @@
               <item name="zomatoapp" type="cbb59c9e:AndroidPsiDirectoryNode" />
               <item name="adapter" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="zomato" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+            </path>
+            <path>
+              <item name="zomato" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="drawable" type="ddeffd01:AndroidResFolderTypeNode" />
+            </path>
+            <path>
+              <item name="zomato" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
+            </path>
+            <path>
+              <item name="zomato" type="1abcf292:AndroidViewProjectNode" />
+              <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -367,9 +224,15 @@
   </component>
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="device.picker.selection" value="GEW4497TEMTWEUQ4" />
+    <property name="device.picker.selection" value="Nexus_5X_API_28_x86" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/res/drawable" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\zomato\app\src\main\res\drawable" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -458,8 +321,18 @@
     </task>
     <servers />
   </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info id="Capture Tool" order="1" />
@@ -470,21 +343,22 @@
       <window_info id="Designer" order="6" />
       <window_info id="Resources Explorer" order="7" />
       <window_info id="Favorites" order="8" side_tool="true" />
-      <window_info anchor="bottom" x="22" y="263" width="1322" height="201" id="Logcat" order="0" weight="0.3289689" />
-      <window_info anchor="bottom" id="TODO" order="1" />
+      <window_info anchor="bottom" x="22" y="263" width="1322" height="201" id="Logcat" order="0" weight="0.36988544" />
+      <window_info anchor="bottom" id="TODO" order="1" weight="0.3289689" />
       <window_info anchor="bottom" id="Android Profiler" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" />
       <window_info anchor="bottom" id="Run" order="4" weight="0.3289689" />
       <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.50075644" side_tool="true" weight="0.3289689" />
       <window_info anchor="bottom" id="Version Control" order="6" />
-      <window_info anchor="bottom" id="Build" order="7" weight="0.3289689" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.49924356" visible="true" weight="0.3289689" />
-      <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
+      <window_info anchor="bottom" id="Build" order="7" visible="true" weight="0.3289689" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49924356" weight="0.3289689" />
+      <window_info anchor="bottom" id="Find" order="9" />
+      <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" weight="0.32980332" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
       <window_info anchor="right" id="Gradle" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info anchor="right" id="Palette&#9;" order="4" />
-      <window_info anchor="right" id="Preview" order="5" weight="0.2655068" />
+      <window_info active="true" anchor="right" id="Preview" order="5" visible="true" weight="0.1860817" />
     </layout>
     <layout-to-restore>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
@@ -543,24 +417,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/zomatoapp/Tabbed_Activity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_tabbed_.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="19" column="39" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/drawable/ic_delivery_scooter_icon.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/zomatoapp/Tabbed_Activity.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_tabbed_.xml" />
     <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_home.xml">
       <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
@@ -569,146 +427,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/zomatoapp/ui/main/PlaceholderFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="38" column="37" selection-start-line="38" selection-start-column="37" selection-end-line="38" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/zomatoapp/ui/main/PageViewModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="11" column="65" selection-start-line="11" selection-start-column="65" selection-end-line="11" selection-end-column="65" />
-          <folding>
-            <element signature="e#425#594#0" expanded="true" />
-            <element signature="e#593#594#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/zomatoapp/ui/main/PlaceholderFragment.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/zomatoapp/ui/main/PageViewModel.java" />
     <entry file="file://$PROJECT_DIR$/src/main/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="65" selection-start-line="4" selection-start-column="65" selection-end-line="4" selection-end-column="65" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/zomatoapp/HomeActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="50" column="25" selection-start-line="50" selection-start-column="25" selection-end-line="50" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/zomatoapp/network/RetrofitRestaurantClientInstance.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
-          <caret line="7" column="77" selection-start-line="7" selection-start-column="77" selection-end-line="7" selection-end-column="77" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/zomatoapp/model/UserRating.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="36" column="37" selection-start-line="36" selection-start-column="37" selection-end-line="36" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/zomatoapp/model/RestaurantApi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/zomatoapp/RestaurantListFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="68" column="59" selection-start-line="68" selection-start-column="59" selection-end-line="68" selection-end-column="59" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1750#2016#0" expanded="true" />
-            <element signature="e#2015#2016#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/zomatoapp/model/RestaurantData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/zomatoapp/model/Restaurant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-254">
-          <caret line="83" column="13" selection-start-line="83" selection-start-column="13" selection-end-line="83" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4081#4082#0" expanded="true" />
-            <element signature="e#4117#4118#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/zomatoapp/services/RestaurantService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="1" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/zomatoapp/viewModels/RestaurantListViewModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="22" column="55" selection-start-line="22" selection-start-column="55" selection-end-line="22" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1571#1572#0" expanded="true" />
-            <element signature="e#1609#1610#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/drawable/dotted_black_lines.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/fragment_restaurant_list_rv.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="31" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/values/colors.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="29" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="36" />
-        </state>
-      </provider>
+      <provider editor-type-id="android-manifest" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/zomatoapp/LoginActivity.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -720,31 +447,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/values/rounded_corner.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="8" lean-forward="true" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/values/rounded_corner.xml" />
     <entry file="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/26dfe883ba757c3a232c711cf3354f86/res/values/values.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="2766" column="17" selection-start-line="2766" selection-start-column="17" selection-end-line="2766" selection-end-column="17" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/restaurant_list.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="61">
-          <caret line="25" column="33" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/fragment_go_out.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/res/layout/fragment_order_home.xml">
       <provider editor-type-id="android-designer2" />
@@ -761,40 +470,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/drawable/rounded_corner.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="8" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/zomatoapp/Repository/RestaurantRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="50" column="55" selection-start-line="50" selection-start-column="55" selection-end-line="50" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/zomatoapp/adapter/RestaurantRvAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="51" column="5" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/zomatoapp/ui/main/SectionsPagerAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="39" selection-start-line="39" selection-end-line="39" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/zomatoapp/ui/main/SectionsPagerAdapter.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/zomatoapp/OrderFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -823,17 +499,222 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/zomatoapp/ui/order/SectionsPagerAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="34" column="62" selection-start-line="34" selection-start-column="62" selection-end-line="34" selection-end-column="62" />
+        <state relative-caret-position="228">
+          <caret line="40" column="9" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/zomatoapp/ui/order/SectionsPagerAdapter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/res/drawable/delivery_scooter_icon_blue.xml" />
+    <entry file="file://$PROJECT_DIR$/src/main/res/drawable/ic_delivery_scooter_icon.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="41">
-          <caret line="29" column="43" selection-start-line="29" selection-start-column="43" selection-end-line="29" selection-end-column="43" />
+        <state relative-caret-position="85">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/drawable/ic_indian.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/drawable/ic_motorbike.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="55" selection-start-line="1" selection-start-column="55" selection-end-line="1" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/drawable/ic_compass.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="48" selection-start-line="1" selection-start-column="48" selection-end-line="1" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/drawable/rounded_corner_green.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="8" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/drawable/rounded_corner_lime_green.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="8" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/drawable/dotted_black_lines.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/zomatoapp/model/Restaurant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2822">
+          <caret line="175" selection-start-line="175" selection-end-line="175" />
+          <folding>
+            <element signature="e#4081#4082#0" expanded="true" />
+            <element signature="e#4117#4118#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/zomatoapp/model/RestaurantData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/zomatoapp/model/RestaurantApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/zomatoapp/model/UserRating.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/zomatoapp/network/RetrofitRestaurantClientInstance.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="15" column="5" lean-forward="true" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/zomatoapp/repository/RestaurantRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="529">
+          <caret line="37" column="68" selection-start-line="37" selection-start-column="68" selection-end-line="37" selection-end-column="68" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/zomatoapp/services/RestaurantService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="14" column="75" selection-start-line="14" selection-start-column="75" selection-end-line="14" selection-end-column="75" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/zomatoapp/viewModels/RestaurantListViewModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="959">
+          <caret line="61" column="20" selection-start-line="61" selection-start-column="20" selection-end-line="61" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#685#686#0" expanded="true" />
+            <element signature="e#715#716#0" expanded="true" />
+            <element signature="e#762#763#0" expanded="true" />
+            <element signature="e#800#801#0" expanded="true" />
+            <element signature="e#1307#1308#0" expanded="true" />
+            <element signature="e#1343#1344#0" expanded="true" />
+            <element signature="e#1730#1731#0" expanded="true" />
+            <element signature="e#1757#1758#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/zomatoapp/HomeActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="41" column="32" selection-start-line="41" selection-start-column="32" selection-end-line="41" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/fragment_go_out.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="39" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/restaurant_list.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="39" selection-start-line="5" selection-start-column="39" selection-end-line="5" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/values/colors.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/drawable/ic_search_black_24dp.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="44" selection-start-line="6" selection-start-column="44" selection-end-line="6" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/drawable/ic_settings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/zomatoapp/adapter/RestaurantRvAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="50" column="13" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/zomatoapp/RestaurantListFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="79">
+          <caret line="38" column="13" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/fragment_restaurant_list_rv.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="39" lean-forward="true" selection-start-line="7" selection-start-column="39" selection-end-line="7" selection-end-column="39" />
         </state>
       </provider>
     </entry>
