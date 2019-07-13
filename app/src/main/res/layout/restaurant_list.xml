@@ -6,7 +6,7 @@
     android:layout_marginBottom="0.5dp"
     android:background="@color/colorPrimary"
     android:orientation="vertical"
-    android:padding="12dp">
+    android:padding="10dp">
 
 
     <ImageView
@@ -15,7 +15,7 @@
         android:layout_height="0dp"
         android:layout_marginEnd="8dp"
         android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="@+id/live_tracking"
+        app:layout_constraintBottom_toBottomOf="@+id/live_tracking_constraint"
         app:layout_constraintEnd_toStartOf="@+id/restaurant_name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -59,41 +59,81 @@
         app:layout_constraintStart_toStartOf="@+id/restaurant_name"
         app:layout_constraintTop_toBottomOf="@+id/restaurant_cuisines" />
 
-    <TextView
-        android:id="@+id/per_person_cost"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint_per_person_cost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
-        android:text="150 per person"
-        android:textSize="10sp"
         app:layout_constraintStart_toStartOf="@+id/restaurant_name"
-        app:layout_constraintTop_toBottomOf="@+id/dotted_line_view" />
+        app:layout_constraintTop_toBottomOf="@+id/dotted_line_view" >
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_indian"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/per_person_cost"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/per_person_cost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="150 per person"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
         android:id="@+id/dotted_line"
         android:layout_width="240dp"
         android:layout_height="1.5sp"
-        android:layout_marginTop="3dp"
         android:background="@drawable/dotted_black_lines"
         app:layout_constraintStart_toStartOf="@+id/restaurant_name"
-        app:layout_constraintTop_toBottomOf="@+id/per_person_cost" />
+        app:layout_constraintTop_toBottomOf="@+id/constraint_per_person_cost" />
 
-    <TextView
-        android:id="@+id/live_tracking"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/live_tracking_constraint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
-        android:text="Live Tracking"
-        android:textColor="@color/black"
-        android:textSize="10sp"
         app:layout_constraintStart_toStartOf="@+id/restaurant_name"
-        app:layout_constraintTop_toBottomOf="@+id/dotted_line" />
+        app:layout_constraintTop_toBottomOf="@+id/dotted_line" >
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_marginTop="2dp"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:src="@drawable/ic_compass"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/live_tracking"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/live_tracking"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="Live Tracking"
+            android:textColor="@color/black"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:id="@+id/rating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/rounded_corner"
+        android:background="@drawable/rounded_corner_green"
         android:paddingLeft="4dp"
         android:paddingRight="4dp"
         android:text="4.1"
@@ -103,13 +143,32 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/restaurant_name" />
 
-    <TextView
-        android:id="@+id/delivery_time"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="25-35 Mins"
-        android:textColor="@color/black"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="@+id/live_tracking"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/live_tracking_constraint"
+        app:layout_constraintEnd_toEndOf="parent">
+        <ImageView
+            android:id="@+id/imageView_scooter"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:src="@drawable/ic_motorbike"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/delivery_time"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/delivery_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:text="25-35 Mins"
+            android:textColor="@color/black"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

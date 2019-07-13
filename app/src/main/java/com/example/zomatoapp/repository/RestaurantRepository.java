@@ -15,43 +15,40 @@ import retrofit2.Response;
 
 public class RestaurantRepository {
 
-    public static RestaurantRepository restaurantRepository;
-
     private final String SEARCH = "search";
     private final String KEY = "17e3de8473825e5b134932479c395958";
+    private final String SUBZONE = "subzone";
+    private final int NUM_OF_RESULT = 10;
     private RestaurantService services;
+    private MutableLiveData<RestaurantApi> restaurantApiMutableLiveData = new MutableLiveData<>();
+    private int category;
 
-    MutableLiveData<RestaurantApi> restaurantApiMutableLiveData = new MutableLiveData<>();
-
-    public static RestaurantRepository getInstance(){
-        if (restaurantRepository == null){
-            restaurantRepository = new RestaurantRepository();
-        }
-        return restaurantRepository;
+    public RestaurantRepository(int cat) {
+        services = RetrofitRestaurantClientInstance.getRestaurantRetrofitInstance().
+                   create(RestaurantService.class);
+        category = cat;
     }
 
-    public RestaurantRepository() {
-        services = RetrofitRestaurantClientInstance.getRestaurantRetrofitInstance().create(RestaurantService.class);
+    public MutableLiveData<RestaurantApi> connectMutableLiveData() {
+        return restaurantApiMutableLiveData;
     }
 
-    public MutableLiveData<RestaurantApi> networkCall(int start) {
-
-        Call<RestaurantApi> call = services.getRestaurant(SEARCH, KEY, 5008, "subzone",1, 0, 10);
+    public void networkCall(int start) {
+        Call<RestaurantApi> call = services.getRestaurant(SEARCH, KEY, 5008,
+                             SUBZONE, category, start, NUM_OF_RESULT);
         call.enqueue(new Callback<RestaurantApi>() {
             @Override
-            public void onResponse(@NonNull Call<RestaurantApi> call, @NonNull Response<RestaurantApi> response) {
+            public void onResponse(@NonNull Call<RestaurantApi> call,
+                                   @NonNull Response<RestaurantApi> response) {
                 if (response.isSuccessful()) {
                     restaurantApiMutableLiveData.setValue(response.body());
-                   } else {
-                    Log.v("NetworkCall", "failedResponse");
+                } else {
                 }
             }
             @Override
             public void onFailure(@NonNull Call<RestaurantApi> call, @NonNull Throwable t) {
-                Log.v("NetworkCall", "failed");
                 restaurantApiMutableLiveData.setValue(null);
             }
         });
-        return restaurantApiMutableLiveData;
     }
 }

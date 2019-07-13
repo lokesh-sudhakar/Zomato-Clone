@@ -41,11 +41,6 @@ public class HomeActivity extends AppCompatActivity {
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_frame,goldFragment).commit();
                     return true;
                 case R.id.navigation_search:
-
-                    RestaurantListFragment restaurantListFragment = new RestaurantListFragment();
-                    getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.fragment_frame,restaurantListFragment)
-                            .commit();
                     Toast.makeText(getApplicationContext(),"search selected",Toast.LENGTH_SHORT).show();
                     return true;
                 case R.id.navigation_profile:
