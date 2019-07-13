@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:color="#C0BABA" />
-    <item android:color="@color/colorPrimary" />
+    <item android:state_checked="true" android:color="@color/dark_black" />
+    <item android:color="@color/light_grey"  />
+    <!--<item android:state_checked="true" android:color="#C0BABA" />-->
+    <!--<item android:state_focused="true" android:color="#C0BABA" />-->
+    <!--<item android:state_activated="true" android:color="#C0BABA" />-->
+    <!--<item android:drawable="@android:color/transparent" />-->
 </selector>

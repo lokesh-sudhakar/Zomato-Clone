@@ -12,12 +12,12 @@
         android:layout_marginTop="10dp"
         android:background="@color/colorPrimary"
         >
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:orientation="horizontal"
-        android:background="@color/colorPrimary"
-        >
+        android:clickable="true"
+        android:focusable="true">
 
         <ImageView
             android:id="@+id/zomato_gold_logo"
@@ -26,6 +26,8 @@
             android:layout_marginLeft="15dp"
             android:layout_marginTop="12dp"
             android:src="@mipmap/ic_zomato_gold_icon_round"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             />
         <TextView
             android:layout_width="wrap_content"
@@ -36,8 +38,24 @@
             android:textColor="@color/dark_black"
             android:text="Zomato Gold"
             android:textSize="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/zomato_gold_logo"
+            app:layout_constraintTop_toTopOf="parent"
             />
-    </LinearLayout>
+
+        <ImageView
+            android:id="@+id/arrow_point_right"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="200dp"
+            android:layout_margin="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/ic_arrow_point_to_right"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
@@ -49,7 +67,11 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?attr/selectableItemBackground"
+        >
 
         <ImageView
             android:id="@+id/zomato_piggy"
@@ -74,6 +96,17 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/zomato_piggy"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/piggy_bank_arrow_point_right"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_margin="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/ic_arrow_point_to_right"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
@@ -133,6 +166,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground"
             android:orientation="horizontal">
             <ImageView
                 android:layout_width="20dp"
@@ -158,6 +194,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
                     android:orientation="horizontal">
                     <ImageView
                         android:layout_width="20dp"
@@ -183,6 +222,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
                     android:orientation="horizontal">
                     <ImageView
                         android:layout_width="20dp"
@@ -208,6 +250,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
                     android:orientation="horizontal">
                     <ImageView
                         android:layout_width="20dp"
@@ -289,6 +334,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
                     android:orientation="horizontal">
                     <ImageView
                         android:layout_width="20dp"
@@ -314,6 +362,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
                     android:orientation="horizontal">
                     <ImageView
                         android:layout_width="20dp"
@@ -395,6 +446,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
                     android:orientation="horizontal">
                     <ImageView
                         android:layout_width="20dp"
@@ -416,6 +470,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
                     android:orientation="horizontal">
                     <ImageView
                         android:layout_width="20dp"
@@ -436,6 +493,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
                     android:orientation="horizontal">
                     <ImageView
                         android:layout_width="20dp"
@@ -456,6 +516,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
                     android:orientation="horizontal">
                     <ImageView
                         android:layout_width="20dp"
@@ -476,6 +539,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
                     android:orientation="horizontal">
                     <ImageView
                         android:layout_width="20dp"
@@ -496,6 +562,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
                     android:orientation="horizontal">
                     <ImageView
                         android:layout_width="20dp"
@@ -519,45 +588,60 @@
                     android:id="@+id/send_feedback_text_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
+                    android:paddingLeft="15dp"
                     android:text="Send Feedback"
                     android:textColor="@color/light_grey"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
                     />
                 <TextView
                     android:layout_marginTop="10dp"
                     android:id="@+id/report_text_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
+                    android:paddingLeft="15dp"
                     android:text="Report a Safety Emergency"
                     android:textColor="@color/light_grey"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
                     />
                 <TextView
                     android:layout_marginTop="10dp"
                     android:id="@+id/rate_us_text_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
+                    android:paddingLeft="15dp"
                     android:text="Rate us on Play Store"
                     android:textColor="@color/light_grey"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
                     />
                 <TextView
                     android:layout_marginTop="10dp"
                     android:id="@+id/privacy_policy_text_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
+                    android:paddingLeft="15dp"
                     android:text="Privacy Policy"
                     android:textColor="@color/light_grey"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
                     />
                 <TextView
                     android:layout_marginTop="10dp"
                     android:id="@+id/about_text_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
+                    android:paddingLeft="15dp"
                     android:text="About"
                     android:textColor="@color/light_grey"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
                     />
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>

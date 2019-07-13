@@ -12,11 +12,15 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.zomatoapp.ui.order_tab_adapter.SectionsPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
+
+import java.util.Objects;
 
 public class OrderFragment extends Fragment {
 
@@ -36,6 +40,8 @@ public class OrderFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View orderFragmentLayout = inflater.inflate(R.layout.fragment_order_home,container,false);
+        Toolbar toolbar = orderFragmentLayout.findViewById(R.id.toolbar);
+        ((AppCompatActivity) Objects.requireNonNull(getActivity())).setSupportActionBar(toolbar);
         TextView setLocation= orderFragmentLayout.findViewById(R.id.title_location);
         title =orderFragmentLayout.findViewById(R.id.title_location);
         title.setTextColor(getResources().getColor(R.color.dark_black));
@@ -60,7 +66,6 @@ public class OrderFragment extends Fragment {
         super.onStart();
         Bundle bundle=getArguments();
         if(bundle!=null){
-            Log.d("Message","onStart is called"+bundle.getString("place"));
             updateLocationTextView(bundle.getString("place"));
         }
     }

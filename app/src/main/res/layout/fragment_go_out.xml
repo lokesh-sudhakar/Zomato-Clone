@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:theme="@style/AppTheme.AppBarOverlay">
-
+        app:layout_scrollFlags="scroll|enterAlways"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="#F1EFEF"
+            android:layout_height="@dimen/appbar_layout_width"
+            android:background="@color/appbar_background_color"
+            app:layout_scrollFlags="scroll|enterAlways"
             android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/location_img"
-                android:layout_width="9dp"
-                android:layout_height="13dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginStart="10dp"
-                android:paddingTop="2dp"
+                android:layout_width="@dimen/location_icon_width"
+                android:layout_height="@dimen/location_icon_height"
+                android:layout_marginTop="@dimen/margin_top_5dp"
+                android:layout_marginStart="@dimen/margin_start_10dp"
+                android:paddingTop="@dimen/padding_top_2dp"
                 android:src="@drawable/ic_location_on_black_24dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -32,23 +33,22 @@
             <TextView
                 android:id="@+id/your_location_text"
                 android:layout_width="wrap_content"
-                android:layout_height="13dp"
-                android:layout_marginTop="5dp"
-                android:text="your location"
+                android:layout_height="@dimen/location_icon_height"
+                android:layout_marginTop="@dimen/margin_top_5dp"
+                android:text="@string/your_location"
                 android:textColor="@color/light_grey"
-                android:textSize="10sp"
+                android:textSize="@dimen/text_size_10dp"
                 app:layout_constraintStart_toEndOf="@id/location_img"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/title_location"
-                android:layout_width="280dp"
+                android:layout_width="@dimen/current_loation__view_width"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
-                android:layout_marginStart="10dp"
-                android:lines="1"
+                android:layout_marginStart="@dimen/margin_start_10dp"
                 android:maxLines="1"
-                android:text="location"
+                android:text="@string/default_location_text"
                 android:textAlignment="viewStart"
                 android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
                 android:textSize="18sp"
@@ -57,8 +57,8 @@
 
             <View
                 android:id="@+id/dotted_line_view"
-                android:layout_width="250dp"
-                android:layout_height="5dp"
+                android:layout_width="@dimen/dotted_line_width"
+                android:layout_height="@dimen/dotted_view_height"
                 android:layout_marginStart="10dp"
                 android:background="@drawable/edit_text_dotted_lines"
                 app:layout_constraintStart_toStartOf="parent"
@@ -68,21 +68,30 @@
                 android:id="@+id/bookmark_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginTop="@dimen/margin_top_16dp"
+                android:layout_marginEnd="@dimen/margin_end_16dp"
                 android:src="@drawable/ic_bookmark_border_black_24dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:theme="@style/AppTheme.AppBarOverlay">
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="@dimen/tab_layout_height_40dp"
             app:tabTextColor="@color/dark_black"
             style="@style/MyCustomTabLayout"
             app:tabIndicatorFullWidth="false"
-            app:tabIndicatorHeight="4dp"
+            app:tabIndicatorHeight="@dimen/tab_indicator_height_4dp"
             app:tabMode="scrollable"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
             android:background="?attr/colorPrimary" />
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/view_pager"

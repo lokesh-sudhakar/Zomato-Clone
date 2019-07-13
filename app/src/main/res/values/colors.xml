@@ -14,5 +14,7 @@
     <color name="dark_green">#008000</color>
     <color name="green">#008000</color>
     <color name="gold">#C48949</color>
+    <color name="appbar_background_color">#F1EFEF</color>
+    <color name="yellowish_orange">#FDB73D</color>
 </resources>
 

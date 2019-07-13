@@ -1,20 +1,13 @@
-package com.example.zomatoapp.Repository;
+package com.example.zomatoapp.repository;
 
 import android.util.Log;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.zomatoapp.model.Restaurant;
 import com.example.zomatoapp.model.RestaurantApi;
-import com.example.zomatoapp.model.Restaurant;
-import com.example.zomatoapp.model.RestaurantData;
 import com.example.zomatoapp.network.RetrofitRestaurantClientInstance;
 import com.example.zomatoapp.services.RestaurantService;
-import com.example.zomatoapp.viewModels.RestaurantListViewModel;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -53,7 +46,6 @@ public class RestaurantRepository {
                     Log.v("NetworkCall", "failedResponse");
                 }
             }
-
             @Override
             public void onFailure(@NonNull Call<RestaurantApi> call, @NonNull Throwable t) {
                 Log.v("NetworkCall", "failed");
