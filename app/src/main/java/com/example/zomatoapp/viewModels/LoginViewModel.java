@@ -1,5 +1,6 @@
 package com.example.zomatoapp.viewModels;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -40,6 +41,8 @@ public class LoginViewModel {
     private void updateUI(@Nullable GoogleSignInAccount account, Context context) {
         if (account != null) {
             loginSuccessfully(context);
+            Activity activity=(Activity)context;
+            ((Activity) context).finish();
         } else {
             Toast.makeText(context,"Failed to sign-in",Toast.LENGTH_SHORT).show();
         }

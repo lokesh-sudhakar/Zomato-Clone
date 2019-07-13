@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +13,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
@@ -34,8 +38,10 @@ import com.google.android.libraries.places.api.net.FindCurrentPlaceRequest;
 import com.google.android.libraries.places.api.net.FindCurrentPlaceResponse;
 import com.google.android.libraries.places.api.net.PlacesClient;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 public class MapsViewModel {
     private boolean mLocationPermissionGranted;
@@ -78,90 +84,7 @@ public class MapsViewModel {
         return mLocationPermissionGranted;
     }
 
-    public void getCurrentPlaceLikelihoods(PlacesClient mPlacesClient, final Context context, GoogleMap mMap) {
-        List<Place.Field> placeFields = Arrays.asList(Place.Field.NAME, Place.Field.ADDRESS,
-                Place.Field.LAT_LNG);
-        this.mMap = mMap;
-        this.context = context;
-        final FindCurrentPlaceRequest request =
-                FindCurrentPlaceRequest.builder(placeFields).build();
-        Task<FindCurrentPlaceResponse> placeResponse = mPlacesClient.findCurrentPlace(request);
-        placeResponse.addOnCompleteListener((Activity) context,
-                new OnCompleteListener<FindCurrentPlaceResponse>() {
-                    @Override
-                    public void onComplete(@NonNull Task<FindCurrentPlaceResponse> task) {
-                        if (task.isSuccessful()) {
-                            FindCurrentPlaceResponse response = task.getResult();
-                            int count;
-                            if (response.getPlaceLikelihoods().size() < M_MAX_ENTRIES) {
-                                count = response.getPlaceLikelihoods().size();
-                            } else {
-                                count = M_MAX_ENTRIES;
-                            }
-
-                            int i = 0;
-                            mLikelyPlaceNames = new String[count];
-                            mLikelyPlaceAddresses = new String[count];
-                            mLikelyPlaceAttributions = new String[count];
-                            mLikelyPlaceLatLngs = new LatLng[count];
-                            for (PlaceLikelihood placeLikelihood : response.getPlaceLikelihoods()) {
-                                Place currPlace = placeLikelihood.getPlace();
-                                mLikelyPlaceNames[i] = currPlace.getName();
-                                mLikelyPlaceLatLngs[i] = currPlace.getLatLng();
-                                mLikelyPlaceAddresses[i] = currPlace.getAddress();
-                                mLikelyPlaceAttributions[i] = (currPlace.getAttributions() == null) ?
-                                        null : String.join(" ", currPlace.getAttributions());
-                                i++;
-                                if (i > (count - 1)) {
-                                    break;
-                                }
-                            }
-                            fillPlacesList(context);
-                        } else {
-                            Exception exception = task.getException();
-                            if (exception instanceof ApiException) {
-                                ApiException apiException = (ApiException) exception;
-                                Log.e(TAG, "Place not found: " + apiException.getStatusCode());
-                            }
-                        }
-                    }
-                });
-    }
-
-    private void fillPlacesList(Context context) {
-        ArrayAdapter<String> placesAdapter =
-                new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, mLikelyPlaceNames);
-        Activity activity = (Activity) context;
-        ListView lstPlaces = activity.findViewById(R.id.listPlaces);
-        lstPlaces.setAdapter(placesAdapter);
-        lstPlaces.setOnItemClickListener(listClickedHandler);
-    }
-
-    private AdapterView.OnItemClickListener listClickedHandler = new AdapterView.OnItemClickListener() {
-        public void onItemClick(AdapterView parent, View v, int position, long id) {
-            LatLng markerLatLng = mLikelyPlaceLatLngs[position];
-            String markerSnippet = mLikelyPlaceAddresses[position];
-            if (mLikelyPlaceAttributions[position] != null) {
-                markerSnippet = markerSnippet + "\n" + mLikelyPlaceAttributions[position];
-            }
-            mMap.addMarker(new MarkerOptions()
-                    .title(mLikelyPlaceNames[position])
-                    .position(markerLatLng)
-                    .snippet(markerSnippet));
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(markerLatLng));
-            Intent intent = new Intent(context, HomeActivity.class);
-            Bundle bundle = new Bundle();
-            bundle.putDouble("latitude", mLastKnownLocation.getLatitude());
-            bundle.putDouble("longitude", mLastKnownLocation.getLongitude());
-            bundle.putString("place", markerSnippet);
-            Log.d("Message", "onStart is called" + bundle.getString("place"));
-            intent.putExtra("locationBundle", bundle);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            context.startActivity(intent);
-        }
-    };
-
-    public void getDeviceLocation(FusedLocationProviderClient mFusedLocationProviderClient, final PlacesClient mPlacesClient, final GoogleMap mMap, final Context context) {
+    public Location getDeviceLocation(FusedLocationProviderClient mFusedLocationProviderClient, final PlacesClient mPlacesClient, final GoogleMap mMap, final Context context) {
         try {
             if (mLocationPermissionGranted) {
                 Task<Location> locationResult = mFusedLocationProviderClient.getLastLocation();
@@ -169,26 +92,44 @@ public class MapsViewModel {
                     @Override
                     public void onSuccess(Location location) {
                         if (location != null) {
-                            // Set the map's camera position to the current location of the device.
                             mLastKnownLocation = location;
                             Log.d(TAG, "Latitude: " + mLastKnownLocation.getLatitude());
                             Log.d(TAG, "Longitude: " + mLastKnownLocation.getLongitude());
                             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
                                     new LatLng(mLastKnownLocation.getLatitude(),
                                             mLastKnownLocation.getLongitude()), DEFAULT_ZOOM));
-                            mMap.addMarker(new MarkerOptions().position(new LatLng(mLastKnownLocation.getLatitude(), mLastKnownLocation.getLongitude())).title("Marker in Sydney"));
+                            mMap.addMarker(new MarkerOptions().position(new LatLng(mLastKnownLocation.getLatitude(), mLastKnownLocation.getLongitude())).title("Marker in Sydney").draggable(true));
                         } else {
                             Log.d(TAG, "Current location is null. Using defaults.");
                             mMap.moveCamera(CameraUpdateFactory
                                     .newLatLngZoom(mDefaultLocation, DEFAULT_ZOOM));
+
                         }
-                        getCurrentPlaceLikelihoods(mPlacesClient, context, mMap);
                     }
                 });
             }
         } catch (Exception e) {
             Log.e("Exception: %s", e.getMessage());
         }
+        return mLastKnownLocation;
+    }
+
+    public String getAddress( double latitude, double longitude,Context context) {
+        Geocoder geocoder = new Geocoder(context, Locale.getDefault());
+        String address="";
+        try {
+            List<Address> addresses = geocoder.getFromLocation(latitude, longitude, 5);
+            Address obj = addresses.get(0);
+            String  add = obj.getAddressLine(0);
+            Log.e("Location", "Address" + add);
+            address=add;
+            Activity activity=(Activity)context;
+            TextView locationTextView=((Activity) context).findViewById(R.id.location);
+            locationTextView.setText(address);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return address;
     }
 
 }
