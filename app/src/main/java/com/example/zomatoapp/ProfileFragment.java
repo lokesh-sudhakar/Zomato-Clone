@@ -66,28 +66,28 @@ public class ProfileFragment extends Fragment {
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabLayout = profileLayoutView.findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
-        setUpIcons(tabLayout);
+        addLabelToTabs(tabLayout);
         return profileLayoutView;
     }
 
-    private void setUpIcons(TabLayout tabLayout) {
+    private void addLabelToTabs(TabLayout tabLayout) {
         TextView dinelineTab = (TextView) LayoutInflater.from(context).inflate(R.layout.custom_tab_layout, null);
-        dinelineTab.setText("Dineline");
+        dinelineTab.setText(getResources().getString(R.string.dineline));
         tabLayout.getTabAt(0).setCustomView(dinelineTab);
         TextView reviewsTab = (TextView) LayoutInflater.from(context).inflate(R.layout.custom_tab_layout, null);
-        reviewsTab.setText("Reviews");
+        reviewsTab.setText(getResources().getString(R.string.reviews));
         tabLayout.getTabAt(1).setCustomView(reviewsTab);
         TextView photosTab = (TextView) LayoutInflater.from(context).inflate(R.layout.custom_tab_layout, null);
-        photosTab.setText("Photos");
+        photosTab.setText(getResources().getString(R.string.photos));
         tabLayout.getTabAt(2).setCustomView(photosTab);
         TextView beenThereTab = (TextView) LayoutInflater.from(context).inflate(R.layout.custom_tab_layout, null);
-        beenThereTab.setText("Been There");
+        beenThereTab.setText(getResources().getString(R.string.been_there));
         tabLayout.getTabAt(3).setCustomView(beenThereTab);
     }
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
-        getActivity().getMenuInflater().inflate(R.menu.navigation_drawer, menu);
+        Objects.requireNonNull(getActivity()).getMenuInflater().inflate(R.menu.navigation_drawer, menu);
     }
 
     @Override

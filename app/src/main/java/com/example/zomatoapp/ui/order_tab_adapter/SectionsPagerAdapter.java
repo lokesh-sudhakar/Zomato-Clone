@@ -32,10 +32,10 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         // Return a PlaceholderFragment (defined as a static inner class below).
         switch (position){
             case 0:{
-                return new RestaurantListFragment();
+                return new RestaurantListFragment(1);
             }
             case 1:{
-                return PlaceholderFragment.newInstance(position + 1);
+                return new RestaurantListFragment(5);
             }
 
         }

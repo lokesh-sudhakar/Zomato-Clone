@@ -7,20 +7,20 @@ import java.util.List;
 
 public class Restaurant {
 
-//
+    //
 ////    @SerializedName("R")
 ////    @Expose
 ////    private R r;
     @SerializedName("apikey")
     @Expose
     private String apikey;
-//    @SerializedName("id")
+    //    @SerializedName("id")
 //    @Expose
 //    private String id;
     @SerializedName("name")
     @Expose
     private String name;
-//    @SerializedName("url")
+    //    @SerializedName("url")
 //    @Expose
 //    private String url;
 ////    @SerializedName("location")
@@ -32,13 +32,13 @@ public class Restaurant {
     @SerializedName("cuisines")
     @Expose
     private String cuisines;
-//    @SerializedName("timings")
+    //    @SerializedName("timings")
 //    @Expose
 //    private String timings;
     @SerializedName("average_cost_for_two")
     @Expose
     private Integer averageCostForTwo;
-//    @SerializedName("price_range")
+    //    @SerializedName("price_range")
 //    @Expose
 //    private Integer priceRange;
 //    @SerializedName("currency")
@@ -77,7 +77,8 @@ public class Restaurant {
     @SerializedName("user_rating")
     @Expose
     private UserRating userRating;
-//    @SerializedName("all_reviews_count")
+
+    //    @SerializedName("all_reviews_count")
 //    @Expose
 //    private Integer allReviewsCount;
 //    @SerializedName("photos_url")
@@ -147,7 +148,8 @@ public class Restaurant {
     public void setApikey(String apikey) {
         this.apikey = apikey;
     }
-//
+
+    //
 //    public String getId() {
 //        return id;
 //    }
@@ -163,7 +165,8 @@ public class Restaurant {
     public void setName(String name) {
         this.name = name;
     }
-//
+
+    //
 //    public String getUrl() {
 //        return url;
 //    }
@@ -195,7 +198,8 @@ public class Restaurant {
     public void setCuisines(String cuisines) {
         this.cuisines = cuisines;
     }
-//
+
+    //
 //    public String getTimings() {
 //        return timings;
 //    }
@@ -211,7 +215,8 @@ public class Restaurant {
     public void setAverageCostForTwo(Integer averageCostForTwo) {
         this.averageCostForTwo = averageCostForTwo;
     }
-//
+
+    //
 //    public Integer getPriceRange() {
 //        return priceRange;
 //    }

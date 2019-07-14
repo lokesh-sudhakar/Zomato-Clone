@@ -11,9 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.zomatoapp.R;
-import com.example.zomatoapp.model.Restaurant;
 import com.example.zomatoapp.model.RestaurantData;
-import com.google.android.material.shape.RoundedCornerTreatment;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -33,7 +31,8 @@ public class RestaurantRvAdapter extends RecyclerView.Adapter<RestaurantRvAdapte
     @NonNull
     @Override
     public RestaurantViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.restaurant_list, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.restaurant_list,
+                parent, false);
         return new RestaurantViewHolder(view);
     }
 
@@ -41,9 +40,12 @@ public class RestaurantRvAdapter extends RecyclerView.Adapter<RestaurantRvAdapte
     public void onBindViewHolder(RestaurantViewHolder holder, int position) {
         holder.mTitle.setText(restaurantList.get(position).getRestaurant().getName());
         holder.mCuisines.setText(restaurantList.get(position).getRestaurant().getCuisines());
-        holder.mPerPersonCost.setText("" + restaurantList.get(position).getRestaurant().getAverageCostForTwo() / 2);
-        holder.mRating.setText(restaurantList.get(position).getRestaurant().getUserRating().getAggregateRating());
-        Picasso.with(context).load(restaurantList.get(position).getRestaurant().getThumb()).transform(new RoundedCornersTransformation(10,1)).into(holder.mPoster);
+        holder.mPerPersonCost.setText("" + restaurantList.get(position).getRestaurant().
+                getAverageCostForTwo() / 2);
+        holder.mRating.setText(restaurantList.get(position).getRestaurant().getUserRating().
+                getAggregateRating());
+        Picasso.with(context).load(restaurantList.get(position).getRestaurant().getThumb()).
+                transform(new RoundedCornersTransformation(5, 1)).into(holder.mPoster);
     }
 
     @Override
@@ -59,7 +61,7 @@ public class RestaurantRvAdapter extends RecyclerView.Adapter<RestaurantRvAdapte
         ImageView mPoster;
 
 
-        public RestaurantViewHolder(@NonNull View itemView) {
+        private RestaurantViewHolder(@NonNull View itemView) {
             super(itemView);
             mTitle = itemView.findViewById(R.id.restaurant_name);
             mCuisines = itemView.findViewById(R.id.restaurant_cuisines);

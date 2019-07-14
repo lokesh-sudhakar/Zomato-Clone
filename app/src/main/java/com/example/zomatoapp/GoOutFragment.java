@@ -38,16 +38,23 @@ public class GoOutFragment extends Fragment {
         title =orderFragmentLayout.findViewById(R.id.title_location);
         title.setText("Dollar Layout, Phase 4, J.P.Nagar,Bengaluru");
         title.setTextColor(getResources().getColor(R.color.dark_black));
-        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(context,getChildFragmentManager() );
-        ViewPager viewPager = orderFragmentLayout.findViewById(R.id.view_pager);
-        viewPager.setAdapter(sectionsPagerAdapter);
-        TabLayout tabLayout = orderFragmentLayout.findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(viewPager);
-        setUpIcons(tabLayout);
+        TabLayout tabLayout = setUpViewPager(orderFragmentLayout);
+        addLabelToTabs(tabLayout);
+
         return orderFragmentLayout;
     }
 
-    private void setUpIcons(TabLayout tabLayout) {
+    private TabLayout setUpViewPager(View orderFragmentLayout) {
+        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(context,getChildFragmentManager() );
+        ViewPager viewPager = orderFragmentLayout.findViewById(R.id.view_pager);
+        viewPager.setAdapter(sectionsPagerAdapter);
+        viewPager.setOffscreenPageLimit(5);
+        TabLayout tabLayout = orderFragmentLayout.findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(viewPager);
+        return tabLayout;
+    }
+
+    private void addLabelToTabs(TabLayout tabLayout) {
         TextView forYouTab = (TextView) LayoutInflater.from(context).inflate(R.layout.custom_tab_layout, null);
         forYouTab.setText(getResources().getString(R.string.for_you));
         Objects.requireNonNull(tabLayout.getTabAt(0)).setCustomView(forYouTab);

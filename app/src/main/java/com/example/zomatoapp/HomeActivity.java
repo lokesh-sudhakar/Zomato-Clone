@@ -9,6 +9,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.util.Log;
 import android.view.MenuItem;
@@ -16,6 +18,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class HomeActivity extends AppCompatActivity {
+    public static final String GO_OUT_FRAGMENT_TAG = "go_out_fragment";
+    public static final String ORDER_FRAGMENT_TAG = "order_fragment";
     private TextView mTextMessage;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -25,27 +29,27 @@ public class HomeActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_order:
-                    OrderFragment orderFragment = new OrderFragment();
-                    getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.fragment_frame,orderFragment)
-                            .commit();
+                    Fragment fragment = getSupportFragmentManager().findFragmentByTag(ORDER_FRAGMENT_TAG);
+                    if (fragment==null) {
+                        OrderFragment orderFragment = new OrderFragment();
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.fragment_frame, orderFragment, ORDER_FRAGMENT_TAG)
+                                .commit();
+                    }
                     return true;
                 case R.id.navigation_go_out:
+                    Fragment goOutFrag = getSupportFragmentManager().findFragmentByTag(GO_OUT_FRAGMENT_TAG);
+                    if (goOutFrag==null){
                     GoOutFragment goOutFragment = new GoOutFragment();
                     getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.fragment_frame,goOutFragment)
-                            .commit();
+                            .replace(R.id.fragment_frame,goOutFragment, GO_OUT_FRAGMENT_TAG)
+                            .commit();}
                     return true;
                 case R.id.navigation_gold:
                     GoldFragment goldFragment=new GoldFragment();
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_frame,goldFragment).commit();
                     return true;
                 case R.id.navigation_search:
-
-                    RestaurantListFragment restaurantListFragment = new RestaurantListFragment();
-                    getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.fragment_frame,restaurantListFragment)
-                            .commit();
                     Toast.makeText(getApplicationContext(),"search selected",Toast.LENGTH_SHORT).show();
                     return true;
                 case R.id.navigation_profile:
