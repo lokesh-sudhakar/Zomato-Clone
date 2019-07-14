@@ -4,17 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/app_bar_navigation_drawer">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:elevation="1px"
-        app:layout_scrollFlags="scroll|enterAlways"
         android:background="@color/colorPrimary"
-        >
+        app:layout_scrollFlags="scroll|enterAlways">
 
         <TextView
             android:id="@+id/user_name_text_view"
@@ -117,16 +115,22 @@
                 tools:ignore="RtlSymmetry" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <com.mikhaellopez.circularimageview.CircularImageView
+        <androidx.cardview.widget.CardView
             android:id="@+id/profile_pic"
-            android:layout_width="@dimen/profile_picture_dimension"
-            android:layout_height="@dimen/profile_picture_dimension"
-            android:layout_marginTop="@dimen/margit_top_20dp"
-            android:layout_marginEnd="@dimen/margin_10dp"
-            android:src="@mipmap/ic_zomato_gold_icon"
-            app:civ_shadow_radius="10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="70dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="@dimen/margit_top_20dp"
+                android:layout_marginEnd="@dimen/margin_10dp"
+                android:src="@mipmap/ic_zomato_gold_icon_round" />
+        </androidx.cardview.widget.CardView>
+
 
         <TextView
             android:id="@+id/edit"
@@ -145,23 +149,23 @@
             app:layout_constraintTop_toBottomOf="@+id/profile_pic" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabs"
+        style="@style/MyCustomTabLayout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/tab_layout_height_40dp"
         android:layout_marginTop="@dimen/margit_top_20dp"
-        app:tabTextColor="@color/dark_black"
-        style="@style/MyCustomTabLayout"
+        android:background="?attr/colorPrimary"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:tabIndicatorFullWidth="false"
         app:tabIndicatorHeight="@dimen/tab_indicator_height_4dp"
         app:tabMode="scrollable"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:background="?attr/colorPrimary"  />
+        app:tabTextColor="@color/dark_black" />
+
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="500dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-
-
 </LinearLayout>

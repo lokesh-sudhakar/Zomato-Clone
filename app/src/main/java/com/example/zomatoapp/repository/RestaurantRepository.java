@@ -1,8 +1,5 @@
 package com.example.zomatoapp.repository;
 
-import android.util.Log;
-import android.widget.FrameLayout;
-
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 
@@ -17,6 +14,7 @@ import retrofit2.Response;
 
 public class RestaurantRepository {
 
+    public static final String COLLECTIONS = "collections";
     private final String SEARCH = "search";
     private final String KEY = "17e3de8473825e5b134932479c395958";
     private final String SUBZONE = "subzone";
@@ -62,7 +60,7 @@ public class RestaurantRepository {
     }
 
     public void fetchCollections() {
-        Call<CollectionsApiResponse> call = services.getCollectionsApiResponse("collections",KEY,4);
+        Call<CollectionsApiResponse> call = services.getCollectionsApiResponse(COLLECTIONS,KEY,4);
 
         call.enqueue(new Callback<CollectionsApiResponse>() {
             @Override
@@ -83,7 +81,4 @@ public class RestaurantRepository {
         this.category = category;
     }
 
-    public int getCategory() {
-        return category;
-    }
 }
