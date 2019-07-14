@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import com.example.zomatoapp.CollectionsFragment;
 import com.example.zomatoapp.R;
 import com.example.zomatoapp.ui.order_tab_adapter.PlaceholderFragment;
 
@@ -28,6 +29,11 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
+        switch (position){
+            case 2:{
+                return new CollectionsFragment();
+            }
+        }
         return PlaceholderFragment.newInstance(position + 1);
     }
 

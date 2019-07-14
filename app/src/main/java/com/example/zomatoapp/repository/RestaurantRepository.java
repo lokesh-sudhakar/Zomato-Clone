@@ -1,11 +1,10 @@
 package com.example.zomatoapp.repository;
 
-import android.util.Log;
-
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.zomatoapp.model.RestaurantApi;
+import com.example.zomatoapp.model.collection.CollectionsApiResponse;
 import com.example.zomatoapp.network.RetrofitRestaurantClientInstance;
 import com.example.zomatoapp.services.RestaurantService;
 
@@ -15,18 +14,26 @@ import retrofit2.Response;
 
 public class RestaurantRepository {
 
+    public static final String COLLECTIONS = "collections";
     private final String SEARCH = "search";
     private final String KEY = "17e3de8473825e5b134932479c395958";
     private final String SUBZONE = "subzone";
     private final int NUM_OF_RESULT = 10;
     private RestaurantService services;
     private MutableLiveData<RestaurantApi> restaurantApiMutableLiveData = new MutableLiveData<>();
+    private MutableLiveData<CollectionsApiResponse> collectionsApiResponseMutableLiveData =
+            new MutableLiveData<>();
     private int category;
 
-    public RestaurantRepository(int cat) {
+
+
+    public RestaurantRepository() {
         services = RetrofitRestaurantClientInstance.getRestaurantRetrofitInstance().
                    create(RestaurantService.class);
-        category = cat;
+    }
+
+    public MutableLiveData<CollectionsApiResponse> getCollectionsApiResponseMutableLiveData() {
+        return collectionsApiResponseMutableLiveData;
     }
 
     public MutableLiveData<RestaurantApi> connectMutableLiveData() {
@@ -51,4 +58,27 @@ public class RestaurantRepository {
             }
         });
     }
+
+    public void fetchCollections() {
+        Call<CollectionsApiResponse> call = services.getCollectionsApiResponse(COLLECTIONS,KEY,4);
+
+        call.enqueue(new Callback<CollectionsApiResponse>() {
+            @Override
+            public void onResponse(Call<CollectionsApiResponse> call, Response<CollectionsApiResponse> response) {
+                if (response.isSuccessful()){
+                collectionsApiResponseMutableLiveData.setValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CollectionsApiResponse> call, Throwable t) {
+                collectionsApiResponseMutableLiveData.setValue(null);
+            }
+        });
+    }
+
+    public void setCategory(int category) {
+        this.category = category;
+    }
+
 }

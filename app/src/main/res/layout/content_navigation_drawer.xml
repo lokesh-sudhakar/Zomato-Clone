@@ -4,17 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/app_bar_navigation_drawer">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:elevation="1px"
-        app:layout_scrollFlags="scroll|enterAlways"
         android:background="@color/colorPrimary"
-        >
+        app:layout_scrollFlags="scroll|enterAlways">
 
         <TextView
             android:id="@+id/user_name_text_view"
@@ -45,7 +43,7 @@
             android:id="@+id/location_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_16dp"
+            android:layout_marginStart="@dimen/margin_16dp"
             android:layout_marginTop="@dimen/margin_top_10dp"
             android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
@@ -58,13 +56,14 @@
                 android:src="@drawable/ic_location_on_black_24dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
 
             <TextView
                 android:id="@+id/u_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mumbai"
+                android:text="@string/default_place_mumbai"
                 android:textColor="@color/dark_black"
                 android:textSize="@dimen/text_size_12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -76,7 +75,7 @@
             android:id="@+id/foodie_level_view"
             android:layout_width="@dimen/foodie_level_layout_width_70dp"
             android:layout_height="@dimen/foodie_level_height_20dp"
-            android:layout_marginLeft="@dimen/margin_16dp"
+            android:layout_marginStart="@dimen/margin_16dp"
             android:layout_marginTop="@dimen/margin_top_10dp"
             android:layout_marginBottom="@dimen/margin_bottom_20dp"
             android:background="@drawable/foodie_level_rounded_corner"
@@ -89,13 +88,14 @@
                 android:id="@+id/level_icon"
                 android:layout_width="@dimen/level_bar_width_19dp"
                 android:layout_height="@dimen/match_constrain"
-                android:paddingLeft="@dimen/padding_2dp"
+                android:paddingStart="@dimen/padding_2dp"
                 android:paddingTop="@dimen/padding_2dp"
                 android:paddingBottom="@dimen/padding_2dp"
                 android:src="@drawable/ic_foodie_level_icon"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription,RtlSymmetry" />
 
             <TextView
                 android:id="@+id/user_location_text_view"
@@ -111,19 +111,26 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/level_icon"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="RtlSymmetry" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <com.mikhaellopez.circularimageview.CircularImageView
+        <androidx.cardview.widget.CardView
             android:id="@+id/profile_pic"
-            android:layout_width="@dimen/profile_picture_dimension"
-            android:layout_height="@dimen/profile_picture_dimension"
-            android:layout_marginTop="@dimen/margit_top_20dp"
-            android:layout_marginEnd="@dimen/margin_10dp"
-            android:src="@mipmap/ic_zomato_gold_icon"
-            app:civ_shadow_radius="10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="70dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="@dimen/margit_top_20dp"
+                android:layout_marginEnd="@dimen/margin_10dp"
+                android:src="@mipmap/ic_zomato_gold_icon_round" />
+        </androidx.cardview.widget.CardView>
+
 
         <TextView
             android:id="@+id/edit"
@@ -142,18 +149,20 @@
             app:layout_constraintTop_toBottomOf="@+id/profile_pic" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabs"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="20dp"
-        app:tabTextColor="@color/dark_black"
         style="@style/MyCustomTabLayout"
-        app:tabIndicatorFullWidth="false"
-        app:tabIndicatorHeight="4dp"
-        app:tabMode="scrollable"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tab_layout_height_40dp"
+        android:layout_marginTop="@dimen/margit_top_20dp"
+        android:background="?attr/colorPrimary"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:background="?attr/colorPrimary"  />
+        app:tabIndicatorFullWidth="false"
+        app:tabIndicatorHeight="@dimen/tab_indicator_height_4dp"
+        app:tabMode="scrollable"
+        app:tabTextColor="@color/dark_black" />
+
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"

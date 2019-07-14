@@ -45,7 +45,7 @@ public class RestaurantRvAdapter extends RecyclerView.Adapter<RestaurantRvAdapte
         holder.mRating.setText(restaurantList.get(position).getRestaurant().getUserRating().
                 getAggregateRating());
         Picasso.with(context).load(restaurantList.get(position).getRestaurant().getThumb()).
-                transform(new RoundedCornersTransformation(10, 1)).into(holder.mPoster);
+                transform(new RoundedCornersTransformation(5, 1)).into(holder.mPoster);
     }
 
     @Override

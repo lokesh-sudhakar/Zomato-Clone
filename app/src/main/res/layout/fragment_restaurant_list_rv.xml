@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="match_parent"
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
@@ -23,7 +24,7 @@
             android:layout_height="40dp"
             app:cardCornerRadius="10dp"
             android:layout_weight="1"
-            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"
             app:cardBackgroundColor="#ECECEC">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -34,7 +35,8 @@
                     android:layout_weight="7"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/ic_search_black_24dp"/>
+                    android:background="@drawable/ic_search_black_24dp"
+                    tools:ignore="ContentDescription" />
                 <TextView
                     android:layout_weight="1"
                     android:layout_width="match_parent"
@@ -43,7 +45,7 @@
                     android:maxLines="1"
                     android:ellipsize="end"
                     android:textSize="15sp"
-                    android:text="Search for restaurant, dishes..."/>
+                    android:text="@string/search_for_restaurant_dishes"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
