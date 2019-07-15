@@ -1,6 +1,4 @@
 package com.example.zomatoapp.repository;
-
-import androidx.annotation.MainThread;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 
@@ -19,7 +17,7 @@ import rx.schedulers.Schedulers;
 
 public class RestaurantRepository {
 
-    public static final String COLLECTIONS = "collections";
+    private static final String COLLECTIONS = "collections";
     private final String SEARCH = "search";
     private final String KEY = "17e3de8473825e5b134932479c395958";
     private final String SUBZONE = "subzone";
