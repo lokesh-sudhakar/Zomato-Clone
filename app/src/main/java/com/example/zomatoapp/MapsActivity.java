@@ -9,6 +9,7 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -110,6 +111,14 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mLocationPermissionGranted = mapsViewModel.getLocationPermission(this);
         mMap.setOnCameraMoveListener(this);
         pickCurrentPlace();
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Do something after 5s = 5000m
+                pickCurrentPlace();
+            }
+        }, 1000);
     }
 
     private void pickCurrentPlace() {
@@ -118,9 +127,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
         if (mLocationPermissionGranted) {
             Location location=mapsViewModel.getDeviceLocation(mFusedLocationProviderClient, mPlacesClient, mMap, this);
+            if (location==null){
+                Log.d("the prob is here", " yesssssssssssssssssssssssssss");
+            }
             if(location!=null){
             latitude=location.getLatitude();
             longitude=location.getLongitude();
+            Log.d("message",": bbbbbbbbbbbbbbbbbbbbbbbbbbbbb"+latitude);
             address=mapsViewModel.getAddress(latitude,longitude,this);
         }} else {
             mMap.addMarker(new MarkerOptions()

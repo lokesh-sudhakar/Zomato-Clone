@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:id="@+id/bottomSheet"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_behavior="@string/bottom_sheet_behavior">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:background="@color/gold_options_background_not_selected"
+            android:layout_height="wrap_content"
+            android:textColor="@color/dark_black"
+            android:gravity="center"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:text="Search location"
+            android:id="@+id/dismissBottomSheet"
+            android:drawableLeft="@drawable/ic_keyboard_arrow_down_black_24dp"
+            android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+            android:textSize="16dp"
+            android:layout_marginBottom="@dimen/margin_top_5dp"/>
+        <EditText
+            android:padding="8dp"
+            android:textSize="14dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_top_5dp"
+            android:background="@drawable/edit_text_rounded_corners"
+            android:text="Search for your location..."
+
+            android:drawableLeft="@drawable/ic_search_black_24dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/useCurrentLocation"
+            android:drawableLeft="@drawable/ic_my_location_green_24dp"
+            android:text="Use current location"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Address"
+            android:drawableLeft="@drawable/ic_add_black_24dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>
