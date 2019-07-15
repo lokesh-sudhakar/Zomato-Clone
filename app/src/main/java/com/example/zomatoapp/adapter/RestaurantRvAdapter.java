@@ -1,6 +1,7 @@
 package com.example.zomatoapp.adapter;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,13 +38,26 @@ public class RestaurantRvAdapter extends RecyclerView.Adapter<RestaurantRvAdapte
     }
 
     @Override
-    public void onBindViewHolder(RestaurantViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RestaurantViewHolder holder, int position) {
         holder.mTitle.setText(restaurantList.get(position).getRestaurant().getName());
         holder.mCuisines.setText(restaurantList.get(position).getRestaurant().getCuisines());
         holder.mPerPersonCost.setText("" + restaurantList.get(position).getRestaurant().
-                getAverageCostForTwo() / 2);
+                                      getAverageCostForTwo() / 2 + " per person");
         holder.mRating.setText(restaurantList.get(position).getRestaurant().getUserRating().
                 getAggregateRating());
+        double rating = Double.parseDouble(restaurantList.get(position).getRestaurant().getUserRating().
+                getAggregateRating());
+        if(rating >= 4.0){
+            holder.mRating.setBackgroundResource(R.drawable.rounded_corner_green);
+        } else if (rating >= 3.5){
+            holder.mRating.setBackgroundResource(R.drawable.rounded_corner_lime_green);
+        } else if (rating >= 3.0){
+            holder.mRating.setBackgroundResource(R.drawable.rounded_corner_yellow_green);
+        } else if (rating >= 1.0){
+            holder.mRating.setBackgroundResource(R.drawable.rounded_corner_orange_green);
+        } else {
+            holder.mRating.setBackgroundResource(R.drawable.rounded_corner_grey);
+        }
         Picasso.with(context).load(restaurantList.get(position).getRestaurant().getThumb()).
                 transform(new RoundedCornersTransformation(10, 1)).into(holder.mPoster);
     }
@@ -59,7 +73,6 @@ public class RestaurantRvAdapter extends RecyclerView.Adapter<RestaurantRvAdapte
         TextView mPerPersonCost;
         TextView mRating;
         ImageView mPoster;
-
 
         private RestaurantViewHolder(@NonNull View itemView) {
             super(itemView);

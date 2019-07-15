@@ -25,6 +25,7 @@ public class HomeActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_order:
+
                     OrderFragment orderFragment = new OrderFragment();
                     getSupportFragmentManager().beginTransaction()
                             .replace(R.id.fragment_frame,orderFragment)
