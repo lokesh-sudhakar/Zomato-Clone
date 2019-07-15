@@ -5,6 +5,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_scrollFlags="scroll|enterAlways"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/takeAwayImage"
         android:layout_width="match_parent"
@@ -13,6 +18,7 @@
         android:padding="10dp"
         android:visibility="gone"
         />
+    </com.google.android.material.appbar.AppBarLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

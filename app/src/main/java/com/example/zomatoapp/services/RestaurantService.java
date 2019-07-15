@@ -9,6 +9,7 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
+import rx.Observable;
 
 public interface RestaurantService {
     @GET("/api/v2.1/{type}")
@@ -18,7 +19,7 @@ public interface RestaurantService {
                                                @Query("count") int num);
 
     @GET("/api/v2.1/{type}")
-    Call<CollectionsApiResponse>getCollectionsApiResponse(@Path("type")String cat,@Query("apikey") String key,
-                                               @Query("city_id") int cityId);
+    Observable<CollectionsApiResponse> getCollectionsApiResponse(@Path("type")String cat, @Query("apikey") String key,
+                                                                 @Query("city_id") int cityId);
 
 }

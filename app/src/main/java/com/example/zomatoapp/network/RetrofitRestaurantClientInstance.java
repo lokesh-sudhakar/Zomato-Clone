@@ -1,6 +1,9 @@
 package com.example.zomatoapp.network;
 
+
+
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitRestaurantClientInstance {
@@ -10,7 +13,9 @@ public class RetrofitRestaurantClientInstance {
     public static Retrofit getRestaurantRetrofitInstance() {
         if (retrofit == null) {
             retrofit = new Retrofit.Builder().baseUrl(BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create()).build();
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                    .build();
         }
         return retrofit;
     }
