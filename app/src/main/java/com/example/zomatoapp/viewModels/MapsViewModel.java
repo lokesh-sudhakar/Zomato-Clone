@@ -93,8 +93,6 @@ public class MapsViewModel {
                     public void onSuccess(Location location) {
                         if (location != null) {
                             mLastKnownLocation = location;
-                            Log.d(TAG, "Latitude: " + mLastKnownLocation.getLatitude());
-                            Log.d(TAG, "Longitude: " + mLastKnownLocation.getLongitude());
                             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
                                     new LatLng(mLastKnownLocation.getLatitude(),
                                             mLastKnownLocation.getLongitude()), DEFAULT_ZOOM));
