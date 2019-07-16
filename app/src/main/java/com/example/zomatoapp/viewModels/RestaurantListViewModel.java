@@ -1,28 +1,21 @@
 package com.example.zomatoapp.viewModels;
 
-
 import android.app.Application;
-
-import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-import com.example.zomatoapp.model.Restaurant;
-
 import com.example.zomatoapp.repository.RestaurantRepository;
 import com.example.zomatoapp.model.RestaurantApi;
 import com.example.zomatoapp.model.RestaurantData;
-
-
-import com.example.zomatoapp.repository.RestaurantRepository;
-import com.example.zomatoapp.model.RestaurantApi;
-
 import java.util.List;
+
+import javax.inject.Inject;
 
 public class RestaurantListViewModel extends ViewModel {
 
+    RestaurantRepository mRestaurantRepository;
+
     private MutableLiveData<RestaurantApi> restaurantApi;
-    private RestaurantRepository mRestaurantRepository;
     private List<RestaurantData> restaurantDataList;
     private int start = 0;
     private boolean loading = true;
