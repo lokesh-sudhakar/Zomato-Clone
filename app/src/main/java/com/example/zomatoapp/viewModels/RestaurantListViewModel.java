@@ -1,33 +1,36 @@
 package com.example.zomatoapp.viewModels;
 
-
 import android.app.Application;
-
-import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-import com.example.zomatoapp.model.Restaurant;
-
 import com.example.zomatoapp.repository.RestaurantRepository;
 import com.example.zomatoapp.model.RestaurantApi;
 import com.example.zomatoapp.model.RestaurantData;
-
-
-import com.example.zomatoapp.repository.RestaurantRepository;
-import com.example.zomatoapp.model.RestaurantApi;
-
 import java.util.List;
+
+import javax.inject.Inject;
 
 public class RestaurantListViewModel extends ViewModel {
 
+    RestaurantRepository mRestaurantRepository;
+
     private MutableLiveData<RestaurantApi> restaurantApi;
-    private RestaurantRepository mRestaurantRepository;
     private List<RestaurantData> restaurantDataList;
     private int start = 0;
     private boolean loading = true;
     private int category;
 
+    public void callNetwork() {
+        if (restaurantApi == null) {
+            mRestaurantRepository = new RestaurantRepository();
+            restaurantApi = mRestaurantRepository.connectMutableLiveData();
+            mRestaurantRepository.setCategory(1);
+            mRestaurantRepository.networkCall(start);
+        } else {
+            mRestaurantRepository.networkCall(start);
+        }
+    }
 
     public boolean isLoading() {
         return loading;
@@ -39,16 +42,6 @@ public class RestaurantListViewModel extends ViewModel {
 
     public void setCategory(int category) {
         this.category = category;
-    }
-
-    public void callNetwork() {
-        if (restaurantApi == null) {
-            mRestaurantRepository = new RestaurantRepository(category);
-            restaurantApi = mRestaurantRepository.connectMutableLiveData();
-            mRestaurantRepository.networkCall(start);
-        } else {
-            mRestaurantRepository.networkCall(start);
-        }
     }
 
     public MutableLiveData<RestaurantApi> getRestaurantApi() {
