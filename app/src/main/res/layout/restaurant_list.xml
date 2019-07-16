@@ -53,7 +53,7 @@
     <View
         android:id="@+id/dotted_line_view"
         android:layout_width="240dp"
-        android:layout_height="1.5sp"
+        android:layout_height="1.4dp"
         android:layout_marginTop="3dp"
         android:background="@drawable/dotted_black_lines"
         app:layout_constraintStart_toStartOf="@+id/restaurant_name"
@@ -63,13 +63,15 @@
         android:id="@+id/constraint_per_person_cost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@+id/restaurant_name"
-        app:layout_constraintTop_toBottomOf="@+id/dotted_line_view" >
+        android:layout_marginStart="4dp"
+        app:layout_constraintStart_toEndOf="@+id/restaurant_poster"
+        app:layout_constraintTop_toBottomOf="@+id/dotted_line_view">
 
         <ImageView
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:src="@drawable/ic_indian"
+            android:alpha=".7"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/per_person_cost"
             app:layout_constraintStart_toStartOf="parent"
@@ -92,7 +94,7 @@
     <View
         android:id="@+id/dotted_line"
         android:layout_width="240dp"
-        android:layout_height="1.5sp"
+        android:layout_height="1.4dp"
         android:background="@drawable/dotted_black_lines"
         app:layout_constraintStart_toStartOf="@+id/restaurant_name"
         app:layout_constraintTop_toBottomOf="@+id/constraint_per_person_cost" />
@@ -101,12 +103,11 @@
         android:id="@+id/live_tracking_constraint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@+id/restaurant_name"
-        app:layout_constraintTop_toBottomOf="@+id/dotted_line" >
+        app:layout_constraintStart_toStartOf="@+id/constraint_per_person_cost"
+        app:layout_constraintTop_toBottomOf="@+id/dotted_line">
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_marginTop="2dp"
             android:layout_width="12dp"
             android:layout_height="12dp"
             android:src="@drawable/ic_compass"

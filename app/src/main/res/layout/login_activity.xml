@@ -5,7 +5,8 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:background="@drawable/zomato"
+        android:background="@drawable/login"
+        android:scaleType="fitEnd"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

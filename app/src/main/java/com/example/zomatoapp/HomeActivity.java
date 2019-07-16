@@ -1,12 +1,10 @@
 package com.example.zomatoapp;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import com.facebook.stetho.Stetho;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -16,6 +14,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
+
 
 public class HomeActivity extends AppCompatActivity {
     public static final String GO_OUT_FRAGMENT_TAG = "go_out_fragment";
@@ -36,7 +35,7 @@ public class HomeActivity extends AppCompatActivity {
                                 .replace(R.id.fragment_frame, orderFragment, ORDER_FRAGMENT_TAG)
                                 .commit();
                     }
-                    return true;
+     return true;
                 case R.id.navigation_go_out:
                     Fragment goOutFrag = getSupportFragmentManager().findFragmentByTag(GO_OUT_FRAGMENT_TAG);
                     if (goOutFrag==null){
@@ -64,11 +63,18 @@ public class HomeActivity extends AppCompatActivity {
         }
     };
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Stetho.initializeWithDefaults(this);
         setContentView(R.layout.activity_home);
+
+//        ApplicationComponent ac =  MyApplication.get(this).getApplicationComponent();
+//
+//        hc = DaggerHomeActivityComponent.builder().homeActivityContextModule(new HomeActivityContextModule(this)).build();
+//        hc.injectHomeActivity(this);
+
         BottomNavigationView navView = findViewById(R.id.bottom_nav_view);
         mTextMessage = findViewById(R.id.message);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
