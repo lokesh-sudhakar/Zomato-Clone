@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,6 +49,7 @@ public class OrderFragment extends Fragment {
         ((AppCompatActivity) Objects.requireNonNull(getActivity())).setSupportActionBar(toolbar);
         setLocation= orderFragmentLayout.findViewById(R.id.title_location);
         setLocation.setTextColor(ContextCompat.getColor(context,R.color.dark_black));
+
 
         TabLayout tabLayout = getTabLayout(orderFragmentLayout);
 
@@ -101,6 +103,9 @@ public class OrderFragment extends Fragment {
         Bundle bundle=getArguments();
         if(bundle!=null){
             updateLocationTextView(bundle.getString("place"));
+            double latitude=bundle.getDouble("latitude");
+            double longitude=bundle.getDouble("longitude");
+            Log.d("latitude and langitude are ",""+latitude+longitude);
         }
     }
 
