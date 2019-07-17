@@ -43,7 +43,7 @@
             android:id="@+id/location_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_16dp"
+            android:layout_marginStart="13dp"
             android:layout_marginTop="@dimen/margin_top_10dp"
             android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"

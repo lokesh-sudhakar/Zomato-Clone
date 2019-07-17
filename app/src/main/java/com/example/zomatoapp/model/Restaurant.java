@@ -14,27 +14,27 @@ public class Restaurant {
     @SerializedName("apikey")
     @Expose
     private String apikey;
-    //    @SerializedName("id")
-//    @Expose
-//    private String id;
+    @SerializedName("id")
+    @Expose
+    private String id;
     @SerializedName("name")
     @Expose
     private String name;
     //    @SerializedName("url")
 //    @Expose
 //    private String url;
-////    @SerializedName("location")
-////    @Expose
-////    private Location location;
+    @SerializedName("location")
+    @Expose
+    private Location location;
 //    @SerializedName("switch_to_order_menu")
 //    @Expose
 //    private Integer switchToOrderMenu;
     @SerializedName("cuisines")
     @Expose
     private String cuisines;
-    //    @SerializedName("timings")
-//    @Expose
-//    private String timings;
+        @SerializedName("timings")
+    @Expose
+    private String timings;
     @SerializedName("average_cost_for_two")
     @Expose
     private Integer averageCostForTwo;
@@ -78,9 +78,9 @@ public class Restaurant {
     @Expose
     private UserRating userRating;
 
-    //    @SerializedName("all_reviews_count")
-//    @Expose
-//    private Integer allReviewsCount;
+        @SerializedName("all_reviews_count")
+    @Expose
+    private Integer allReviewsCount;
 //    @SerializedName("photos_url")
 //    @Expose
 //    private String photosUrl;
@@ -93,9 +93,9 @@ public class Restaurant {
 //    @SerializedName("menu_url")
 //    @Expose
 //    private String menuUrl;
-//    @SerializedName("featured_image")
-//    @Expose
-//    private String featuredImage;
+    @SerializedName("featured_image")
+    @Expose
+    private String featuredImage;
 //    @SerializedName("medio_provider")
 //    @Expose
 //    private Integer medioProvider;
@@ -149,15 +149,15 @@ public class Restaurant {
         this.apikey = apikey;
     }
 
-    //
-//    public String getId() {
-//        return id;
-//    }
-//
-//    public void setId(String id) {
-//        this.id = id;
-//    }
-//
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
@@ -175,14 +175,14 @@ public class Restaurant {
 //        this.url = url;
 //    }
 //
-////    public Location getLocation() {
-////        return location;
-////    }
-////
-////    public void setLocation(Location location) {
-////        this.location = location;
-////    }
-//
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
 //    public Integer getSwitchToOrderMenu() {
 //        return switchToOrderMenu;
 //    }
@@ -199,15 +199,15 @@ public class Restaurant {
         this.cuisines = cuisines;
     }
 
-    //
-//    public String getTimings() {
-//        return timings;
-//    }
-//
-//    public void setTimings(String timings) {
-//        this.timings = timings;
-//    }
-//
+
+    public String getTimings() {
+        return timings;
+    }
+
+    public void setTimings(String timings) {
+        this.timings = timings;
+    }
+
     public Integer getAverageCostForTwo() {
         return averageCostForTwo;
     }
@@ -320,14 +320,14 @@ public class Restaurant {
     public void setUserRating(UserRating userRating) {
         this.userRating = userRating;
     }
-//
-//    public Integer getAllReviewsCount() {
-//        return allReviewsCount;
-//    }
-//
-//    public void setAllReviewsCount(Integer allReviewsCount) {
-//        this.allReviewsCount = allReviewsCount;
-//    }
+
+    public Integer getAllReviewsCount() {
+        return allReviewsCount;
+    }
+
+    public void setAllReviewsCount(Integer allReviewsCount) {
+        this.allReviewsCount = allReviewsCount;
+    }
 //
 //    public String getPhotosUrl() {
 //        return photosUrl;
@@ -360,14 +360,14 @@ public class Restaurant {
 //    public void setMenuUrl(String menuUrl) {
 //        this.menuUrl = menuUrl;
 //    }
-//
-//    public String getFeaturedImage() {
-//        return featuredImage;
-//    }
-//
-//    public void setFeaturedImage(String featuredImage) {
-//        this.featuredImage = featuredImage;
-//    }
+
+    public String getFeaturedImage() {
+        return featuredImage;
+    }
+
+    public void setFeaturedImage(String featuredImage) {
+        this.featuredImage = featuredImage;
+    }
 //
 //    public Integer getMedioProvider() {
 //        return medioProvider;

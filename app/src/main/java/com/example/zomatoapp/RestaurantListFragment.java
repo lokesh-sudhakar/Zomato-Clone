@@ -1,5 +1,6 @@
 package com.example.zomatoapp;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,7 +23,7 @@ import com.squareup.picasso.Picasso;
 import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
 
 
-public class RestaurantListFragment extends Fragment {
+public class RestaurantListFragment extends Fragment implements RestaurantRvAdapter.OnClickRestaurant{
 
     private RecyclerView mRecyclerView;
     private RestaurantRvAdapter mAdapter;
@@ -30,9 +31,28 @@ public class RestaurantListFragment extends Fragment {
     private RestaurantListViewModel viewModel;
     private int category;
     private ImageView takeAwayImage;
+    ListItemClickListener listItemClickListener;
+
 
     public RestaurantListFragment(int category) {
         this.category = category;
+    }
+
+    public interface ListItemClickListener {
+
+        void onConnectActivity(String id);
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        try {
+            listItemClickListener = (RestaurantListFragment.ListItemClickListener) context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString()
+                    + " must implement OnImageClickListener");
+        }
     }
 
     @Nullable
@@ -65,7 +85,7 @@ public class RestaurantListFragment extends Fragment {
 
     private void setAdapter() {
         if (mAdapter == null) {
-            mAdapter = new RestaurantRvAdapter(viewModel.getRestaurantDataList(), getContext());
+            mAdapter = new RestaurantRvAdapter(viewModel.getRestaurantDataList(), getContext(),this);
             mLayoutManager = new LinearLayoutManager(getContext());
             mRecyclerView.setLayoutManager(mLayoutManager);
             mRecyclerView.setAdapter(mAdapter);
@@ -92,7 +112,10 @@ public class RestaurantListFragment extends Fragment {
                 }
             }
         });
-
     }
 
+    @Override
+    public void onPerformClick(String id) {
+            listItemClickListener.onConnectActivity(id);
+    }
 }

@@ -3,7 +3,9 @@ package com.example.zomatoapp.services;
 import androidx.lifecycle.LiveData;
 
 import com.example.zomatoapp.model.CuisinesApi;
+import com.example.zomatoapp.model.Restaurant;
 import com.example.zomatoapp.model.RestaurantApi;
+import com.example.zomatoapp.model.ReviewsApi;
 import com.example.zomatoapp.model.collection.CollectionsApiResponse;
 import com.example.zomatoapp.model.foryou.ForYouApiResponse;
 
@@ -19,7 +21,8 @@ public interface RestaurantService {
     Observable<RestaurantApi> getRestaurant(@Path("type") String cat, @Query("apikey") String key,
                                             @Query("lat") double latitude, @Query("lon") double longitude,
                                             @Query("category") int cate, @Query("start") int start,
-                                            @Query("count") int num);
+                                            @Query("count") int num
+                                            );
 
     @GET("/api/v2.1/search")
     Observable<RestaurantApi> getEstablishment(@Query("apikey") String key,
@@ -43,4 +46,11 @@ public interface RestaurantService {
     Call<CuisinesApi> getCuisines(@Path("type") String cat, @Query("apikey") String key,
                                     @Query("lat") double latitude, @Query("lon") double longitude);
 
+    @GET("/api/v2.1/{type}")
+    Observable<Restaurant> getRestaurantDetails(@Path("type") String cat, @Query("apikey") String key,
+                                                @Query("res_id") String id);
+
+    @GET("/api/v2.1/{type}")
+    Observable<ReviewsApi> getReviews(@Path("type") String cat, @Query("apikey") String key,
+                                        @Query("res_id") String id);
 }
