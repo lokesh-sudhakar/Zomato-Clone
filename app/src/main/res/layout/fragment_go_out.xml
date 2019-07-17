@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    >
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -93,7 +95,6 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/tab_layout_height_40dp"
             android:background="?attr/colorPrimary"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
             app:tabIndicatorFullWidth="false"
             app:tabIndicatorHeight="@dimen/tab_indicator_height_4dp"
             app:tabMode="scrollable"
@@ -102,8 +103,7 @@
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/view_pager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+            android:layout_height="match_parent" />
     </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

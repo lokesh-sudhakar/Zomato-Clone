@@ -1,6 +1,7 @@
 package com.example.zomatoapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -94,7 +95,16 @@ public class ProfileFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.action_share:{
-                Toast.makeText(context,"share selected",Toast.LENGTH_SHORT).show();
+                String url ="Follow my food journey on @Zomato! —https://zoma.to/u/43208730";
+
+                Intent share = new Intent(Intent.ACTION_SEND);
+                share.setType("text/plain");
+                share.putExtra(Intent.EXTRA_TEXT, url);
+                Intent chooser = Intent.createChooser(share, "Share using");
+
+                if (share.resolveActivity(Objects.requireNonNull(getActivity()).getPackageManager()) != null) {
+                    startActivity(chooser);
+                }
                 return true;
             }
             case R.id.notification_item:{

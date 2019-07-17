@@ -57,5 +57,6 @@ public interface RestaurantService {
 
     @GET("/api/v2.1/{type}")
     Observable<ReviewsApi> getReviews(@Path("type") String cat, @Query("apikey") String key,
-                                        @Query("res_id") String id);
+                                        @Query("res_id") String id,@Query("start") int start,
+                                      @Query("count") int count);
 }

@@ -115,10 +115,7 @@ public class RestaurantRepository {
 
     public void networkCall(int start) {
 
-
-
         Observable<RestaurantApi> call = services.getRestaurant(SEARCH, KEY, 12.9038,77.59,
-
                               category, start, NUM_OF_RESULT);
         call.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<RestaurantApi>() {
             @Override
@@ -243,7 +240,6 @@ public class RestaurantRepository {
                     }
                 });
     }
-
     public void fetchRestaurantDetail(String restaurantId){
         Log.d("resid in repo",restaurantId);
         Observable<Restaurant> restaurantObservable= services.getRestaurantDetails("restaurant","5e7cc4928495f233e070022a72b7de8a",restaurantId);
@@ -275,7 +271,7 @@ public class RestaurantRepository {
 
     public void fetchReviews(String id){
         Observable<ReviewsApi> reviewsApiObservable = services.getReviews(
-                "reviews","5e7cc4928495f233e070022a72b7de8a",id);
+                "reviews","5e7cc4928495f233e070022a72b7de8a",id,0,20);
         reviewsApiObservable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ReviewsApi>() {
