@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_marginBottom="0.5dp"
+android:background="@color/colorPrimary"
+android:orientation="vertical"
+android:padding="10dp">
+
+
+<ImageView
+    android:id="@+id/restaurant_poster"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:layout_marginEnd="8dp"
+    android:scaleType="fitXY"
+    android:background="@color/gold_options_background_not_selected"
+    app:layout_constraintBottom_toBottomOf="@+id/live_tracking_constraint"
+    app:layout_constraintEnd_toStartOf="@+id/restaurant_name"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/restaurant_name"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="122dp"
+        android:layout_marginEnd="20dp"
+        android:background="@color/gold_options_background_not_selected"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/rating"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/restaurant_cuisines"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="122dp"
+        android:layout_marginTop="4dp"
+        android:background="@color/gold_options_background_not_selected"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/restaurant_name" />
+
+<View
+    android:id="@+id/dotted_line_view"
+    android:layout_width="240dp"
+    android:layout_height="1.4dp"
+    android:layout_marginTop="3dp"
+    android:background="@drawable/dotted_black_lines"
+    app:layout_constraintStart_toStartOf="@+id/restaurant_name"
+    app:layout_constraintTop_toBottomOf="@+id/restaurant_cuisines" />
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/constraint_per_person_cost"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="4dp"
+    app:layout_constraintStart_toEndOf="@+id/restaurant_poster"
+    app:layout_constraintTop_toBottomOf="@+id/dotted_line_view">
+
+    <TextView
+        android:id="@+id/per_person_cost"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:background="@color/gold_options_background_not_selected"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+<View
+    android:id="@+id/dotted_line"
+    android:layout_width="240dp"
+    android:layout_height="1.4dp"
+    android:background="@drawable/dotted_black_lines"
+    app:layout_constraintStart_toStartOf="@+id/restaurant_name"
+    app:layout_constraintTop_toBottomOf="@+id/constraint_per_person_cost" />
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/live_tracking_constraint"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintStart_toStartOf="@+id/constraint_per_person_cost"
+    app:layout_constraintTop_toBottomOf="@+id/dotted_line">
+
+    <TextView
+        android:id="@+id/live_tracking"
+        android:layout_width="268dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="4dp"
+        android:background="@color/gold_options_background_not_selected"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

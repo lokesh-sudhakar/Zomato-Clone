@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.zomatoapp.adapter.RestaurantRvAdapter;
 import com.example.zomatoapp.model.RestaurantApi;
 import com.example.zomatoapp.viewModels.RestaurantListViewModel;
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.squareup.picasso.Picasso;
 
 import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
@@ -31,7 +32,10 @@ public class RestaurantListFragment extends Fragment implements RestaurantRvAdap
     private RestaurantListViewModel viewModel;
     private int category;
     private ImageView takeAwayImage;
+
     ListItemClickListener listItemClickListener;
+
+    ShimmerFrameLayout shimmerFrameLayout;
 
 
     public RestaurantListFragment(int category) {
@@ -64,10 +68,13 @@ public class RestaurantListFragment extends Fragment implements RestaurantRvAdap
             takeAwayImage.setVisibility(View.VISIBLE);
             Picasso.with(getContext()).load(R.drawable.take_away).transform(new RoundedCornersTransformation(15,1)).into(takeAwayImage);
         }
+        shimmerFrameLayout=rootView.findViewById(R.id.shimmer_layout);
+        shimmerFrameLayout.setVisibility(View.VISIBLE);
+        shimmerFrameLayout.startShimmerAnimation();
         mRecyclerView = rootView.findViewById(R.id.restaurant_list_rv);
         viewModel = ViewModelProviders.of(this).get(RestaurantListViewModel.class);
         viewModel.setCategory(category);
-        viewModel.callNetwork();
+        viewModel.callNetwork(getContext());
         viewModel.getRestaurantApi().observe(this, new Observer<RestaurantApi>() {
             @Override
             public void onChanged(RestaurantApi restaurantApi) {
@@ -80,6 +87,7 @@ public class RestaurantListFragment extends Fragment implements RestaurantRvAdap
                 }
             }
         });
+
         return rootView;
     }
 
@@ -87,9 +95,17 @@ public class RestaurantListFragment extends Fragment implements RestaurantRvAdap
         if (mAdapter == null) {
             mAdapter = new RestaurantRvAdapter(viewModel.getRestaurantDataList(), getContext(),this);
             mLayoutManager = new LinearLayoutManager(getContext());
+            if(mAdapter.getItemCount()!=0){
+                shimmerFrameLayout.stopShimmerAnimation();
+                shimmerFrameLayout.setVisibility(View.GONE);
+            }
             mRecyclerView.setLayoutManager(mLayoutManager);
             mRecyclerView.setAdapter(mAdapter);
         } else {
+            if(mAdapter.getItemCount()!=0){
+                shimmerFrameLayout.stopShimmerAnimation();
+                shimmerFrameLayout.setVisibility(View.GONE);
+            }
             mAdapter.restaurantList = viewModel.getRestaurantDataList();
             mAdapter.notifyDataSetChanged();
             viewModel.setLoading(true);
@@ -107,7 +123,7 @@ public class RestaurantListFragment extends Fragment implements RestaurantRvAdap
                     pastVisibleItems = ((LinearLayoutManager) mLayoutManager).findFirstVisibleItemPosition();
                     if ((visibleItemCount + pastVisibleItems) >= totalItemCount && viewModel.isLoading()) {
                         viewModel.setLoading(false);
-                        viewModel.callNetwork();
+                        viewModel.callNetwork(getContext());
                     }
                 }
             }

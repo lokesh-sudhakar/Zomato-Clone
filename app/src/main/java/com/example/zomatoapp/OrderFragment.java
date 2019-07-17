@@ -3,7 +3,10 @@ package com.example.zomatoapp;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,13 +22,15 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.zomatoapp.ui.order_tab_adapter.SectionsPagerAdapter;
+import com.example.zomatoapp.viewModels.MapsViewModel;
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.Objects;
 
 public class OrderFragment extends Fragment {
-
+    private ShimmerFrameLayout mShimmerLayout;
     private TextView setLocation;
     private Context context;
 
@@ -48,7 +53,6 @@ public class OrderFragment extends Fragment {
         ((AppCompatActivity) Objects.requireNonNull(getActivity())).setSupportActionBar(toolbar);
         setLocation= orderFragmentLayout.findViewById(R.id.title_location);
         setLocation.setTextColor(ContextCompat.getColor(context,R.color.dark_black));
-
         TabLayout tabLayout = getTabLayout(orderFragmentLayout);
 
         addLabelsToTabs(tabLayout);
@@ -101,6 +105,27 @@ public class OrderFragment extends Fragment {
         Bundle bundle=getArguments();
         if(bundle!=null){
             updateLocationTextView(bundle.getString("place"));
+            double latitude=bundle.getDouble("latitude");
+            double longitude=bundle.getDouble("longitude");
+            Log.d("latitude and langitude are ",""+latitude+longitude);
+        }
+        else {
+            LocationManager locManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+            boolean network_enabled = locManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+            Location location;
+
+            if(network_enabled){
+
+                location = locManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+
+                if(location!=null){
+                    double longitude = location.getLongitude();
+                    double latitude = location.getLatitude();
+                    MapsViewModel mapsViewModel=new MapsViewModel();
+                    String address=mapsViewModel.getAddress(latitude,longitude,getContext());
+                    updateLocationTextView(address);
+                }
+            }
         }
     }
 

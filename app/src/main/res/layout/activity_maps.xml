@@ -4,57 +4,127 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-android:fitsSystemWindows="false"
+android:fitsSystemWindows="true"
 android:orientation="vertical">
 
-<androidx.appcompat.widget.Toolbar
-    android:id="@+id/toolbar"
-    android:minHeight="?attr/actionBarSize"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    app:titleTextColor="@android:color/white"
-    android:background="@android:color/holo_red_dark">
-</androidx.appcompat.widget.Toolbar>
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools">
-    <fragment
-        android:id="@+id/map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="match_parent"
-        android:layout_height="349dp"
-        tools:context=".MapsActivity" />
-    <ImageView
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_centerInParent="true"
-        android:id="@+id/imgLocationPinUp"
-        android:src="@drawable/ic_place_black_24dp"
-        />
-    </RelativeLayout>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/location"
-        android:textSize="18dp"/>
-    <Button
-        android:id="@+id/locationButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="Use this location"/>
-    <ListView
-        android:visibility="gone"
-        android:id="@+id/listPlaces"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"></ListView>
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <fragment
+                android:id="@+id/map"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="349dp"
+                tools:context=".MapsActivity" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <fragment
+                    android:id="@+id/place_autocomplete"
+                    android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/holo_red_dark"
+                    android:minHeight="?attr/actionBarSize"
+                    app:titleTextColor="@android:color/white"></androidx.appcompat.widget.Toolbar>
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/imgLocationPinUp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_place_black_24dp" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/gold_options_background_not_selected"
+            android:gravity="center_horizontal"
+            android:padding="@dimen/margin_10dp"
+            android:text="Select location"
+            android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+            android:textColor="@color/dark_black"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="YOUR LOCATION"
+            android:textColor="@color/light_grey"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/green_tick_small"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+            android:textColor="@color/dark_black"
+            android:textSize="15sp"
+            android:layout_marginBottom="@dimen/margin_10dp"/>
+
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#f1f1f1"
+            android:layout_marginBottom="@dimen/margin_10dp"/>
+        <TextView
+            android:layout_marginBottom="@dimen/margin_10dp"
+            android:id="@+id/addAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+            android:textSize="15sp"
+            android:textColor="@color/light_grey"
+            android:text="Complete address(optional)"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/light_grey"
+            android:visibility="gone"
+            android:id="@+id/enterAddress"
+            android:focusable="true"
+            android:text="House no./Flat no. Floor/Building"/>
+        <View
+            android:id="@+id/divider_two"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#f1f1f1" />
+
+        <Button
+            android:id="@+id/locationButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="@dimen/margin_10dp"
+            android:background="@drawable/rounded_button_confirm_location"
+            android:text="Confirm location"
+            android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15sp" />
+
+    </LinearLayout>
 
 </LinearLayout>
