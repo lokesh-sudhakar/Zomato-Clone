@@ -121,9 +121,9 @@ public class MapsViewModel {
             String  add = obj.getAddressLine(0);
             Log.e("Location", "Address" + add);
             address=add;
-            Activity activity=(Activity)context;
-            TextView locationTextView=((Activity) context).findViewById(R.id.location);
-            locationTextView.setText(address);
+//            Activity activity=(Activity)context;
+//            TextView locationTextView=((Activity) context).findViewById(R.id.location);
+//            locationTextView.setText(address);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -46,11 +46,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private FusedLocationProviderClient mFusedLocationProviderClient;
     private final LatLng mDefaultLocation = new LatLng(-33.8523341, 151.2106085);
     private boolean mLocationPermissionGranted;
+    TextView locationTextView;
     AutocompleteSupportFragment placeAutoComplete;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+        locationTextView=findViewById(R.id.location);
         TextView addAddress=findViewById(R.id.addAddress);
         final EditText enterAddress=findViewById(R.id.enterAddress);
         if (!Places.isInitialized()) {
@@ -72,6 +74,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 latitude=selectedPlaceLatLng.latitude;
                 longitude=selectedPlaceLatLng.longitude;
                 address=place.getName();
+                locationTextView.setText(address);
+
             }
 
             @Override
@@ -175,6 +179,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 longitude = location.getLongitude();
                 Log.d("message", ": bbbbbbbbbbbbbbbbbbbbbbbbbbbbb" + latitude);
                 address = mapsViewModel.getAddress(latitude, longitude, this);
+                locationTextView.setText(address);
             }
         } else {
             mMap.addMarker(new MarkerOptions()
@@ -193,5 +198,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         latitude=position.latitude;
         longitude=position.longitude;
         address=mapsViewModel.getAddress(position.latitude,position.longitude,this);
+        locationTextView.setText(address);
     }
 }
