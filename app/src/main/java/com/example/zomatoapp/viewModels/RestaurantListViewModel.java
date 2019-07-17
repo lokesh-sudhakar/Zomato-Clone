@@ -1,6 +1,7 @@
 package com.example.zomatoapp.viewModels;
 
 import android.app.Application;
+import android.content.Context;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -34,14 +35,14 @@ public class RestaurantListViewModel extends ViewModel {
         this.category = category;
     }
 
-    public void callNetwork() {
+    public void callNetwork(Context context) {
         if (restaurantApi == null) {
             mRestaurantRepository = new RestaurantRepository();
             mRestaurantRepository.setCategory(category);
             restaurantApi = mRestaurantRepository.connectMutableLiveData();
-            mRestaurantRepository.networkCall(start);
+            mRestaurantRepository.networkCall(start,context);
         } else {
-            mRestaurantRepository.networkCall(start);
+            mRestaurantRepository.networkCall(start,context);
         }
     }
 

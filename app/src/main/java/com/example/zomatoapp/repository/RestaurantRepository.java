@@ -1,14 +1,20 @@
 package com.example.zomatoapp.repository;
 
+import android.app.Activity;
+import android.content.Context;
 import android.util.Log;
+import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.zomatoapp.R;
 import com.example.zomatoapp.di.MyApplication;
 import com.example.zomatoapp.model.RestaurantApi;
 import com.example.zomatoapp.model.collection.CollectionsApiResponse;
 import com.example.zomatoapp.services.RestaurantService;
+import com.facebook.shimmer.ShimmerFrameLayout;
 
 import io.reactivex.Observable;
 import io.reactivex.Observer;
@@ -65,7 +71,7 @@ public class RestaurantRepository {
         return restaurantApiMutableLiveData;
     }
 
-    public void networkCall(int start) {
+    public void networkCall(int start, Context context) {
         Log.d("networkCall","start call" + start);
         Observable<RestaurantApi> call = services.getRestaurant(SEARCH, KEY, 12.9038,77.59,
                               category, start, NUM_OF_RESULT);
@@ -79,6 +85,7 @@ public class RestaurantRepository {
             public void onNext(RestaurantApi restaurantApi) {
                 Log.d("networkCall","on next"+ restaurantApi.getResultsStart());
                 restaurantApiMutableLiveData.setValue(restaurantApi);
+
             }
 
             @Override

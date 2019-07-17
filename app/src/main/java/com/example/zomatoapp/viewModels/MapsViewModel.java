@@ -28,7 +28,6 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -96,7 +95,6 @@ public class MapsViewModel {
                             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
                                     new LatLng(mLastKnownLocation.getLatitude(),
                                             mLastKnownLocation.getLongitude()), DEFAULT_ZOOM));
-                            mMap.addMarker(new MarkerOptions().position(new LatLng(mLastKnownLocation.getLatitude(), mLastKnownLocation.getLongitude())).title("Marker in Sydney").draggable(true));
                         } else {
                             Log.d(TAG, "Current location is null. Using defaults.");
                             mMap.moveCamera(CameraUpdateFactory
@@ -121,9 +119,9 @@ public class MapsViewModel {
             String  add = obj.getAddressLine(0);
             Log.e("Location", "Address" + add);
             address=add;
-            Activity activity=(Activity)context;
-            TextView locationTextView=((Activity) context).findViewById(R.id.location);
-            locationTextView.setText(address);
+//            Activity activity=(Activity)context;
+//            TextView locationTextView=((Activity) context).findViewById(R.id.location);
+//            locationTextView.setText(address);
         } catch (IOException e) {
             e.printStackTrace();
         }
