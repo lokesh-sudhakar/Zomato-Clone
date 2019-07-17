@@ -35,6 +35,7 @@ public class OrderFragment extends Fragment {
     private Context context;
     double latitude;
     double longitude;
+    String address;
 
     public OrderFragment(){
     }
@@ -112,6 +113,7 @@ public class OrderFragment extends Fragment {
             latitude=bundle.getDouble("latitude");
             longitude=bundle.getDouble("longitude");
             Log.d("networkCall","order fragment "+ latitude);
+            address=bundle.getString("place");
             Log.d("latitude and langitude are ",""+latitude+longitude);
         }
         else {
@@ -126,9 +128,8 @@ public class OrderFragment extends Fragment {
                 if(location!=null){
                     longitude = location.getLongitude();
                     latitude = location.getLatitude();
-                    Log.d("networkCall","order fragment "+ latitude);
                     MapsViewModel mapsViewModel=new MapsViewModel();
-                    String address=mapsViewModel.getAddress(latitude,longitude,getContext());
+                    address=mapsViewModel.getAddress(latitude,longitude,getContext());
                     updateLocationTextView(address);
                 }
             }
