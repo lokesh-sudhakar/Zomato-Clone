@@ -20,18 +20,16 @@ public class Restaurant {
     @SerializedName("name")
     @Expose
     private String name;
-    //    @SerializedName("url")
-//    @Expose
-//    private String url;
+
+    @SerializedName("url")
+    @Expose
+    private String url;
+
     @SerializedName("location")
     @Expose
     private Location location;
-//    @SerializedName("switch_to_order_menu")
 //    @Expose
 //    private Integer switchToOrderMenu;
-    @SerializedName("cuisines")
-    @Expose
-    private String cuisines;
         @SerializedName("timings")
     @Expose
     private String timings;
@@ -78,10 +76,10 @@ public class Restaurant {
     @Expose
     private UserRating userRating;
 
-        @SerializedName("all_reviews_count")
+    @SerializedName("all_reviews_count")
     @Expose
     private Integer allReviewsCount;
-//    @SerializedName("photos_url")
+    //    @SerializedName("photos_url")
 //    @Expose
 //    private String photosUrl;
 //    @SerializedName("photo_count")
@@ -96,7 +94,7 @@ public class Restaurant {
     @SerializedName("featured_image")
     @Expose
     private String featuredImage;
-//    @SerializedName("medio_provider")
+    //    @SerializedName("medio_provider")
 //    @Expose
 //    private Integer medioProvider;
 //    @SerializedName("has_online_delivery")
@@ -144,10 +142,21 @@ public class Restaurant {
     public String getApikey() {
         return apikey;
     }
-
     public void setApikey(String apikey) {
         this.apikey = apikey;
     }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+    //    @SerializedName("switch_to_order_menu")
+    @SerializedName("cuisines")
+    @Expose
+    private String cuisines;
 
 
     public String getId() {
@@ -166,15 +175,7 @@ public class Restaurant {
         this.name = name;
     }
 
-    //
-//    public String getUrl() {
-//        return url;
-//    }
-//
-//    public void setUrl(String url) {
-//        this.url = url;
-//    }
-//
+
     public Location getLocation() {
         return location;
     }

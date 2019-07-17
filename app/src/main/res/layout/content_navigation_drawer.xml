@@ -115,23 +115,6 @@
                 tools:ignore="RtlSymmetry" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/profile_pic"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="70dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginTop="@dimen/margit_top_20dp"
-                android:layout_marginEnd="@dimen/margin_10dp"
-                android:src="@mipmap/ic_zomato_gold_icon_round" />
-        </androidx.cardview.widget.CardView>
-
-
         <TextView
             android:id="@+id/edit"
             android:layout_width="@dimen/edit_text_view_width"
@@ -148,6 +131,36 @@
             app:layout_constraintStart_toStartOf="@+id/profile_pic"
             app:layout_constraintTop_toBottomOf="@+id/profile_pic" />
 
+
+        <!--<androidx.cardview.widget.CardView-->
+            <!--android:id="@+id/profile_pic"-->
+            <!--android:layout_width="80dp"-->
+            <!--android:layout_height="80dp"-->
+            <!--android:layout_marginTop="@dimen/margit_top_20dp"-->
+            <!--android:layout_marginEnd="@dimen/margin_10dp"-->
+            <!--app:cardCornerRadius="40dp"-->
+            <!--android:elevation="12dp"-->
+            <!--app:layout_constraintEnd_toEndOf="parent"-->
+            <!--app:layout_constraintTop_toTopOf="parent">-->
+            <!--<ImageView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="80dp"-->
+                <!--android:scaleType="fitXY"-->
+                <!--android:src="@drawable/zomato_gold_black_icon" />-->
+        <!--</androidx.cardview.widget.CardView>-->
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/profile_pic"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="@dimen/margit_top_20dp"
+            android:src="@drawable/zomato_gold_black_icon"
+            app:civ_border_width="1dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.tabs.TabLayout

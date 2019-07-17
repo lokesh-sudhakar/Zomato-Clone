@@ -1,23 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--<LinearLayout android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
+    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"-->
+    <!--&gt;-->
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/takeAwayImage"
         android:layout_width="match_parent"
         android:scaleType="fitXY"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:layout_height="200dp"
-        android:padding="10dp"
         app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
+        android:padding="10dp"
         android:visibility="gone"
         />
     </com.google.android.material.appbar.AppBarLayout>
@@ -31,8 +37,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background="@color/colorPrimary"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:background="@color/colorPrimary"
         android:padding="10dp">
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -110,3 +116,4 @@
         android:background="#DCDCDC"/>
     </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
+<!--</LinearLayout>-->

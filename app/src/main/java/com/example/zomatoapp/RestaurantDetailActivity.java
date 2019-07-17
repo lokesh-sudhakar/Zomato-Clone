@@ -1,5 +1,6 @@
 package com.example.zomatoapp;
 
+import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,7 +13,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -51,6 +51,7 @@ public class RestaurantDetailActivity extends AppCompatActivity {
     TextView restaurantTiming;
     TextView reviewCount;
     RecyclerView reviewRv;
+    String shareRestaurantLink;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +79,9 @@ public class RestaurantDetailActivity extends AppCompatActivity {
         Objects.requireNonNull(((AppCompatActivity) this).getSupportActionBar()).setDisplayShowHomeEnabled(true);
 
         setSupportActionBar(toolbar);
-
+        toolbarLayout.setContentScrim(null);
+        toolbarLayout.setStatusBarScrim(null);
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -109,7 +112,7 @@ public class RestaurantDetailActivity extends AppCompatActivity {
                         if (scrollRange + verticalOffset == 0) {
                             toolbarLayout.setTitle(restaurantDetailViewModel.getRestaurant().getName());
                             toolbarLayout.setCollapsedTitleGravity(0);
-                            toolbarLayout.setCollapsedTitleTextColor(getResources().getColor(R.color.dark_black));
+                            toolbarLayout.setCollapsedTitleTextColor(getResources().getColor(R.color.colorPrimary));
                             isShow = true;
                         } else if (isShow) {
                             toolbarLayout.setTitle(" ");//careful there should a space between double quote otherwise it wont work
@@ -117,27 +120,43 @@ public class RestaurantDetailActivity extends AppCompatActivity {
                         }
                     }
                 });
+                shareRestaurantLink = restaurantDetailViewModel.getRestaurant().getUrl();
                 restaurantName.setText(restaurantDetailViewModel.getRestaurant().getName());
                 cusinesText.setText(restaurantDetailViewModel.getRestaurant().getCuisines());
                 address.setText(restaurantDetailViewModel.getRestaurant().getLocation().getAddress());
-                restaurantTiming.setText(restaurantDetailViewModel.getRestaurant().getTimings()+" (Today)");
+                restaurantTiming.setText(restaurantDetailViewModel.getRestaurant().getTimings());
                 reviewCount.setText(restaurantDetailViewModel.getRestaurant().getAllReviewsCount()+" reviews");
 
                 Picasso.with(getApplication()).load(restaurantDetailViewModel.getRestaurant().getFeaturedImage())
                         .placeholder(R.drawable.placeholder_food).into(restaurantPoster);
-                rating.setText(restaurantDetailViewModel.getRestaurant().getUserRating().getAggregateRating());
-                Location startPoint = new Location("locationA");
-                startPoint.setLatitude(lattitude);
-                startPoint.setLongitude(longitude);
+                double ratingByUser = Double.parseDouble(restaurantDetailViewModel.getRestaurant().getUserRating().getAggregateRating());
 
-                Location endPoint = new Location("locationA");
-                endPoint.setLatitude(Double.parseDouble(restaurantDetailViewModel.getRestaurant().getLocation().getLatitude()));
-                endPoint.setLongitude(Double.parseDouble(restaurantDetailViewModel.getRestaurant().getLocation().getLongitude()));
-                Log.d("location_cur", lattitude + " " + longitude);
-                Log.d("location_restaurant", Double.parseDouble(restaurantDetailViewModel.getRestaurant().getLocation().getLatitude())
-                        + "  " + Double.parseDouble(restaurantDetailViewModel.getRestaurant().getLocation().getLatitude()));
-                double distanceInMeters = startPoint.distanceTo(endPoint);
-                double distanceInKiloMeters = distanceInMeters / 1000;
+                if(ratingByUser >= 4.0){
+                    rating.setBackgroundResource(R.drawable.rounded_corner_green);
+                } else if (ratingByUser >= 3.5){
+                    rating.setBackgroundResource(R.drawable.rounded_corner_lime_green);
+                } else if (ratingByUser >= 3.0){
+                    rating.setBackgroundResource(R.drawable.rounded_corner_yellow_green);
+                } else if (ratingByUser >= 1.0){
+                    rating.setBackgroundResource(R.drawable.rounded_corner_orange_green);
+                } else {
+                    rating.setBackgroundResource(R.drawable.rounded_corner_grey);
+                }
+
+                rating.setText(restaurantDetailViewModel.getRestaurant().getUserRating().getAggregateRating());
+
+//                Location startPoint = new Location("locationA");
+//                startPoint.setLatitude(lattitude);
+//                startPoint.setLongitude(longitude);
+//
+//                Location endPoint = new Location("locationA");
+//                endPoint.setLatitude(Double.parseDouble(restaurantDetailViewModel.getRestaurant().getLocation().getLatitude()));
+//                endPoint.setLongitude(Double.parseDouble(restaurantDetailViewModel.getRestaurant().getLocation().getLongitude()));
+//                Log.d("location_cur", lattitude + " " + longitude);
+//                Log.d("location_restaurant", Double.parseDouble(restaurantDetailViewModel.getRestaurant().getLocation().getLatitude())
+//                        + "  " + Double.parseDouble(restaurantDetailViewModel.getRestaurant().getLocation().getLatitude()));
+//                double distanceInMeters = startPoint.distanceTo(endPoint);
+//                double distanceInKiloMeters = distanceInMeters / 1000;
 //                if(distanceInKiloMeters>14){
 //                    deliveryTime.setText("Delivery in 30-40 minutes.");
 //                }else if(distanceInKiloMeters>10){
@@ -192,7 +211,17 @@ public class RestaurantDetailActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_share: {
-                Toast.makeText(this, "shered", Toast.LENGTH_SHORT);
+                String url = restaurantDetailViewModel.getRestaurant().getUrl();
+
+                if (!url.equals(null)) {
+                Intent share = new Intent(Intent.ACTION_SEND);
+                share.setType("text/plain");
+                share.putExtra(Intent.EXTRA_TEXT, url);
+                Intent chooser = Intent.createChooser(share, "Share using");
+
+                if (share.resolveActivity(Objects.requireNonNull(this).getPackageManager()) != null) {
+                    startActivity(chooser);
+                }}
                 return true;
             }
             case R.id.action_bookmark: {

@@ -7,7 +7,7 @@
         android:orderInCategory="1"
         android:title="@string/action_settings"
         app:showAsAction="always"
-        android:icon="@drawable/ic_menu_share"
+        android:icon="@drawable/share_white_menu"
         android:background="?attr/selectableItemBackground"
         />
     <item
@@ -15,7 +15,7 @@
         android:orderInCategory="2"
         android:title="@string/action_settings"
         app:showAsAction="always"
-        android:icon="@drawable/ic_bookmark_border_black_24dp"
+        android:icon="@drawable/bookmark_white"
         android:background="?attr/selectableItemBackground"
         />
 

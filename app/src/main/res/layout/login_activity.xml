@@ -3,7 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
     <ImageView
         android:background="@drawable/login"
         android:scaleType="fitEnd"
@@ -91,4 +90,23 @@
             android:textColor="#fff"/>
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="80dp"
+        android:layout_marginLeft="40dp"
+        >
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_zomato"
+        />
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="45dp"
+        android:src="@drawable/think_food_think_zomato"
+        />
+    </LinearLayout>
 </FrameLayout>
