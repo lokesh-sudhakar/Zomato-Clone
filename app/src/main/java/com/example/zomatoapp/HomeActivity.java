@@ -1,5 +1,7 @@
 package com.example.zomatoapp;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.facebook.stetho.Stetho;
@@ -49,7 +51,8 @@ public class HomeActivity extends AppCompatActivity {
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_frame,goldFragment).commit();
                     return true;
                 case R.id.navigation_search:
-                    Toast.makeText(getApplicationContext(),"search selected",Toast.LENGTH_SHORT).show();
+                    SearchFragment searchFragment = new SearchFragment();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_frame,searchFragment).commit();
                     return true;
                 case R.id.navigation_profile:
                     ProfileFragment profileFragment = new ProfileFragment();
@@ -69,6 +72,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Stetho.initializeWithDefaults(this);
         setContentView(R.layout.activity_home);
+//        context = this.context;
 
 //        ApplicationComponent ac =  MyApplication.get(this).getApplicationComponent();
 //
@@ -88,6 +92,7 @@ public class HomeActivity extends AppCompatActivity {
             orderFragment.setArguments(bundle);
         }
       }
+
 
 //    @Override
 //    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
