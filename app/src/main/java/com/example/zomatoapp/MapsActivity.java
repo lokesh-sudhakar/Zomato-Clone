@@ -26,7 +26,6 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.libraries.places.api.Places;
 import com.google.android.libraries.places.api.model.Place;
 import com.google.android.libraries.places.api.net.PlacesClient;
@@ -69,7 +68,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 LatLng selectedPlaceLatLng=place.getLatLng();
                 Log.d("message"," "+place.getLatLng());
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(selectedPlaceLatLng));
-                mMap.addMarker(new MarkerOptions().position(selectedPlaceLatLng));
                 mapsViewModel.getAddress(selectedPlaceLatLng.latitude,selectedPlaceLatLng.longitude,MapsActivity.this);
                 latitude=selectedPlaceLatLng.latitude;
                 longitude=selectedPlaceLatLng.longitude;
@@ -182,10 +180,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 locationTextView.setText(address);
             }
         } else {
-            mMap.addMarker(new MarkerOptions()
-                    .title(getString(R.string.default_info_title))
-                    .position(mDefaultLocation)
-                    .snippet(getString(R.string.default_info_snippet)));
+
             mLocationPermissionGranted = mapsViewModel.getLocationPermission(this);
         }
     }

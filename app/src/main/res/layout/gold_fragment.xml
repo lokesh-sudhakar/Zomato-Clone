@@ -243,51 +243,51 @@
     </androidx.cardview.widget.CardView>
     <androidx.cardview.widget.CardView
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="@dimen/margin_10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="220dp"
             android:padding="10dp">
 
             <ImageView
                 android:id="@+id/imageViewForGoldStar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="39dp"
+                android:layout_height="33dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
-                android:layout_marginBottom="0dp"
                 android:src="@drawable/gold_star_filled"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.100000024" />
+                app:layout_constraintVertical_bias="0.060000002" />
 
             <ImageView
                 android:id="@+id/imageView4"
-                android:layout_width="56dp"
-                android:layout_height="48dp"
+                android:layout_width="36dp"
+                android:layout_height="34dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="100dp"
+                android:layout_marginTop="85dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
+                android:paddingBottom="@dimen/margin_top_5dp"
                 android:src="@drawable/drinks"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.459"
                 app:layout_constraintStart_toEndOf="@+id/imageViewForGoldStar"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.078" />
+                app:layout_constraintVertical_bias="0.0" />
 
             <ImageView
                 android:id="@+id/imageView3"
-                android:layout_width="56dp"
-                android:layout_height="48dp"
+                android:layout_width="44dp"
+                android:layout_height="34dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="100dp"
+                android:layout_marginTop="85dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/food"
@@ -296,9 +296,11 @@
                 app:layout_constraintHorizontal_bias="0.459"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintVertical_bias="0.0"
+                android:paddingBottom="@dimen/margin_top_5dp"/>
 
             <TextView
+                android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -320,7 +322,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="34dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="4dp"
                 android:fontFamily="sans-serif-medium"
@@ -328,36 +330,176 @@
                 android:textColor="@color/dark_black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.107"
+                app:layout_constraintHorizontal_bias="0.127"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/imageView3"
-                app:layout_constraintVertical_bias="0.7" />
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
+                android:id="@+id/textView5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
-                android:text="2+2 on drinks"
+                android:paddingBottom="2dp"
                 android:fontFamily="sans-serif-medium"
+                android:text="2+2 on drinks"
                 android:textColor="@color/dark_black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.767"
                 app:layout_constraintStart_toEndOf="@+id/textView"
                 app:layout_constraintTop_toTopOf="@+id/imageView4"
-                app:layout_constraintVertical_bias="0.907" />
+                app:layout_constraintVertical_bias="0.32999998" />
 
             <TextView
-                android:layout_width="164dp"
-                android:layout_height="48dp"
-                android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+                android:id="@+id/textView4"
+                android:layout_width="138dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="65dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
+                android:paddingBottom="13dp"
                 android:text="Second most expensive dish in your order is free"
-                android:textColor="@color/light_grey"
-                tools:layout_editor_absoluteX="-4dp"
-                tools:layout_editor_absoluteY="14dp" />
+                android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+                android:textColor="@color/quantum_grey700"
+                android:textSize="@dimen/text_size_12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.031"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView3"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="143dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
+                android:paddingTop="2dp"
+                android:paddingBottom="8dp"
+                android:text="Pay for 2 drinks, the next 2 are complimentary"
+                android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+                android:textColor="@color/quantum_grey700"
+                android:textSize="@dimen/text_size_12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.808"
+                app:layout_constraintStart_toEndOf="@+id/textView4"
+                app:layout_constraintTop_toTopOf="@+id/textView5"
+                app:layout_constraintVertical_bias="0.42000002" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="91dp"
+                android:layout_marginEnd="8dp"
+                android:paddingTop="3dp"
+                android:text="Gold restaurants"
+                android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/text_size_12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/textView6"
+                app:layout_constraintHorizontal_bias="0.244"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView3"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Gold bars"
+                android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/text_size_12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.69"
+                app:layout_constraintStart_toEndOf="@+id/textView7"
+                app:layout_constraintTop_toTopOf="@+id/textView5"
+                app:layout_constraintVertical_bias="0.66999996" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dp">
+        <LinearLayout
+            android:paddingTop="@dimen/margin_10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ImageView
+                android:padding="@dimen/margin_10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/faq"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Frequently Asked Questions"
+            android:textColor="#000"
+            android:fontFamily="sans-serif"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:gravity="center_horizontal"
+            android:paddingBottom="20dp"
+            />
+            <TextView
+                android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/faq_one"
+                android:paddingLeft="@dimen/margin_10dp"
+                android:paddingRight="@dimen/margin_10dp"
+                android:textSize="14sp"
+                android:textColor="@color/dark_black"
+                android:text="Is Zomato Gold valid on deliveries or takeaway?"
+                android:drawableRight="@drawable/ic_keyboard_arrow_down_grey_24dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ans_one"
+                android:paddingLeft="@dimen/margin_10dp"
+                android:paddingRight="@dimen/margin_10dp"
+                android:textSize="12sp"
+                android:paddingBottom="@dimen/margin_10dp"
+                android:visibility="gone"
+                android:text="No, Zomato Gold is valid only for dining out at our partner restaurants and bars."/>
+            <TextView
+                android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/faq_two"
+                android:paddingLeft="@dimen/margin_10dp"
+                android:paddingRight="@dimen/margin_10dp"
+                android:textSize="14sp"
+                android:paddingBottom="20dp"
+                android:textColor="@color/dark_black"
+                android:text="Is Zomato Gold valid on deliveries or takeaway?"
+                android:drawableRight="@drawable/ic_keyboard_arrow_down_grey_24dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ans_two"
+                android:paddingLeft="@dimen/margin_10dp"
+                android:paddingRight="@dimen/margin_10dp"
+                android:textSize="12sp"
+                android:paddingBottom="20dp"
+                android:visibility="gone"
+                android:text="No, Zomato Gold is valid only for dining out at our partner restaurants and bars."/>
+        </LinearLayout>
     </androidx.cardview.widget.CardView>
 </LinearLayout>
 </ScrollView>
