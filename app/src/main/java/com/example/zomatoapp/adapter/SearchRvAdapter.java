@@ -49,7 +49,7 @@ public class SearchRvAdapter extends RecyclerView.Adapter<SearchRvAdapter.Restau
             Log.d("searchCall"," np bind " + restaurantList.get(position).getRestaurant().getThumb() );
             Picasso.with(context).load(R.drawable.dummy_food).
                     transform(new RoundedCornersTransformation(10, 0)).
-                    placeholder(R.drawable.placeholder_food).error(R.drawable.placeholder_food).into(holder.mPoster);
+                    placeholder(R.drawable.placeholder_food).error(R.drawable.zomato).into(holder.mPoster);
         }
     }
 

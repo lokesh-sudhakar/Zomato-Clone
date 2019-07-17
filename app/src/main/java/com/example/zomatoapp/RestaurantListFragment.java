@@ -34,7 +34,6 @@ public class RestaurantListFragment extends Fragment {
     private RestaurantListViewModel viewModel;
     private int category;
     private ImageView takeAwayImage;
-    private Context context;
 
     public RestaurantListFragment(int category) {
         this.category = category;
