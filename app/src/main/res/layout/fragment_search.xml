@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_scrollFlags="scroll|enterAlways">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/appbar_layout_width"
+            android:background="@color/appbar_background_color"
+            android:elevation="0dp"
+            android:orientation="vertical"
+            app:layout_scrollFlags="scroll|enterAlways">
+
+            <ImageView
+                android:id="@+id/location_img"
+                android:layout_width="@dimen/location_icon_width"
+                android:layout_height="@dimen/location_icon_height"
+                android:layout_marginStart="@dimen/margin_start_10dp"
+                android:layout_marginTop="@dimen/margin_top_5dp"
+                android:paddingTop="@dimen/padding_top_2dp"
+                android:src="@drawable/ic_location_on_black_24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/your_location_text"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/location_icon_height"
+                android:layout_marginTop="@dimen/margin_top_5dp"
+                android:text="@string/your_location"
+                android:textColor="@color/light_grey"
+                android:textSize="@dimen/text_size_10dp"
+                app:layout_constraintStart_toEndOf="@id/location_img"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/title_location"
+                android:layout_width="@dimen/current_loation__view_width"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_start_10dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/default_location_text"
+                android:textAlignment="viewStart"
+                android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/your_location_text" />
+
+            <View
+                android:id="@+id/dotted_line_view"
+                android:layout_width="@dimen/dotted_line_width"
+                android:layout_height="@dimen/dotted_view_height"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/edit_text_dotted_lines"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/title_location" />
+
+            <ImageView
+                android:id="@+id/bookmark_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_top_16dp"
+                android:layout_marginEnd="@dimen/margin_end_16dp"
+                android:src="@drawable/ic_bookmark_border_black_24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/search_view"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            app:defaultQueryHint="Search"
+            app:queryHint="Search for restaurants"
+            android:background="@drawable/rounded_corner_grey"
+            />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/search_rv_list"
+        android:layout_width="match_parent"
+        android:background="#E1E1E1"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

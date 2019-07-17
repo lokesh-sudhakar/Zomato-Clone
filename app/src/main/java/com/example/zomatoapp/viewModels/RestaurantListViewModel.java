@@ -45,6 +45,15 @@ public class RestaurantListViewModel extends ViewModel {
         }
     }
 
+    public void callSearch(String query){
+        if (restaurantApi == null) {
+            mRestaurantRepository = new RestaurantRepository();
+            restaurantApi = mRestaurantRepository.connectMutableLiveData();
+        } else {
+            mRestaurantRepository.searchCall(query);
+        }
+
+    }
     public MutableLiveData<RestaurantApi> getRestaurantApi() {
         return restaurantApi;
     }

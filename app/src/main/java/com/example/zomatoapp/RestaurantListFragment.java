@@ -1,10 +1,14 @@
 package com.example.zomatoapp;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -30,6 +34,7 @@ public class RestaurantListFragment extends Fragment {
     private RestaurantListViewModel viewModel;
     private int category;
     private ImageView takeAwayImage;
+    private Context context;
 
     public RestaurantListFragment(int category) {
         this.category = category;
@@ -39,6 +44,15 @@ public class RestaurantListFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.fragment_restaurant_list_rv, container, false);
+        TextView searchLayout = rootView.findViewById(R.id.search_layout);
+        searchLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), SearchActivity.class);
+                startActivity(intent);
+            }
+        });
+
         if(category == 5){
             takeAwayImage = rootView.findViewById(R.id.takeAwayImage);
             takeAwayImage.setVisibility(View.VISIBLE);

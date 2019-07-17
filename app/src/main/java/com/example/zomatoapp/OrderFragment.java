@@ -113,10 +113,12 @@ public class OrderFragment extends Fragment {
         TextView deliveryTab = (TextView) LayoutInflater.from(context).inflate(R.layout.custom_tab_layout, null);
         deliveryTab.setText(getResources().getString(R.string.delivery));
         deliveryTab.setCompoundDrawablesWithIntrinsicBounds(0,0, R.drawable.ic_delivery_scooter_icon, 0);
+        deliveryTab.setCompoundDrawablePadding(10);
         Objects.requireNonNull(tabLayout.getTabAt(0)).setCustomView(deliveryTab);
         TextView selfPickUpTab = (TextView) LayoutInflater.from(context).inflate(R.layout.custom_tab_layout, null);
         selfPickUpTab.setText(getResources().getString(R.string.self_pickup));
         selfPickUpTab.setCompoundDrawablesWithIntrinsicBounds(0,0, R.drawable.ic_self_pickup_paper_bag, 0);
+        selfPickUpTab.setCompoundDrawablePadding(10);
         Objects.requireNonNull(tabLayout.getTabAt(1)).setCustomView(selfPickUpTab);
     }
 }

@@ -27,4 +27,8 @@ public interface RestaurantService {
     @GET("/api/v2.1/{type}")
     Call<CuisinesApi> getCuisines(@Path("type") String cat, @Query("apikey") String key,
                                     @Query("lat") double latitude, @Query("lon") double longitude);
+
+    @GET("/api/v2.1/{type}")
+    Observable<RestaurantApi> getSearch(@Path("type") String cat, @Query("apikey") String key,
+                                  @Query("q") String query);
 }
