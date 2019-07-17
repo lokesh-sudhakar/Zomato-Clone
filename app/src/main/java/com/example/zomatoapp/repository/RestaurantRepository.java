@@ -1,4 +1,5 @@
 package com.example.zomatoapp.repository;
+import android.util.Log;
 
 import android.app.Activity;
 import android.content.Context;
@@ -11,8 +12,13 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.zomatoapp.R;
 import com.example.zomatoapp.di.MyApplication;
+import com.example.zomatoapp.model.Restaurant;
 import com.example.zomatoapp.model.RestaurantApi;
+import com.example.zomatoapp.model.ReviewsApi;
 import com.example.zomatoapp.model.collection.CollectionsApiResponse;
+import com.example.zomatoapp.model.foryou.ForYouApiResponse;
+import com.example.zomatoapp.network.RetrofitRestaurantClientInstance;
+
 import com.example.zomatoapp.services.RestaurantService;
 import com.facebook.shimmer.ShimmerFrameLayout;
 
@@ -20,59 +26,98 @@ import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Predicate;
 import io.reactivex.schedulers.Schedulers;
-
-import javax.inject.Inject;
-
+import rx.Scheduler;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+
+import javax.inject.Inject;
+
+
+
 public class RestaurantRepository {
 
 
+    private static final String COLLECTIONS = "collections";
+    public static final String ESTABLISHMENTS = "establishments";
+
     @Inject
     RestaurantService services;
-    public static final String COLLECTIONS = "collections";
     private final String SEARCH = "search";
     private final String KEY = "17e3de8473825e5b134932479c395958";
     private final int NUM_OF_RESULT = 10;
+    private final double LATTITUDE = 12.9038;
+    private final double LONGITUDE = 77.5978;
     private MutableLiveData<RestaurantApi> restaurantApiMutableLiveData = new MutableLiveData<>();
     private MutableLiveData<CollectionsApiResponse> collectionsApiResponseMutableLiveData =
             new MutableLiveData<>();
+    private MutableLiveData<Restaurant> restaurantMutableLiveData = new MutableLiveData<>();
+
+    private MutableLiveData<ReviewsApi> reviewsApiMutableLiveData = new MutableLiveData<>();
+
+
     private int category;
+
     private int longitude;
     private int latitude;
-
     public void setLongitude(int longitude) {
         this.longitude = longitude;
     }
-
     public void setLatitude(int latitude) {
         this.latitude = latitude;
+    }
+
+    public MutableLiveData<ReviewsApi> getReviewsApiMutableLiveData() {
+        return reviewsApiMutableLiveData;
     }
 
     public void setCategory(int category) {
         this.category = category;
     }
 
+    private MutableLiveData<RestaurantApi> restaurantApiLiveData = new MutableLiveData<>();
 
+    private MutableLiveData<ForYouApiResponse> forYouApiResponseMutableLiveData = new MutableLiveData<>();
 
+    private RestaurantApi restaurantApiResult;
     public RestaurantRepository() {
         MyApplication.getComponent().inject(this);
+    }
+
+    public RestaurantApi getRestaurantApiResult() {
+        return restaurantApiResult;
     }
 
     public MutableLiveData<CollectionsApiResponse> getCollectionsApiResponseMutableLiveData() {
         return collectionsApiResponseMutableLiveData;
     }
 
-    public MutableLiveData<RestaurantApi> connectMutableLiveData(){
+    public MutableLiveData<RestaurantApi> getRestaurantApiLiveData() {
+        return restaurantApiLiveData;
+    }
+    public MutableLiveData<Restaurant> getRestaurantMutableLiveData() {
+        return restaurantMutableLiveData;
+    }
+
+
+    public MutableLiveData<RestaurantApi> connectMutableLiveData() {
         return restaurantApiMutableLiveData;
     }
 
-    public void networkCall(int start, Context context) {
-        Log.d("networkCall","start call" + start);
+
+    public MutableLiveData<ForYouApiResponse> getForYouApiResponseMutableLiveData() {
+        return forYouApiResponseMutableLiveData;
+    }
+
+    public void networkCall(int start) {
+
+
+
         Observable<RestaurantApi> call = services.getRestaurant(SEARCH, KEY, 12.9038,77.59,
+
                               category, start, NUM_OF_RESULT);
         call.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<RestaurantApi>() {
             @Override
@@ -82,7 +127,7 @@ public class RestaurantRepository {
 
             @Override
             public void onNext(RestaurantApi restaurantApi) {
-                Log.d("networkCall","on next"+ restaurantApi.getResultsStart());
+                Log.d("networkCall","on next"+ restaurantApi.getRestaurants().size());
                 restaurantApiMutableLiveData.setValue(restaurantApi);
 
             }
@@ -98,41 +143,163 @@ public class RestaurantRepository {
                 Log.d("networkCall","on complete");
             }
         });
-//        call.enqueue(new Callback<RestaurantApi>() {
-//            @Override
-//            public void onResponse(@NonNull Call<RestaurantApi> call,
-//                                   @NonNull Response<RestaurantApi> response) {
-//                if (response.isSuccessful()) {
-//                    Log.d("networkCall","success");
-//                    restaurantApiMutableLiveData.setValue(response.body());
-//                } else {
-//                    Log.d("networkCall","not success");
-//                }
-//            }
-//            @Override
-//            public void onFailure(@NonNull Call<RestaurantApi> call, @NonNull Throwable t) {
-//                Log.d("networkCall","failed");
-//                restaurantApiMutableLiveData.setValue(null);
-//            }
-//        });
+
     }
 
     public void fetchCollections() {
-        Call<CollectionsApiResponse> call = services.getCollectionsApiResponse(COLLECTIONS,KEY,4);
+        Observable<CollectionsApiResponse> collectionObservable = services.getCollectionsApiResponse(COLLECTIONS,KEY,4);
 
-        call.enqueue(new Callback<CollectionsApiResponse>() {
-            @Override
-            public void onResponse(Call<CollectionsApiResponse> call, Response<CollectionsApiResponse> response) {
-                if (response.isSuccessful()){
-                collectionsApiResponseMutableLiveData.setValue(response.body());
-                }
-            }
+        collectionObservable.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<CollectionsApiResponse>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
 
+                    }
+
+                    @Override
+                    public void onNext(CollectionsApiResponse collectionsApiResponse) {
+                        collectionsApiResponseMutableLiveData.setValue(collectionsApiResponse);
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                         collectionsApiResponseMutableLiveData.setValue(null);
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    public void fetchEstablishments(){
+        Observable<ForYouApiResponse> forYouObservable = services.getForYouApiResponse(ESTABLISHMENTS,
+                KEY,LATTITUDE,LONGITUDE);
+
+        forYouObservable.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ForYouApiResponse>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(ForYouApiResponse forYouApiResponse) {
+                        forYouApiResponseMutableLiveData.setValue(forYouApiResponse);
+                        forYouApiResponse.getEstablishments().get(0).getEstablishment().getName();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        forYouApiResponseMutableLiveData.setValue(null);
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+
+    }
+
+    public void fetchEstablishmentList(int id) {
+        Observable<RestaurantApi> establishmentObservable= services.getEstablishment(KEY,LATTITUDE,LONGITUDE,
+                id,0, 10);
+
+        establishmentObservable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+        .filter(new Predicate<RestaurantApi>() {
             @Override
-            public void onFailure(Call<CollectionsApiResponse> call, Throwable t) {
-                collectionsApiResponseMutableLiveData.setValue(null);
+            public boolean test(RestaurantApi restaurantApi) throws Exception {
+                return (restaurantApi.getRestaurants().size()>5);
             }
-        });
+        })
+                .subscribe(new Observer<RestaurantApi>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(RestaurantApi restaurantApi) {
+                        restaurantApiLiveData.setValue(restaurantApi);
+                        Log.d("error on next",""+restaurantApi.getRestaurants().size());
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        restaurantApiLiveData.setValue(null);
+                        Log.d("error on ","null in call");
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    public void fetchRestaurantDetail(String restaurantId){
+        Log.d("resid in repo",restaurantId);
+        Observable<Restaurant> restaurantObservable= services.getRestaurantDetails("restaurant","5e7cc4928495f233e070022a72b7de8a",restaurantId);
+
+        restaurantObservable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<Restaurant>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(Restaurant restaurant) {
+                        restaurantMutableLiveData.setValue(restaurant);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        restaurantMutableLiveData.setValue(null);
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+
+    }
+
+    public void fetchReviews(String id){
+        Observable<ReviewsApi> reviewsApiObservable = services.getReviews(
+                "reviews","5e7cc4928495f233e070022a72b7de8a",id);
+        reviewsApiObservable.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ReviewsApi>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(ReviewsApi reviewsApi) {
+                        Log.d("review","succesful");
+                        reviewsApiMutableLiveData.setValue(reviewsApi);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d("review","error");
+                        reviewsApiMutableLiveData.setValue(null);
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 
 }
