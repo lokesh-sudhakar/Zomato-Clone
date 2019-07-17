@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 import javax.annotation.Nullable;
 
@@ -54,7 +54,8 @@ public class HomeActivity extends AppCompatActivity implements RestaurantListFra
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_frame,goldFragment).commit();
                     return true;
                 case R.id.navigation_search:
-                    Toast.makeText(getApplicationContext(),"search selected",Toast.LENGTH_SHORT).show();
+                    SearchFragment searchFragment = new SearchFragment();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_frame,searchFragment).commit();
                     return true;
                 case R.id.navigation_profile:
                     ProfileFragment profileFragment = new ProfileFragment();
@@ -74,6 +75,7 @@ public class HomeActivity extends AppCompatActivity implements RestaurantListFra
         super.onCreate(savedInstanceState);
         Stetho.initializeWithDefaults(this);
         setContentView(R.layout.activity_home);
+//        context = this.context;
 
 //        ApplicationComponent ac =  MyApplication.get(this).getApplicationComponent();
 //
@@ -95,6 +97,19 @@ public class HomeActivity extends AppCompatActivity implements RestaurantListFra
 
         }
       }
+
+
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if(requestCode==1){
+//        if(resultCode==12){
+//            Log.d("message", "the problem is not here");
+//            Bundle bundle=data.getBundleExtra("locationBundle");
+//            OrderFragment orderFragment=new OrderFragment();
+//            orderFragment.setArguments(bundle);
+//        }
+//    }}
 
     @Override
     public void onConnectActivity(String id) {

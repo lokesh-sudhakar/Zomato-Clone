@@ -28,9 +28,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".SearchActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
         <activity
             android:name=".RestaurantDetailActivity"
-            android:label="@string/title_activity_movie_detail"
             android:theme="@style/AppTheme.NoActionBar">
 
         </activity>

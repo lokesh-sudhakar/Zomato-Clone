@@ -28,8 +28,6 @@ import com.squareup.picasso.Picasso;
 
 import java.util.Objects;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class RestaurantDetailActivity extends AppCompatActivity {
 
@@ -41,64 +39,45 @@ public class RestaurantDetailActivity extends AppCompatActivity {
     double lattitude;
     double longitude;
 
-    @BindView(R.id.restaurant_poster)
     ImageView restaurantPoster;
-    @BindView(R.id.toolbar)
     Toolbar toolbar;
-    @BindView(R.id.toolbar_layout)
     CollapsingToolbarLayout toolbarLayout;
-    @BindView(R.id.app_bar)
     AppBarLayout appBar;
-    @BindView(R.id.restaurant_name)
     TextView restaurantName;
-    @BindView(R.id.cusines_text)
     TextView cusinesText;
-    @BindView(R.id.rating)
     TextView rating;
-    @BindView(R.id.first_view)
-    View firstView;
-    @BindView(R.id.address)
+
     TextView address;
-    @BindView(R.id.more_info_text_view)
-    TextView moreInfoTextView;
-    @BindView(R.id.dotted_line_under_more_view)
-    View dottedLineUnderMoreView;
-    @BindView(R.id.restaurant_status)
+
     TextView restaurantStatus;
-    @BindView(R.id.restaurant_timing)
     TextView restaurantTiming;
-    @BindView(R.id.third_view)
-    View thirdView;
-    @BindView(R.id.review_count)
+
     TextView reviewCount;
-    @BindView(R.id.dotted_line_view)
-    View dottedLineView;
-    @BindView(R.id.direction_right)
-    ImageView directionRight;
-    @BindView(R.id.dotted_line_und)
-    View dottedLineUnd;
-    @BindView(R.id.direction_layout)
-    ConstraintLayout directionLayout;
-    @BindView(R.id.menu_icon)
-    ImageView menuIcon;
-    @BindView(R.id.dotted_line_under_menu)
-    View dottedLineUnderMenu;
-    @BindView(R.id.menu_layout)
-    ConstraintLayout menuLayout;
-    @BindView(R.id.review_icon)
-    ImageView reviewIcon;
-    @BindView(R.id.dotted_line_under_review)
-    View dottedLineUnderReview;
-    @BindView(R.id.forth_view)
-    View forthView;
-    @BindView(R.id.review_rv)
+
+
+
+
+
+
     RecyclerView reviewRv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant_detail);
-        ButterKnife.bind(this);
+
+        restaurantPoster = findViewById(R.id.restaurant_poster);
+        toolbar = findViewById(R.id.toolbar);
+        toolbarLayout = findViewById(R.id.toolbar_layout);
+        appBar = findViewById(R.id.app_bar);
+        restaurantName = findViewById(R.id.restaurant_name);
+        cusinesText = findViewById(R.id.cusines_text);
+        rating = findViewById(R.id.rating);
+        address = findViewById(R.id.address);
+        restaurantStatus =findViewById(R.id.restaurant_status);
+        restaurantTiming = findViewById(R.id.restaurant_timing);
+        reviewCount = findViewById(R.id.review_count);
+        reviewRv = findViewById(R.id.review_rv);
 
         restaurantDetailViewModel = ViewModelProviders.of(this).get(RestaurantDetailViewModel.class);
 

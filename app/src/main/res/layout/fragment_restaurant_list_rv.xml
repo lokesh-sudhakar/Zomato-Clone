@@ -41,28 +41,22 @@
             android:layout_weight="1"
             android:layout_marginEnd="10dp"
             app:cardBackgroundColor="#ECECEC">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-                <ImageView
-                    android:layout_margin="8dp"
-                    android:layout_weight="7"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/ic_search_black_24dp"
-                    tools:ignore="ContentDescription" />
+
                 <TextView
+                    android:id="@+id/search_layout"
                     android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
                     android:maxLines="1"
                     android:ellipsize="end"
+                    android:paddingStart="4dp"
                     android:textSize="15sp"
+                    android:drawableStart="@drawable/ic_search_black_24dp"
+                    android:drawablePadding="@dimen/margin_8dp"
                     android:text="@string/search_for_restaurant_dishes"/>
-            </LinearLayout>
         </androidx.cardview.widget.CardView>
+
         <androidx.cardview.widget.CardView
             android:layout_weight="7"
             android:layout_width="match_parent"

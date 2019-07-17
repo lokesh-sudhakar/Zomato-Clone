@@ -46,6 +46,7 @@ public class RestaurantRepository {
 
     @Inject
     RestaurantService services;
+
     private final String SEARCH = "search";
     private final String KEY = "17e3de8473825e5b134932479c395958";
     private final int NUM_OF_RESULT = 10;
@@ -300,6 +301,35 @@ public class RestaurantRepository {
 
                     }
                 });
+    }
+
+    public void searchCall(String query){
+
+        Observable<RestaurantApi> call = services.getSearch(SEARCH, KEY, query);
+        call.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<RestaurantApi>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+                Log.d("searchCall","on disposable");
+            }
+
+            @Override
+            public void onNext(RestaurantApi restaurantApi) {
+                Log.d("searchCall","on next"+ restaurantApi.getResultsStart());
+                restaurantApiMutableLiveData.setValue(restaurantApi);
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Log.d("searchCall","on throwable");
+                restaurantApiMutableLiveData.setValue(null);
+            }
+
+            @Override
+            public void onComplete() {
+                Log.d("searchCall","on complete");
+            }
+        });
+
     }
 
 }

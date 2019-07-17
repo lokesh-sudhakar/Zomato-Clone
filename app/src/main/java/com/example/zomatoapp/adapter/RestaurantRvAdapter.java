@@ -101,7 +101,6 @@ public class RestaurantRvAdapter extends RecyclerView.Adapter<RestaurantRvAdapte
             mRating = itemView.findViewById(R.id.rating);
             mPoster = itemView.findViewById(R.id.restaurant_poster);
             restaurantLayout = itemView.findViewById(R.id.restaurant_layout);
-
         }
 
     }

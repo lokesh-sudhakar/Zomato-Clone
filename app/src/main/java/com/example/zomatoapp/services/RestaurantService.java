@@ -47,6 +47,11 @@ public interface RestaurantService {
                                     @Query("lat") double latitude, @Query("lon") double longitude);
 
     @GET("/api/v2.1/{type}")
+
+    Observable<RestaurantApi> getSearch(@Path("type") String cat, @Query("apikey") String key,
+                                  @Query("q") String query);
+
+    @GET("/api/v2.1/{type}")
     Observable<Restaurant> getRestaurantDetails(@Path("type") String cat, @Query("apikey") String key,
                                                 @Query("res_id") String id);
 

@@ -12,6 +12,5 @@ import dagger.Component;
 @Component(modules = {AppModule.class, ApiModule.class})
 public interface RepositoryComponent {
 
-    public RestaurantService getApiInterface();
     void inject(RestaurantRepository repository);
 }
