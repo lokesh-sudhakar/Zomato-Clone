@@ -3,6 +3,7 @@ package com.example.zomatoapp;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,14 +36,15 @@ public class RestaurantListFragment extends Fragment implements RestaurantRvAdap
     private RestaurantListViewModel viewModel;
     private int category;
     private ImageView takeAwayImage;
-
+    double latitude;
+    double longitude;
     ListItemClickListener listItemClickListener;
-
     ShimmerFrameLayout shimmerFrameLayout;
 
-
-    public RestaurantListFragment(int category) {
+    public RestaurantListFragment(int category, double lat, double lon) {
         this.category = category;
+        latitude= lat;
+        longitude = lon;
     }
 
     public interface ListItemClickListener {
@@ -78,7 +80,8 @@ public class RestaurantListFragment extends Fragment implements RestaurantRvAdap
         if(category == 5){
             takeAwayImage = rootView.findViewById(R.id.takeAwayImage);
             takeAwayImage.setVisibility(View.VISIBLE);
-            Picasso.with(getContext()).load(R.drawable.take_away).transform(new RoundedCornersTransformation(15,1)).into(takeAwayImage);
+            Picasso.with(getContext()).load(R.drawable.take_away).
+                    transform(new RoundedCornersTransformation(15,1)).into(takeAwayImage);
         }
         shimmerFrameLayout=rootView.findViewById(R.id.shimmer_layout);
         shimmerFrameLayout.setVisibility(View.VISIBLE);
@@ -86,7 +89,9 @@ public class RestaurantListFragment extends Fragment implements RestaurantRvAdap
         mRecyclerView = rootView.findViewById(R.id.restaurant_list_rv);
         viewModel = ViewModelProviders.of(this).get(RestaurantListViewModel.class);
         viewModel.setCategory(category);
-        viewModel.callNetwork(getContext());
+        viewModel.setLatitude(latitude);
+        viewModel.setLongitude(longitude);
+        viewModel.callNetwork();
         viewModel.getRestaurantApi().observe(this, new Observer<RestaurantApi>() {
             @Override
             public void onChanged(RestaurantApi restaurantApi) {
@@ -135,7 +140,7 @@ public class RestaurantListFragment extends Fragment implements RestaurantRvAdap
                     pastVisibleItems = ((LinearLayoutManager) mLayoutManager).findFirstVisibleItemPosition();
                     if ((visibleItemCount + pastVisibleItems) >= totalItemCount && viewModel.isLoading()) {
                         viewModel.setLoading(false);
-                        viewModel.callNetwork(getContext());
+                        viewModel.callNetwork();
                     }
                 }
             }

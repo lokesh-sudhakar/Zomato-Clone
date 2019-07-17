@@ -46,19 +46,10 @@ public class RestaurantDetailActivity extends AppCompatActivity {
     TextView restaurantName;
     TextView cusinesText;
     TextView rating;
-
     TextView address;
-
     TextView restaurantStatus;
     TextView restaurantTiming;
-
     TextView reviewCount;
-
-
-
-
-
-
     RecyclerView reviewRv;
 
     @Override
@@ -69,6 +60,7 @@ public class RestaurantDetailActivity extends AppCompatActivity {
         restaurantPoster = findViewById(R.id.restaurant_poster);
         toolbar = findViewById(R.id.toolbar);
         toolbarLayout = findViewById(R.id.toolbar_layout);
+        toolbarLayout.setTitle(" ");
         appBar = findViewById(R.id.app_bar);
         restaurantName = findViewById(R.id.restaurant_name);
         cusinesText = findViewById(R.id.cusines_text);
@@ -99,7 +91,6 @@ public class RestaurantDetailActivity extends AppCompatActivity {
             restaurantId = bundle.getString("restaurant_id");
             location = bundle.getString("places");
             Log.d("resid", restaurantId + "  " + location);
-
 
         }
         restaurantDetailViewModel.fetchRestaurantDetails(restaurantId).observe(this, new Observer<Restaurant>() {
@@ -132,7 +123,8 @@ public class RestaurantDetailActivity extends AppCompatActivity {
                 restaurantTiming.setText(restaurantDetailViewModel.getRestaurant().getTimings()+" (Today)");
                 reviewCount.setText(restaurantDetailViewModel.getRestaurant().getAllReviewsCount()+" reviews");
 
-                Picasso.with(getApplication()).load(restaurantDetailViewModel.getRestaurant().getFeaturedImage()).into(restaurantPoster);
+                Picasso.with(getApplication()).load(restaurantDetailViewModel.getRestaurant().getFeaturedImage())
+                        .placeholder(R.drawable.placeholder_food).into(restaurantPoster);
                 rating.setText(restaurantDetailViewModel.getRestaurant().getUserRating().getAggregateRating());
                 Location startPoint = new Location("locationA");
                 startPoint.setLatitude(lattitude);

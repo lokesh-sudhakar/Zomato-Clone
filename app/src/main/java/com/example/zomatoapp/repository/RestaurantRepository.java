@@ -62,12 +62,17 @@ public class RestaurantRepository {
 
     private int category;
 
-    private int longitude;
-    private int latitude;
-    public void setLongitude(int longitude) {
+    private double longitude;
+    private double latitude;
+
+    public RestaurantRepository() {
+        MyApplication.getComponent().inject(this);
+    }
+
+    public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
-    public void setLatitude(int latitude) {
+    public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
 
@@ -84,9 +89,6 @@ public class RestaurantRepository {
     private MutableLiveData<ForYouApiResponse> forYouApiResponseMutableLiveData = new MutableLiveData<>();
 
     private RestaurantApi restaurantApiResult;
-    public RestaurantRepository() {
-        MyApplication.getComponent().inject(this);
-    }
 
     public RestaurantApi getRestaurantApiResult() {
         return restaurantApiResult;
@@ -99,25 +101,21 @@ public class RestaurantRepository {
     public MutableLiveData<RestaurantApi> getRestaurantApiLiveData() {
         return restaurantApiLiveData;
     }
+
     public MutableLiveData<Restaurant> getRestaurantMutableLiveData() {
         return restaurantMutableLiveData;
     }
 
-
     public MutableLiveData<RestaurantApi> connectMutableLiveData() {
         return restaurantApiMutableLiveData;
     }
-
 
     public MutableLiveData<ForYouApiResponse> getForYouApiResponseMutableLiveData() {
         return forYouApiResponseMutableLiveData;
     }
 
     public void networkCall(int start) {
-
-
-
-        Observable<RestaurantApi> call = services.getRestaurant(SEARCH, KEY, 12.9038,77.59,
+        Observable<RestaurantApi> call = services.getRestaurant(SEARCH, KEY, latitude,longitude,
 
                               category, start, NUM_OF_RESULT);
         call.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<RestaurantApi>() {
@@ -128,14 +126,12 @@ public class RestaurantRepository {
 
             @Override
             public void onNext(RestaurantApi restaurantApi) {
-                Log.d("networkCall","on next"+ restaurantApi.getRestaurants().size());
                 restaurantApiMutableLiveData.setValue(restaurantApi);
 
             }
 
             @Override
             public void onError(Throwable e) {
-                Log.d("networkCall","on throwable");
                 restaurantApiMutableLiveData.setValue(null);
             }
 

@@ -75,13 +75,6 @@ public class HomeActivity extends AppCompatActivity implements RestaurantListFra
         super.onCreate(savedInstanceState);
         Stetho.initializeWithDefaults(this);
         setContentView(R.layout.activity_home);
-//        context = this.context;
-
-//        ApplicationComponent ac =  MyApplication.get(this).getApplicationComponent();
-//
-//        hc = DaggerHomeActivityComponent.builder().homeActivityContextModule(new HomeActivityContextModule(this)).build();
-//        hc.injectHomeActivity(this);
-
         BottomNavigationView navView = findViewById(R.id.bottom_nav_view);
         mTextMessage = findViewById(R.id.message);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
