@@ -14,6 +14,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/takeAwayImage"
@@ -21,7 +22,7 @@
         android:scaleType="fitXY"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:layout_height="200dp"
-        app:layout_scrollFlags="scroll|enterAlways"
+        app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
         android:padding="10dp"
         android:visibility="gone"
         />
@@ -36,6 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:background="@color/colorPrimary"
         android:padding="10dp">
         <androidx.cardview.widget.CardView

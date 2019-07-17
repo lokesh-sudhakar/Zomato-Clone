@@ -46,19 +46,10 @@ public class RestaurantDetailActivity extends AppCompatActivity {
     TextView restaurantName;
     TextView cusinesText;
     TextView rating;
-
     TextView address;
-
     TextView restaurantStatus;
     TextView restaurantTiming;
-
     TextView reviewCount;
-
-
-
-
-
-
     RecyclerView reviewRv;
     String shareRestaurantLink;
 
@@ -70,6 +61,7 @@ public class RestaurantDetailActivity extends AppCompatActivity {
         restaurantPoster = findViewById(R.id.restaurant_poster);
         toolbar = findViewById(R.id.toolbar);
         toolbarLayout = findViewById(R.id.toolbar_layout);
+        toolbarLayout.setTitle(" ");
         appBar = findViewById(R.id.app_bar);
         restaurantName = findViewById(R.id.restaurant_name);
         cusinesText = findViewById(R.id.cusines_text);
@@ -103,7 +95,6 @@ public class RestaurantDetailActivity extends AppCompatActivity {
             location = bundle.getString("places");
             Log.d("resid", restaurantId + "  " + location);
 
-
         }
         restaurantDetailViewModel.fetchRestaurantDetails(restaurantId).observe(this, new Observer<Restaurant>() {
             @Override
@@ -136,7 +127,8 @@ public class RestaurantDetailActivity extends AppCompatActivity {
                 restaurantTiming.setText(restaurantDetailViewModel.getRestaurant().getTimings());
                 reviewCount.setText(restaurantDetailViewModel.getRestaurant().getAllReviewsCount()+" reviews");
 
-                Picasso.with(getApplication()).load(restaurantDetailViewModel.getRestaurant().getFeaturedImage()).into(restaurantPoster);
+                Picasso.with(getApplication()).load(restaurantDetailViewModel.getRestaurant().getFeaturedImage())
+                        .placeholder(R.drawable.placeholder_food).into(restaurantPoster);
                 double ratingByUser = Double.parseDouble(restaurantDetailViewModel.getRestaurant().getUserRating().getAggregateRating());
 
                 if(ratingByUser >= 4.0){
@@ -151,18 +143,20 @@ public class RestaurantDetailActivity extends AppCompatActivity {
                     rating.setBackgroundResource(R.drawable.rounded_corner_grey);
                 }
 
-                Location startPoint = new Location("locationA");
-                startPoint.setLatitude(lattitude);
-                startPoint.setLongitude(longitude);
+                rating.setText(restaurantDetailViewModel.getRestaurant().getUserRating().getAggregateRating());
 
-                Location endPoint = new Location("locationA");
-                endPoint.setLatitude(Double.parseDouble(restaurantDetailViewModel.getRestaurant().getLocation().getLatitude()));
-                endPoint.setLongitude(Double.parseDouble(restaurantDetailViewModel.getRestaurant().getLocation().getLongitude()));
-                Log.d("location_cur", lattitude + " " + longitude);
-                Log.d("location_restaurant", Double.parseDouble(restaurantDetailViewModel.getRestaurant().getLocation().getLatitude())
-                        + "  " + Double.parseDouble(restaurantDetailViewModel.getRestaurant().getLocation().getLatitude()));
-                double distanceInMeters = startPoint.distanceTo(endPoint);
-                double distanceInKiloMeters = distanceInMeters / 1000;
+//                Location startPoint = new Location("locationA");
+//                startPoint.setLatitude(lattitude);
+//                startPoint.setLongitude(longitude);
+//
+//                Location endPoint = new Location("locationA");
+//                endPoint.setLatitude(Double.parseDouble(restaurantDetailViewModel.getRestaurant().getLocation().getLatitude()));
+//                endPoint.setLongitude(Double.parseDouble(restaurantDetailViewModel.getRestaurant().getLocation().getLongitude()));
+//                Log.d("location_cur", lattitude + " " + longitude);
+//                Log.d("location_restaurant", Double.parseDouble(restaurantDetailViewModel.getRestaurant().getLocation().getLatitude())
+//                        + "  " + Double.parseDouble(restaurantDetailViewModel.getRestaurant().getLocation().getLatitude()));
+//                double distanceInMeters = startPoint.distanceTo(endPoint);
+//                double distanceInKiloMeters = distanceInMeters / 1000;
 //                if(distanceInKiloMeters>14){
 //                    deliveryTime.setText("Delivery in 30-40 minutes.");
 //                }else if(distanceInKiloMeters>10){

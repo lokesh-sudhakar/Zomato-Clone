@@ -2,6 +2,7 @@ package com.example.zomatoapp.viewModels;
 
 import android.app.Application;
 import android.content.Context;
+import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -21,7 +22,19 @@ public class RestaurantListViewModel extends ViewModel {
     private int start = 0;
     private boolean loading = true;
     private int category;
+    private double longitude;
+    private double latitude;
 
+    private final double LATTITUDE = 12.9038;
+    private final double LONGITUDE = 77.5978;
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+
+    }
 
     public boolean isLoading() {
         return loading;
@@ -35,11 +48,15 @@ public class RestaurantListViewModel extends ViewModel {
         this.category = category;
     }
 
-    public void callNetwork(Context context) {
+    public void callNetwork() {
         if (restaurantApi == null) {
             mRestaurantRepository = new RestaurantRepository();
             mRestaurantRepository.setCategory(category);
             restaurantApi = mRestaurantRepository.connectMutableLiveData();
+            mRestaurantRepository.setLatitude(LATTITUDE);
+            mRestaurantRepository.setLongitude(LONGITUDE);
+            mRestaurantRepository.networkCall(start);
+        } else {
             mRestaurantRepository.networkCall(start);
         }
     }

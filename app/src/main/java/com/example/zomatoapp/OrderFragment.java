@@ -33,6 +33,9 @@ public class OrderFragment extends Fragment {
     private ShimmerFrameLayout mShimmerLayout;
     private TextView setLocation;
     private Context context;
+    double latitude;
+    double longitude;
+    String address;
 
     public OrderFragment(){
     }
@@ -47,6 +50,8 @@ public class OrderFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View orderFragmentLayout = inflater.inflate(R.layout.fragment_order_home,container,false);
+
+
         Toolbar toolbar = orderFragmentLayout.findViewById(R.id.toolbar);
         final BottomSheetDialog mBottomSheetDialog=new BottomSheetDialog(getActivity());
         final View sheetView=getActivity().getLayoutInflater().inflate(R.layout.location_bottom_sheet,null);
@@ -91,7 +96,7 @@ public class OrderFragment extends Fragment {
     }
 
     private TabLayout getTabLayout(View orderFragmentLayout) {
-        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(context,getChildFragmentManager());
+        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(context,getChildFragmentManager(),latitude,longitude);
         ViewPager viewPager = orderFragmentLayout.findViewById(R.id.view_pager);
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabLayout = orderFragmentLayout.findViewById(R.id.tabs);
@@ -102,11 +107,13 @@ public class OrderFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        Bundle bundle=getArguments();
+        Bundle bundle = getArguments();
         if(bundle!=null){
             updateLocationTextView(bundle.getString("place"));
-            double latitude=bundle.getDouble("latitude");
-            double longitude=bundle.getDouble("longitude");
+            latitude=bundle.getDouble("latitude");
+            longitude=bundle.getDouble("longitude");
+            Log.d("networkCall","order fragment "+ latitude);
+            address=bundle.getString("place");
             Log.d("latitude and langitude are ",""+latitude+longitude);
         }
         else {
@@ -119,10 +126,10 @@ public class OrderFragment extends Fragment {
                 location = locManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 
                 if(location!=null){
-                    double longitude = location.getLongitude();
-                    double latitude = location.getLatitude();
+                    longitude = location.getLongitude();
+                    latitude = location.getLatitude();
                     MapsViewModel mapsViewModel=new MapsViewModel();
-                    String address=mapsViewModel.getAddress(latitude,longitude,getContext());
+                    address=mapsViewModel.getAddress(latitude,longitude,getContext());
                     updateLocationTextView(address);
                 }
             }
