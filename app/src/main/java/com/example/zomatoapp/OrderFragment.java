@@ -33,6 +33,9 @@ public class OrderFragment extends Fragment {
     private ShimmerFrameLayout mShimmerLayout;
     private TextView setLocation;
     private Context context;
+    double latitude;
+    double longitude;
+    String address;
 
     public OrderFragment(){
     }
@@ -105,8 +108,9 @@ public class OrderFragment extends Fragment {
         Bundle bundle=getArguments();
         if(bundle!=null){
             updateLocationTextView(bundle.getString("place"));
-            double latitude=bundle.getDouble("latitude");
-            double longitude=bundle.getDouble("longitude");
+            address=bundle.getString("place");
+            latitude=bundle.getDouble("latitude");
+            longitude=bundle.getDouble("longitude");
             Log.d("latitude and langitude are ",""+latitude+longitude);
         }
         else {
@@ -119,10 +123,10 @@ public class OrderFragment extends Fragment {
                 location = locManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 
                 if(location!=null){
-                    double longitude = location.getLongitude();
-                    double latitude = location.getLatitude();
+                    longitude = location.getLongitude();
+                    latitude = location.getLatitude();
                     MapsViewModel mapsViewModel=new MapsViewModel();
-                    String address=mapsViewModel.getAddress(latitude,longitude,getContext());
+                    address=mapsViewModel.getAddress(latitude,longitude,getContext());
                     updateLocationTextView(address);
                 }
             }
