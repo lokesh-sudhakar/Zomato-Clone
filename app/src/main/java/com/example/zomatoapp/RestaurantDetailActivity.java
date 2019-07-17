@@ -133,11 +133,24 @@ public class RestaurantDetailActivity extends AppCompatActivity {
                 restaurantName.setText(restaurantDetailViewModel.getRestaurant().getName());
                 cusinesText.setText(restaurantDetailViewModel.getRestaurant().getCuisines());
                 address.setText(restaurantDetailViewModel.getRestaurant().getLocation().getAddress());
-                restaurantTiming.setText(restaurantDetailViewModel.getRestaurant().getTimings()+" (Today)");
+                restaurantTiming.setText(restaurantDetailViewModel.getRestaurant().getTimings());
                 reviewCount.setText(restaurantDetailViewModel.getRestaurant().getAllReviewsCount()+" reviews");
 
                 Picasso.with(getApplication()).load(restaurantDetailViewModel.getRestaurant().getFeaturedImage()).into(restaurantPoster);
-                rating.setText(restaurantDetailViewModel.getRestaurant().getUserRating().getAggregateRating());
+                double ratingByUser = Double.parseDouble(restaurantDetailViewModel.getRestaurant().getUserRating().getAggregateRating());
+
+                if(ratingByUser >= 4.0){
+                    rating.setBackgroundResource(R.drawable.rounded_corner_green);
+                } else if (ratingByUser >= 3.5){
+                    rating.setBackgroundResource(R.drawable.rounded_corner_lime_green);
+                } else if (ratingByUser >= 3.0){
+                    rating.setBackgroundResource(R.drawable.rounded_corner_yellow_green);
+                } else if (ratingByUser >= 1.0){
+                    rating.setBackgroundResource(R.drawable.rounded_corner_orange_green);
+                } else {
+                    rating.setBackgroundResource(R.drawable.rounded_corner_grey);
+                }
+
                 Location startPoint = new Location("locationA");
                 startPoint.setLatitude(lattitude);
                 startPoint.setLongitude(longitude);

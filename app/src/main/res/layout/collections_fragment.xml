@@ -23,7 +23,9 @@
             <LinearLayout
                 android:id="@+id/zomato_frame"
                 android:layout_width="match_parent"
+                android:paddingTop="10dp"
                 android:layout_height="120dp"
+                android:layout_marginLeft="10dp"
                 android:visibility="gone"
                 android:clipToPadding="false"
                 android:orientation="horizontal">
