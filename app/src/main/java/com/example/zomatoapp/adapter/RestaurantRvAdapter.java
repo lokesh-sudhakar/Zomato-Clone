@@ -2,6 +2,7 @@ package com.example.zomatoapp.adapter;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,9 +10,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.zomatoapp.R;
+import com.example.zomatoapp.model.Location;
 import com.example.zomatoapp.model.RestaurantData;
 import com.squareup.picasso.Picasso;
 
@@ -23,10 +26,16 @@ public class RestaurantRvAdapter extends RecyclerView.Adapter<RestaurantRvAdapte
 
     public List<RestaurantData> restaurantList;
     private Context context;
+    OnClickRestaurant onClickRestaurant;
 
-    public RestaurantRvAdapter(List<RestaurantData> restaurantList, Context context) {
+
+    public interface OnClickRestaurant{
+        void onPerformClick(String id);
+    }
+    public RestaurantRvAdapter(List<RestaurantData> restaurantList, Context context,OnClickRestaurant onClickRestaurant) {
         this.restaurantList = restaurantList;
         this.context = context;
+        this.onClickRestaurant = onClickRestaurant;
     }
 
     @NonNull
@@ -38,7 +47,7 @@ public class RestaurantRvAdapter extends RecyclerView.Adapter<RestaurantRvAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RestaurantViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RestaurantViewHolder holder, final int position) {
         holder.mTitle.setText(restaurantList.get(position).getRestaurant().getName());
         holder.mCuisines.setText(restaurantList.get(position).getRestaurant().getCuisines());
         holder.mPerPersonCost.setText("" + restaurantList.get(position).getRestaurant().
@@ -58,9 +67,17 @@ public class RestaurantRvAdapter extends RecyclerView.Adapter<RestaurantRvAdapte
         } else {
             holder.mRating.setBackgroundResource(R.drawable.rounded_corner_grey);
         }
-        Picasso.with(context).load(restaurantList.get(position).getRestaurant().getThumb()).
-                transform(new RoundedCornersTransformation(10, 1)).
-                placeholder(R.drawable.placeholder_food).into(holder.mPoster);
+        Log.d("restaurant",""+restaurantList.get(position).getRestaurant().getName());
+        if(!restaurantList.get(position).getRestaurant().getThumb().isEmpty()) {
+            Picasso.with(context).load(restaurantList.get(position).getRestaurant().getThumb()).
+                    transform(new RoundedCornersTransformation(10, 1)).placeholder(R.drawable.placeholder_food).into(holder.mPoster);
+        }
+        holder.restaurantLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickRestaurant.onPerformClick(restaurantList.get(position).getRestaurant().getId());
+            }
+        });
     }
 
     @Override
@@ -68,12 +85,13 @@ public class RestaurantRvAdapter extends RecyclerView.Adapter<RestaurantRvAdapte
         return restaurantList.size();
     }
 
-    class RestaurantViewHolder extends RecyclerView.ViewHolder {
+    class RestaurantViewHolder extends RecyclerView.ViewHolder{
         TextView mTitle;
         TextView mCuisines;
         TextView mPerPersonCost;
         TextView mRating;
         ImageView mPoster;
+        ConstraintLayout restaurantLayout;
 
         private RestaurantViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -82,6 +100,8 @@ public class RestaurantRvAdapter extends RecyclerView.Adapter<RestaurantRvAdapte
             mPerPersonCost = itemView.findViewById(R.id.per_person_cost);
             mRating = itemView.findViewById(R.id.rating);
             mPoster = itemView.findViewById(R.id.restaurant_poster);
+            restaurantLayout = itemView.findViewById(R.id.restaurant_layout);
         }
+
     }
 }

@@ -40,9 +40,7 @@ public class RestaurantListViewModel extends ViewModel {
             mRestaurantRepository = new RestaurantRepository();
             mRestaurantRepository.setCategory(category);
             restaurantApi = mRestaurantRepository.connectMutableLiveData();
-            mRestaurantRepository.networkCall(start,context);
-        } else {
-            mRestaurantRepository.networkCall(start,context);
+            mRestaurantRepository.networkCall(start);
         }
     }
 
