@@ -11,6 +11,8 @@ public class SearchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-
+        SearchFragment searchFragment = new SearchFragment();
+        getSupportFragmentManager().beginTransaction().add(R.id.search_container,searchFragment)
+                .commit();
     }
 }
