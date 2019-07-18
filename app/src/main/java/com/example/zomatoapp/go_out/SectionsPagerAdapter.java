@@ -31,9 +31,9 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         switch (position){
-//            case 0:{
-//                return new ForYouFragment();
-//            }
+            case 0:{
+                return new ForYouFragment();
+            }
             case 2:{
                 return new CollectionsFragment();
             }

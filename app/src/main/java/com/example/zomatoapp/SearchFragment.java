@@ -39,23 +39,22 @@ public class SearchFragment extends Fragment {
         viewModel.getRestaurantApi().observe(this, new Observer<RestaurantApi>() {
             @Override
             public void onChanged(RestaurantApi restaurantApi) {
-                viewModel.setRestaurantDataList(restaurantApi.getRestaurants());
-                setAdapter(restaurantApi.getRestaurants());
+                if( restaurantApi != null){
+                    viewModel.setRestaurantDataList(restaurantApi.getRestaurants());
+                    setAdapter(restaurantApi.getRestaurants());
+                }
             }
         });
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 
             @Override
             public boolean onQueryTextSubmit(String query) {
-                if(!query.equals(""))
                 viewModel.callSearch(query);
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                Log.d("searchCall","textchanged");
-                if(!newText.equals(""))
                 viewModel.callSearch(newText);
                 return false;
             }

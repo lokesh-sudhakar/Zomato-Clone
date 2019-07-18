@@ -1,5 +1,6 @@
-package com.example.zomatoapp.model;
+package com.example.zomatoapp.model.cuisines;
 
+import com.example.zomatoapp.model.cuisines.Cuisine;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

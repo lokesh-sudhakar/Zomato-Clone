@@ -1,8 +1,6 @@
 package com.example.zomatoapp.services;
 
-import androidx.lifecycle.LiveData;
-
-import com.example.zomatoapp.model.CuisinesApi;
+import com.example.zomatoapp.model.cuisines.CuisinesApi;
 import com.example.zomatoapp.model.Restaurant;
 import com.example.zomatoapp.model.RestaurantApi;
 import com.example.zomatoapp.model.ReviewsApi;
@@ -10,7 +8,6 @@ import com.example.zomatoapp.model.collection.CollectionsApiResponse;
 import com.example.zomatoapp.model.foryou.ForYouApiResponse;
 
 import io.reactivex.Observable;
-import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
@@ -43,8 +40,14 @@ public interface RestaurantService {
             @Query("lon") double longitude);
 
     @GET("/api/v2.1/{type}")
-    Call<CuisinesApi> getCuisines(@Path("type") String cat, @Query("apikey") String key,
+    Observable<CuisinesApi> getCuisines(@Path("type") String cat, @Query("apikey") String key,
                                     @Query("lat") double latitude, @Query("lon") double longitude);
+
+    @GET("/api/v2.1/{type}")
+    Observable<RestaurantApi> getRestaurantByCuisines(@Path("type") String cat, @Query("apikey") String key,
+                                            @Query("lat") double latitude, @Query("lon") double longitude,
+                                            @Query("cuisines") int cate, @Query("start") int start,
+                                            @Query("count") int num);
 
     @GET("/api/v2.1/{type}")
 
