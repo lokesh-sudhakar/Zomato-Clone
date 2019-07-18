@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,26 +47,26 @@ public class RestaurantDetailActivity extends AppCompatActivity {
     TextView restaurantName;
     TextView cusinesText;
     TextView rating;
-
+    ConstraintLayout directionLayout;
+    ConstraintLayout menuLayout;
+    ConstraintLayout reviewLayout;
     TextView address;
-
+    TextView reviewCount;
+    TextView moreInfo;
     TextView restaurantStatus;
     TextView restaurantTiming;
-
-    TextView reviewCount;
-
-
-
-
-
-
     RecyclerView reviewRv;
+    View dottedLine;
+    View dottedLineUnderMoreInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant_detail);
 
+        menuLayout=findViewById(R.id.menu_layout);
+        directionLayout=findViewById(R.id.direction_layout);
+        reviewLayout=findViewById(R.id.review_layout);
         restaurantPoster = findViewById(R.id.restaurant_poster);
         toolbar = findViewById(R.id.toolbar);
         toolbarLayout = findViewById(R.id.toolbar_layout);
@@ -78,8 +79,26 @@ public class RestaurantDetailActivity extends AppCompatActivity {
         restaurantTiming = findViewById(R.id.restaurant_timing);
         reviewCount = findViewById(R.id.review_count);
         reviewRv = findViewById(R.id.review_rv);
+        moreInfo=findViewById(R.id.more_info_text_view);
+        dottedLine=findViewById(R.id.dotted_line_view);
+        dottedLineUnderMoreInfo=findViewById(R.id.dotted_line_under_more_view);
 
         restaurantDetailViewModel = ViewModelProviders.of(this).get(RestaurantDetailViewModel.class);
+        animateView(reviewLayout);
+        animateView(menuLayout);
+        animateView(directionLayout);
+        animateView(restaurantPoster);
+        animateView(restaurantName);
+        animateView(cusinesText);
+        animateView(address);
+        animateView(restaurantStatus);
+        animateView(reviewRv);
+        animateView(restaurantTiming);
+        animateView(rating);
+        animateView(reviewCount);
+        animateView(moreInfo);
+        animateView(dottedLine);
+        animateView(dottedLineUnderMoreInfo);
 
         ((AppCompatActivity) Objects.requireNonNull(this)).setSupportActionBar(toolbar);
         Objects.requireNonNull(((AppCompatActivity) this).getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
@@ -210,4 +229,9 @@ public class RestaurantDetailActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    public void animateView(View v){
+        if(v!=null){
+        v.startAnimation(AnimationUtils.loadAnimation(getBaseContext(),R.anim.slide_from_left));
+    }}
 }
