@@ -11,13 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.zomatoapp.R;
-import com.example.zomatoapp.model.Cuisine;
-import com.example.zomatoapp.model.RestaurantData;
-import com.squareup.picasso.Picasso;
+import com.example.zomatoapp.model.cuisines.Cuisine;
 
 import java.util.List;
-
-import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
 
 public class CuisinesRvAdapter extends RecyclerView.Adapter<CuisinesRvAdapter.CuisinesViewHolder> {
 
