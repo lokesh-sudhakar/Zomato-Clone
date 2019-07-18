@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:id="@+id/more_info_bottom_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:minHeight="400dp"
+        app:layout_behavior="@string/bottom_sheet_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:background="@color/gold_options_background_not_selected"
+                android:layout_height="wrap_content"
+                android:textColor="@color/dark_black"
+                android:gravity="center"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:text="Everything about this place"
+                android:id="@+id/dismissBottomSheet"
+                android:drawableLeft="@drawable/ic_keyboard_arrow_down_black_24dp"
+                android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+                android:textSize="16dp"/>
+
+            <TextView
+                android:paddingTop="@dimen/margin_10dp"
+                android:paddingBottom="@dimen/margin_10dp"
+                android:paddingLeft="@dimen/margin_top_5dp"
+                android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:textColor="@color/light_grey"
+                android:id="@+id/useCurrentLocation"
+                android:drawableLeft="@drawable/ic_empty_bowl"
+                android:drawablePadding="30dp"
+                android:text="Cuisines"
+                android:textSize="15sp"/>
+
+            <!--<View-->
+                <!--android:id="@+id/divider2"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="1dp"-->
+                <!--android:background="@color/gold_options_background_not_selected"-->
+                <!--android:padding="@dimen/margin_top_5dp" />-->
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/cuisines_list"
+                android:layout_width="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_height="wrap_content">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+
+            <View
+            android:padding="@dimen/margin_top_5dp"
+            android:id="@+id/divider3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gold_options_background_not_selected" />
+
+            <TextView
+            android:id="@+id/addAddressButton"
+            android:paddingTop="@dimen/margin_10dp"
+            android:textSize="15sp"
+            android:paddingBottom="@dimen/margin_10dp"
+            android:layout_width="match_parent"
+            android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+            android:layout_height="wrap_content"
+            android:textColor="@color/light_grey"
+                android:drawablePadding="30dp"
+                android:paddingStart="10dp"
+            android:text="TYPE"
+            android:drawableLeft="@drawable/ic_plate_fork_and_knife"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Quick Bites"
+                android:layout_marginStart="60dp"
+                />
+
+
+
+            <!--<TextView-->
+                <!--android:textSize="16sp"-->
+                <!--android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"-->
+                <!--android:paddingTop="15dp"-->
+                <!--android:paddingLeft="@dimen/margin_top_5dp"-->
+                <!--android:paddingBottom="@dimen/margin_10dp"-->
+                <!--android:textColor="@color/dark_black"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="Recent locations"/>-->
+
+            <!--<View-->
+                <!--android:padding="@dimen/margin_top_5dp"-->
+                <!--android:id="@+id/divider4"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="1dp"-->
+                <!--android:background="@color/gold_options_background_not_selected" />-->
+
+            <!--<TextView-->
+                <!--android:textSize="15sp"-->
+                <!--android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"-->
+                <!--android:paddingBottom="@dimen/margin_10dp"-->
+                <!--android:textColor="@color/dark_black"-->
+                <!--android:paddingTop="@dimen/margin_10dp"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:paddingLeft="@dimen/margin_top_5dp"-->
+                <!--android:text="Dollar Layout, Phase 4, J.P.Nagar, Bengaluru"-->
+                <!--/>-->
+
+            <!--<View-->
+                <!--android:padding="@dimen/margin_top_5dp"-->
+                <!--android:id="@+id/divider5"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="1dp"-->
+                <!--android:layout_marginBottom="200dp"-->
+                <!--android:background="@color/gold_options_background_not_selected" />-->
+
+        </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+

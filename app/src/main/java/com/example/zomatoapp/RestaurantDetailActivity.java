@@ -1,5 +1,6 @@
 package com.example.zomatoapp;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
@@ -7,7 +8,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,12 +21,14 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.zomatoapp.adapter.CuisineMoreInfoAdapter;
 import com.example.zomatoapp.adapter.ReviewAdapter;
 import com.example.zomatoapp.model.Restaurant;
 import com.example.zomatoapp.model.ReviewsApi;
 import com.example.zomatoapp.viewModels.RestaurantDetailViewModel;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.squareup.picasso.Picasso;
 
 import java.util.Objects;
@@ -52,6 +57,9 @@ public class RestaurantDetailActivity extends AppCompatActivity {
     TextView reviewCount;
     RecyclerView reviewRv;
     String shareRestaurantLink;
+    TextView moreInfo;
+    RecyclerView cuisinesList;
+    View sheetView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +79,42 @@ public class RestaurantDetailActivity extends AppCompatActivity {
         restaurantTiming = findViewById(R.id.restaurant_timing);
         reviewCount = findViewById(R.id.review_count);
         reviewRv = findViewById(R.id.review_rv);
+        moreInfo = findViewById(R.id.more_info_text_view);
+        sheetView =  getLayoutInflater().inflate(R.layout.restaurant_more_info,null);
+        cuisinesList =sheetView.findViewById(R.id.cuisines_list);
+
+
+
+        final BottomSheetDialog mBottomSheetDialog=new BottomSheetDialog(this);
+        mBottomSheetDialog.setContentView(sheetView);
+        moreInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mBottomSheetDialog.show();
+                String[] cuisinesArray = restaurantDetailViewModel.getRestaurant().getCuisines().split(",");
+
+                CuisineMoreInfoAdapter cuisineMoreInfoAdapter = new CuisineMoreInfoAdapter(cuisinesArray);
+                cuisinesList.setLayoutManager(new LinearLayoutManager(getApplicationContext(), RecyclerView.HORIZONTAL,false));
+
+                cuisinesList.setAdapter(cuisineMoreInfoAdapter);
+                sheetView.findViewById(R.id.dismissBottomSheet).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        mBottomSheetDialog.cancel();
+                        mBottomSheetDialog.dismiss();
+
+                    }
+                });
+            }
+        });
+        mBottomSheetDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialogInterface) {
+
+                mBottomSheetDialog.cancel();
+                mBottomSheetDialog.dismiss();
+            }
+        });
 
         restaurantDetailViewModel = ViewModelProviders.of(this).get(RestaurantDetailViewModel.class);
 
@@ -120,6 +164,8 @@ public class RestaurantDetailActivity extends AppCompatActivity {
                         }
                     }
                 });
+
+
                 shareRestaurantLink = restaurantDetailViewModel.getRestaurant().getUrl();
                 restaurantName.setText(restaurantDetailViewModel.getRestaurant().getName());
                 cusinesText.setText(restaurantDetailViewModel.getRestaurant().getCuisines());
@@ -144,28 +190,6 @@ public class RestaurantDetailActivity extends AppCompatActivity {
                 }
 
                 rating.setText(restaurantDetailViewModel.getRestaurant().getUserRating().getAggregateRating());
-
-//                Location startPoint = new Location("locationA");
-//                startPoint.setLatitude(lattitude);
-//                startPoint.setLongitude(longitude);
-//
-//                Location endPoint = new Location("locationA");
-//                endPoint.setLatitude(Double.parseDouble(restaurantDetailViewModel.getRestaurant().getLocation().getLatitude()));
-//                endPoint.setLongitude(Double.parseDouble(restaurantDetailViewModel.getRestaurant().getLocation().getLongitude()));
-//                Log.d("location_cur", lattitude + " " + longitude);
-//                Log.d("location_restaurant", Double.parseDouble(restaurantDetailViewModel.getRestaurant().getLocation().getLatitude())
-//                        + "  " + Double.parseDouble(restaurantDetailViewModel.getRestaurant().getLocation().getLatitude()));
-//                double distanceInMeters = startPoint.distanceTo(endPoint);
-//                double distanceInKiloMeters = distanceInMeters / 1000;
-//                if(distanceInKiloMeters>14){
-//                    deliveryTime.setText("Delivery in 30-40 minutes.");
-//                }else if(distanceInKiloMeters>10){
-//                    deliveryTime.setText("Delivery in 25-30 minutes.");
-//                }else if(distanceInKiloMeters>5){
-//                    deliveryTime.setText("Delivery in 20-25 minutes.");
-//                }
-
-
             }
         });
 
@@ -190,16 +214,6 @@ public class RestaurantDetailActivity extends AppCompatActivity {
         reviewRv.setAdapter(adapter);
         }
     }
-//    @OnClick({R.id.address, R.id.change})
-//    public void onViewClicked(View view) {
-//        switch (view.getId()) {
-//            case R.id.address:
-//                break;
-//            case R.id.change:
-//                break;
-//        }
-//    }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

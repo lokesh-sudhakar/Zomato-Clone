@@ -91,7 +91,12 @@ public class ForYouAdapter extends RecyclerView.Adapter<ForYouAdapter.ForYouView
 
     @Override
     public int getItemCount() {
-        return establishments.size();
+
+        if(establishments.size()>5){
+            return 5;
+        }else{
+            return establishments.size();
+        }
     }
 
     public class ForYouViewHolder  extends  RecyclerView.ViewHolder{

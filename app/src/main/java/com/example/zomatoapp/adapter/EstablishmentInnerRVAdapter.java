@@ -42,9 +42,12 @@ public class EstablishmentInnerRVAdapter extends RecyclerView.Adapter<Establishm
     @Override
     public void onBindViewHolder(@NonNull EstablishmentInnerRVAdapter.EstablishmentViewHolder holder, int position) {
         if(restaurantList.get(position).getRestaurant()!=null) {
-            Log.d("lokesh", "in side adapter" + restaurantList.get(position).getRestaurant().getName());
-            holder.locality.setText(restaurantList.get(position).getRestaurant().getName());
+
+            Log.d("lokesh", "in side adapter" + restaurantList.get(position).getRestaurant().getCuisines());
+            holder.cuisines.setText(restaurantList.get(position).getRestaurant().getCuisines());
+            holder.locality.setText(restaurantList.get(position).getRestaurant().getLocation().getLocalityVerbose().toUpperCase());
             holder.name.setText(restaurantList.get(position).getRestaurant().getName());
+            holder.rating.setText(restaurantList.get(position).getRestaurant().getUserRating().getAggregateRating());
             if(!restaurantList.get(position).getRestaurant().getThumb().isEmpty()) {
                 Picasso.with(context).load(restaurantList.get(position).getRestaurant().getThumb())
                         .transform(new GradientTransformation())
@@ -63,11 +66,15 @@ public class EstablishmentInnerRVAdapter extends RecyclerView.Adapter<Establishm
         ImageView restaurantPoster;
         TextView name;
         TextView locality;
+        TextView rating;
+        TextView cuisines;
         public EstablishmentViewHolder(@NonNull View itemView) {
             super(itemView);
             restaurantPoster = itemView.findViewById(R.id.restaurant_poster);
             name = itemView.findViewById(R.id.restaurant_name);
             locality = itemView.findViewById(R.id.locatilty);
+            rating = itemView.findViewById(R.id.rating);
+            cuisines = itemView.findViewById(R.id.cuisines);
         }
     }
 }
