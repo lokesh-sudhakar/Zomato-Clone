@@ -2,6 +2,7 @@ package com.example.zomatoapp.ui.order_tab_adapter;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
@@ -37,6 +38,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         // Return a PlaceholderFragment (defined as a static inner class below).
         switch (position){
             case 0:{
+                Log.d("latitudeInSectionPage: ",""+latitude);
                 return new RestaurantListFragment(1,latitude,longitude);
             }
             case 1:{
