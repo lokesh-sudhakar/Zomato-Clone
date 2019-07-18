@@ -37,6 +37,7 @@ public class OrderFragment extends Fragment {
     double longitude;
     String address;
 
+
     public OrderFragment(){
     }
 

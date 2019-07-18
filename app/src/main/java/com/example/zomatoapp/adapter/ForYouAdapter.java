@@ -81,6 +81,8 @@ public class ForYouAdapter extends RecyclerView.Adapter<ForYouAdapter.ForYouView
                                         new EstablishmentInnerRVAdapter(restaurantFiltered,
                                                 context);
                                 holder_.name.setText(establishments.get(position).getEstablishment().getName());
+                                holder.recyclerView.setHasFixedSize(true);
+                                holder.recyclerView.setItemViewCacheSize(10);
                                 holder.recyclerView.setLayoutManager(new LinearLayoutManager(context, RecyclerView.HORIZONTAL,false));
                                 holder.recyclerView.setAdapter(establishmentInnerRVAdapter);
                             }
@@ -91,7 +93,12 @@ public class ForYouAdapter extends RecyclerView.Adapter<ForYouAdapter.ForYouView
 
     @Override
     public int getItemCount() {
-        return establishments.size();
+
+        if(establishments.size()>6){
+            return 6;
+        }else{
+            return establishments.size();
+        }
     }
 
     public class ForYouViewHolder  extends  RecyclerView.ViewHolder{

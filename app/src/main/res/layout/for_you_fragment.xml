@@ -1,8 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+<LinearLayout android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/for_you_recycler_view"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"/>
+<LinearLayout
+android:id="@+id/zomato_frame"
+android:layout_width="match_parent"
+android:paddingTop="10dp"
+android:layout_height="120dp"
+android:layout_marginLeft="10dp"
+android:visibility="gone"
+android:clipToPadding="false"
+android:orientation="horizontal">
 
+<ImageView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/ic_zomato_grey"
+    tools:ignore="ContentDescription" />
+
+<ImageView
+    android:layout_width="150dp"
+    android:layout_height="20dp"
+    android:layout_marginStart="40dp"
+    android:layout_marginTop="@dimen/margin_top_10dp"
+    android:src="@drawable/think_food_think_zomato"
+    tools:ignore="ContentDescription" />
+</LinearLayout>
+</LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         android:textSize="@dimen/text_size_22sp"
         android:text="Casual Dining"
+        android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         />
@@ -30,11 +31,11 @@
         <TextView
             android:id="@+id/no_of_places_text_view"
             android:layout_width="wrap_content"
-            android:layout_height="15dp"
+            android:layout_height="wrap_content"
             android:layout_marginRight="2dp"
             android:text="See all"
             android:textColor="@color/green"
-            android:textSize="10sp" />
+            android:textSize="12sp" />
 
         <ImageView
             android:layout_width="15dp"
@@ -48,4 +49,5 @@
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/establishment_name"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

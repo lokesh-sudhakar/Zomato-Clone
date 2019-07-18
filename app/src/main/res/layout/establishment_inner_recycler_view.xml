@@ -1,25 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="wrap_content"
+    android:orientation="vertical"
+    android:layout_width="150dp"
+    android:layout_marginRight="10dp"
     android:layout_height="wrap_content"
     >
-
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
     <ImageView
         android:id="@+id/restaurant_poster"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:src="@mipmap/ic_zomato_gold_icon"
-        android:layout_marginEnd="8dp"
         android:scaleType="fitXY" />
+        <TextView
+            android:id="@+id/rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corner_green"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:layout_gravity="bottom|right"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="10dp"
+            android:text="4.1"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15sp"
+            android:textStyle="bold"/>
+    </FrameLayout>
     <TextView
         android:id="@+id/restaurant_name"
-        android:layout_width="100dp"
-        android:layout_height="20dp"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textStyle="bold"
+        android:textColor="@color/light_grey"
+        android:text="Cold bar and Restaurant, JP Nagar"
+        android:textSize="15sp"
         />
     <TextView
+        android:id="@+id/cuisines"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:textColor="#524E4E"
+        android:textSize="12dp"
+        android:text="Jp Nagar, Bengaluru"
+        />
+
+    <TextView
         android:id="@+id/locatilty"
-        android:layout_width="100dp"
-        android:layout_height="10dp"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:textColor="#807979"
+        android:textSize="12dp"
+        android:text="Jp Nagar, Bengaluru"
         />
 
 
