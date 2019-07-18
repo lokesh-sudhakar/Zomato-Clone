@@ -78,6 +78,7 @@ public class OrderFragment extends Fragment {
                       public void onClick(View view) {
                           Intent intent=new Intent(getActivity(),MapsActivity.class);
                           startActivityForResult(intent,1);
+                          getActivity().overridePendingTransition(R.anim.slide_left, R.anim.slide_right);
                           mBottomSheetDialog.dismiss();
                       }
                   });
