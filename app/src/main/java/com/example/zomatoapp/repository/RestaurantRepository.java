@@ -39,9 +39,9 @@ public class RestaurantRepository {
     RestaurantService services;
 
     private final String SEARCH = "search";
-    private final String KEY_ONE = "7297a1c8f92f9eb0b41e6007dffbf78e";
+    private final String KEY_ONE = "17e3de8473825e5b134932479c395958";
     private final String KEY_Two = "5e7cc4928495f233e070022a72b7de8a";
-    private final String KEY_THREE = "17e3de8473825e5b134932479c395958";
+    private final String KEY_THREE = "7297a1c8f92f9eb0b41e6007dffbf78e";
     private final int NUM_OF_RESULT = 10;
     private final double LATTITUDE = 12.9038;
     private final double LONGITUDE = 77.5978;
