@@ -27,9 +27,10 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     public SectionsPagerAdapter(Context context, FragmentManager fm, double lat, double lon) {
         super(fm);
+        Log.d("latitude+longitudeInPager",""+lat+" "+lon);
         mContext = context;
         latitude = lat;
-        latitude = lon;
+        longitude = lon;
     }
 
     @Override
@@ -38,7 +39,6 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         // Return a PlaceholderFragment (defined as a static inner class below).
         switch (position){
             case 0:{
-                Log.d("latitudeInSectionPage: ",""+latitude);
                 return new RestaurantListFragment(1,latitude,longitude);
             }
             case 1:{

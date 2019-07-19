@@ -53,8 +53,9 @@ public class RestaurantListViewModel extends ViewModel {
             mRestaurantRepository = new RestaurantRepository();
             mRestaurantRepository.setCategory(category);
             restaurantApi = mRestaurantRepository.connectMutableLiveData();
-            mRestaurantRepository.setLatitude(LATTITUDE);
-            mRestaurantRepository.setLongitude(LONGITUDE);
+            mRestaurantRepository.setLatitude(latitude);
+            Log.d("latitudeInViewModel"," "+latitude);
+            mRestaurantRepository.setLongitude(longitude);
             mRestaurantRepository.networkCall(start);
         } else {
             mRestaurantRepository.networkCall(start);

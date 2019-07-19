@@ -41,9 +41,16 @@ public class RestaurantListFragment extends Fragment implements RestaurantRvAdap
     ListItemClickListener listItemClickListener;
     ShimmerFrameLayout shimmerFrameLayout;
 
+    public RestaurantListFragment(){
+        category = 1;
+        latitude = 12.9036;
+        longitude = 77.6012;
+    }
+
     public RestaurantListFragment(int category, double lat, double lon) {
         this.category = category;
         latitude= lat;
+        Log.d("latitudeInRestaurantListFragment",""+latitude);
         longitude = lon;
     }
 
@@ -90,6 +97,8 @@ public class RestaurantListFragment extends Fragment implements RestaurantRvAdap
         viewModel = ViewModelProviders.of(this).get(RestaurantListViewModel.class);
         viewModel.setCategory(category);
         viewModel.setLatitude(latitude);
+        Log.d("longitudeRestaurantList2"," "+longitude);
+        Log.d("latitudeInRestaurantList2", " "+latitude);
         viewModel.setLongitude(longitude);
         viewModel.callNetwork();
         viewModel.getRestaurantApi().observe(this, new Observer<RestaurantApi>() {

@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -167,6 +168,10 @@ public class RestaurantDetailActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d("back", "pressed");
                 onBackPressed();
+
+//                Intent intent = new Intent(RestaurantDetailActivity.this, HomeActivity.class);
+//                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                startActivity(intent);
             }
         });
         Bundle bundle = getIntent().getExtras();

@@ -13,6 +13,8 @@ import com.example.zomatoapp.model.foryou.ForYouApiResponse;
 
 import com.example.zomatoapp.services.RestaurantService;
 
+import java.text.DecimalFormat;
+
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -35,7 +37,7 @@ public class RestaurantRepository {
     RestaurantService services;
 
     private final String SEARCH = "search";
-    private final String KEY = "17e3de8473825e5b134932479c395958";
+    private final String KEY = "7297a1c8f92f9eb0b41e6007dffbf78e";
     private final int NUM_OF_RESULT = 10;
     private final double LATTITUDE = 12.9038;
     private final double LONGITUDE = 77.5978;
@@ -49,7 +51,6 @@ public class RestaurantRepository {
     private MutableLiveData<CuisinesApi> cuisinesApiMutableLiveData = new MutableLiveData<>();
 
     private int category;
-
     private double longitude;
     private double latitude;
 
@@ -58,10 +59,14 @@ public class RestaurantRepository {
     }
 
     public void setLongitude(double longitude) {
-        this.longitude = longitude;
+        DecimalFormat df = new DecimalFormat("#.####");
+        this.longitude = Double.valueOf(df.format(longitude));
     }
     public void setLatitude(double latitude) {
-        this.latitude = latitude;
+        DecimalFormat df = new DecimalFormat("#.####");
+        this.latitude = Double.valueOf(df.format(latitude));
+        Log.d("latitudeInRepo"," "+latitude);
+
     }
 
     public MutableLiveData<CuisinesApi> getCuisinesApiMutableLiveData() {
@@ -110,16 +115,19 @@ public class RestaurantRepository {
 
         Observable<RestaurantApi> call = services.getRestaurant(SEARCH, KEY, latitude,longitude,
                               category, start, NUM_OF_RESULT);
-        Log.d("networkCall","on Start" + category+"-" + start);
+        Log.d("networkCall","on Start" + category+"-" + start + "-" + latitude+"-" + longitude);
         call.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<RestaurantApi>() {
 
             @Override
             public void onSubscribe(Disposable d) {
-                Log.d("networkCall","on disposable" + category+"-" + start);
+                Log.d("networkCall","on disposable" + category+"-" + start + "-" + latitude+"-" + longitude);
             }
 
             @Override
             public void onNext(RestaurantApi restaurantApi) {
+                Log.d("networkCallLat","on Next" + category+"-" + start + "-" + latitude);
+                Log.d("networkCallLon","on Next" + category+"-" + start + "-" + longitude);
+
                 restaurantApiMutableLiveData.setValue(restaurantApi);
 
             }
@@ -127,12 +135,12 @@ public class RestaurantRepository {
             @Override
             public void onError(Throwable e) {
                 restaurantApiMutableLiveData.setValue(null);
-                Log.d("networkCall","on Error" + category +"-"+ start+ e.getMessage());
+                Log.d("networkCall","on Error" + category +"-"+ start+ e.getMessage() + "-" + latitude+"-" + longitude);
             }
 
             @Override
             public void onComplete() {
-                Log.d("networkCall","on complete" + category +"-"+ start);
+                Log.d("networkCall","on complete" + category +"-"+ start+ "-" + latitude);
             }
         });
 
@@ -327,7 +335,7 @@ public class RestaurantRepository {
 
     public void getCuisinesList(){
 
-        Observable<CuisinesApi> call = services.getCuisines("cuisines", KEY, latitude,longitude);
+        Observable<CuisinesApi> call = services.getCuisines("cuisines", KEY, LATTITUDE,LONGITUDE);
 
         call.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<CuisinesApi>() {
 
@@ -356,7 +364,7 @@ public class RestaurantRepository {
 
     public void getRestaurantCuisines(int id){
 
-        Observable<RestaurantApi> call = services.getRestaurantByCuisines(SEARCH, KEY, latitude,longitude,id,0,1);
+        Observable<RestaurantApi> call = services.getRestaurantByCuisines(SEARCH, KEY, LATTITUDE,LONGITUDE,id,0,1);
 
         call.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<RestaurantApi>() {
 
