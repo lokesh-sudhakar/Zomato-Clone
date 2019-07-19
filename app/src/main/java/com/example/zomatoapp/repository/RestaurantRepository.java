@@ -198,7 +198,7 @@ public class RestaurantRepository {
     public void fetchEstablishments(){
         Log.d("foryou","start");
         Observable<ForYouApiResponse> forYouObservable = services.getForYouApiResponse(ESTABLISHMENTS,
-                key,latitude,longitude);
+                key,LATTITUDE,LONGITUDE);
 
         forYouObservable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
