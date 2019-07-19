@@ -40,11 +40,11 @@ public class ForYouAdapter extends RecyclerView.Adapter<ForYouAdapter.ForYouView
     EstablishmentInnerRVAdapter.OnClickRestaurantListner onClickRestaurantListner;
 
 
-
-    public interface BindCallBack{
-        void onBindPos( List<Establishment> establishments,ForYouViewHolder holder, final int position);
+    public interface BindCallBack {
+        void onBindPos(List<Establishment> establishments, ForYouViewHolder holder, final int position);
     }
-    public ForYouAdapter(List<Establishment> establishments, Context context,ForYouViewModel forYouViewModel,
+
+    public ForYouAdapter(List<Establishment> establishments, Context context, ForYouViewModel forYouViewModel,
                          EstablishmentInnerRVAdapter.OnClickRestaurantListner onClickRestaurantListner) {
         this.establishments = establishments;
         this.context = context;
@@ -63,34 +63,34 @@ public class ForYouAdapter extends RecyclerView.Adapter<ForYouAdapter.ForYouView
     @Override
     public void onBindViewHolder(@NonNull final ForYouViewHolder holder, final int position) {
         this.holder_ = holder;
-        this.position_=position;
+        this.position_ = position;
         holder_.name.setText(establishments.get(position).getEstablishment().getName());
-        Log.d("lokesh name",""+establishments.get(position).getEstablishment().getName());
+        Log.d("lokesh name", "" + establishments.get(position).getEstablishment().getName());
 
         viewModel.fetchEstablishment(establishments.get(position).getEstablishment().getId())
-                .observe(((LifecycleOwner)context), new Observer<RestaurantApi>() {
+                .observe(((LifecycleOwner) context), new Observer<RestaurantApi>() {
                     @Override
                     public void onChanged(RestaurantApi restaurantApi) {
-                        if (restaurantApi != null){
+                        if (restaurantApi != null) {
                             List<RestaurantData> restaurantFiltered = new ArrayList<>();
-                            if(restaurantApi.getRestaurants().size()>6){
-                            for (RestaurantData restaurantData: restaurantApi.getRestaurants()) {
-                                if(!restaurantData.getRestaurant().getThumb().isEmpty()){
-                                    restaurantFiltered.add(restaurantData);
+                            if (restaurantApi.getRestaurants().size() > 6) {
+                                for (RestaurantData restaurantData : restaurantApi.getRestaurants()) {
+                                    if (!restaurantData.getRestaurant().getThumb().isEmpty()) {
+                                        restaurantFiltered.add(restaurantData);
+                                    }
                                 }
-                            }
-                                Log.d("name_in ",""+establishments.get(position).getEstablishment().getName());
+                                Log.d("name_in ", "" + establishments.get(position).getEstablishment().getName());
                                 holder.establishmentLayout.setVisibility(View.VISIBLE);
-                                EstablishmentInnerRVAdapter establishmentInnerRVAdapter=
+                                EstablishmentInnerRVAdapter establishmentInnerRVAdapter =
                                         new EstablishmentInnerRVAdapter(restaurantFiltered,
-                                                context,onClickRestaurantListner);
+                                                context, onClickRestaurantListner);
                                 holder_.name.setText(establishments.get(position).getEstablishment().getName());
                                 holder.recyclerView.setHasFixedSize(true);
                                 holder.recyclerView.setItemViewCacheSize(10);
-                                holder.recyclerView.setLayoutManager(new LinearLayoutManager(context, RecyclerView.HORIZONTAL,false));
+                                holder.recyclerView.setLayoutManager(new LinearLayoutManager(context, RecyclerView.HORIZONTAL, false));
                                 holder.recyclerView.setAdapter(establishmentInnerRVAdapter);
                             }
-                           }
+                        }
                     }
                 });
     }
@@ -98,18 +98,19 @@ public class ForYouAdapter extends RecyclerView.Adapter<ForYouAdapter.ForYouView
     @Override
     public int getItemCount() {
 
-        if(establishments.size()>6){
+        if (establishments.size() > 6) {
             return 6;
-        }else{
+        } else {
             return establishments.size();
         }
     }
 
-    public class ForYouViewHolder  extends  RecyclerView.ViewHolder{
+    public class ForYouViewHolder extends RecyclerView.ViewHolder {
 
         TextView name;
         RecyclerView recyclerView;
         ConstraintLayout establishmentLayout;
+
         public ForYouViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.establishment_name);

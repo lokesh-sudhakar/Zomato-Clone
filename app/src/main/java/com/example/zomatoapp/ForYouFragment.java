@@ -64,6 +64,7 @@ public class ForYouFragment extends Fragment implements EstablishmentInnerRVAdap
                 setAdapter();
             }
         });
+        Log.d("foryouFragment","completeForYoy");
         return forYouFragment;
     }
 

@@ -18,6 +18,7 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        repositoryComponent = DaggerRepositoryComponent.builder().appModule(new AppModule(this)).apiModule(new ApiModule()).build();
+        repositoryComponent = DaggerRepositoryComponent.builder().appModule(new AppModule(this))
+                .apiModule(new ApiModule()).build();
     }
 }

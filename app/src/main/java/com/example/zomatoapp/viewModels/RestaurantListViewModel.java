@@ -60,8 +60,8 @@ public class RestaurantListViewModel extends ViewModel {
             mRestaurantRepository = new RestaurantRepository();
             mRestaurantRepository.setCategory(category);
             restaurantApi = mRestaurantRepository.connectMutableLiveData();
-            mRestaurantRepository.setLatitude(LATTITUDE);
-            mRestaurantRepository.setLongitude(LONGITUDE);
+            mRestaurantRepository.setLatitude(latitude);
+            mRestaurantRepository.setLongitude(longitude);
             if(cuisinesId != 0){
                 mRestaurantRepository.setCuisinesId(cuisinesId);
             }

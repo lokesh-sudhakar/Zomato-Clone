@@ -186,59 +186,77 @@ public class RestaurantDetailActivity extends AppCompatActivity {
             @Override
             public void onChanged(Restaurant restaurant) {
                 restaurantDetailViewModel.setRestaurant(restaurant);
-                appBar.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
-                    boolean isShow = true;
-                    int scrollRange = -1;
+                if (restaurantDetailViewModel.getRestaurant() != null) {
+                    appBar.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+                        boolean isShow = true;
+                        int scrollRange = -1;
 
-                    @Override
-                    public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-                        if (scrollRange == -1) {
-                            scrollRange = appBarLayout.getTotalScrollRange();
+                        @Override
+                        public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                            if (scrollRange == -1) {
+                                scrollRange = appBarLayout.getTotalScrollRange();
+                            }
+                            if (scrollRange + verticalOffset == 0) {
+                                toolbarLayout.setTitle(restaurantDetailViewModel.getRestaurant().getName());
+                                toolbarLayout.setCollapsedTitleGravity(0);
+                                toolbarLayout.setCollapsedTitleTextColor(getResources().getColor(R.color.colorPrimary));
+                                isShow = true;
+                            } else if (isShow) {
+                                toolbarLayout.setTitle(" ");//careful there should a space between double quote otherwise it wont work
+                                isShow = false;
+                            }
                         }
-                        if (scrollRange + verticalOffset == 0) {
-                            toolbarLayout.setTitle(restaurantDetailViewModel.getRestaurant().getName());
-                            toolbarLayout.setCollapsedTitleGravity(0);
-                            toolbarLayout.setCollapsedTitleTextColor(getResources().getColor(R.color.colorPrimary));
-                            isShow = true;
-                        } else if (isShow) {
-                            toolbarLayout.setTitle(" ");//careful there should a space between double quote otherwise it wont work
-                            isShow = false;
-                        }
+                    });
+                    if(!restaurantDetailViewModel.getRestaurant().getAverageCostForTwo().equals(null)) {
+                        String cost = "Rs " + restaurantDetailViewModel.getRestaurant().getAverageCostForTwo() + " for two people(approx.)";
+                        averageCostTextView.setText(cost);
                     }
-                });
-                String cost = "Rs "+restaurantDetailViewModel.getRestaurant().getAverageCostForTwo()+" for two people(approx.)";
-                averageCostTextView.setText(cost);
+                    if(!restaurantDetailViewModel.getRestaurant().getUrl().isEmpty()){
 
-                shareRestaurantLink = restaurantDetailViewModel.getRestaurant().getUrl();
-                restaurantName.setText(restaurantDetailViewModel.getRestaurant().getName());
-                cusinesText.setText(restaurantDetailViewModel.getRestaurant().getCuisines());
-                address.setText(restaurantDetailViewModel.getRestaurant().getLocation().getAddress());
-                restaurantTiming.setText(restaurantDetailViewModel.getRestaurant().getTimings());
-                reviewCount.setText(restaurantDetailViewModel.getRestaurant().getAllReviewsCount()+" reviews");
-                if(!restaurantDetailViewModel.getRestaurant().getEstablishment().isEmpty()) {
-                    establishmentText.setText(restaurantDetailViewModel.getRestaurant().getEstablishment().get(0));
-                }
-                if(!restaurantDetailViewModel.getRestaurant().getFeaturedImage().isEmpty()) {
-                    Picasso.with(getApplication()).load(restaurantDetailViewModel.getRestaurant().getFeaturedImage())
-                            .placeholder(R.drawable.placeholder_food).into(restaurantPoster);
-                }else{
-                    restaurantPoster.setImageResource(R.drawable.placeholder_food);
-                }
-                double ratingByUser = Double.parseDouble(restaurantDetailViewModel.getRestaurant().getUserRating().getAggregateRating());
+                        shareRestaurantLink = restaurantDetailViewModel.getRestaurant().getUrl();
+                    }
+                    if(!restaurantDetailViewModel.getRestaurant().getName().isEmpty()) {
+                        restaurantName.setText(restaurantDetailViewModel.getRestaurant().getName());
+                    }
+                    if(!restaurantDetailViewModel.getRestaurant().getCuisines().isEmpty()) {
+                        cusinesText.setText(restaurantDetailViewModel.getRestaurant().getCuisines());
+                    }
+                    if(!restaurantDetailViewModel.getRestaurant().getLocation().getAddress().isEmpty()) {
+                        address.setText(restaurantDetailViewModel.getRestaurant().getLocation().getAddress());
+                    }
+                    if(!restaurantDetailViewModel.getRestaurant().getTimings().isEmpty()) {
+                        restaurantTiming.setText(restaurantDetailViewModel.getRestaurant().getTimings());
+                    }
+                    if(!restaurantDetailViewModel.getRestaurant().getAllReviewsCount().equals(null) ) {
+                        reviewCount.setText(restaurantDetailViewModel.getRestaurant().getAllReviewsCount() + " reviews");
+                    }
+                    if (!restaurantDetailViewModel.getRestaurant().getEstablishment().isEmpty()) {
+                        establishmentText.setText(restaurantDetailViewModel.getRestaurant().getEstablishment().get(0));
+                    }
+                    if (!restaurantDetailViewModel.getRestaurant().getFeaturedImage().isEmpty()) {
+                        Picasso.with(getApplication()).load(restaurantDetailViewModel.getRestaurant().getFeaturedImage())
+                                .placeholder(R.drawable.placeholder_food).into(restaurantPoster);
+                    } else {
+                        restaurantPoster.setImageResource(R.drawable.placeholder_food);
+                    }
+                    if(!restaurantDetailViewModel.getRestaurant().getUserRating().getAggregateRating().isEmpty()) {
+                        double ratingByUser = Double.parseDouble(restaurantDetailViewModel.getRestaurant().getUserRating().getAggregateRating());
 
-                if(ratingByUser >= 4.0){
-                    rating.setBackgroundResource(R.drawable.rounded_corner_green);
-                } else if (ratingByUser >= 3.5){
-                    rating.setBackgroundResource(R.drawable.rounded_corner_lime_green);
-                } else if (ratingByUser >= 3.0){
-                    rating.setBackgroundResource(R.drawable.rounded_corner_yellow_green);
-                } else if (ratingByUser >= 1.0){
-                    rating.setBackgroundResource(R.drawable.rounded_corner_orange_green);
-                } else {
-                    rating.setBackgroundResource(R.drawable.rounded_corner_grey);
-                }
+                        if (ratingByUser >= 4.0) {
+                            rating.setBackgroundResource(R.drawable.rounded_corner_green);
+                        } else if (ratingByUser >= 3.5) {
+                            rating.setBackgroundResource(R.drawable.rounded_corner_lime_green);
+                        } else if (ratingByUser >= 3.0) {
+                            rating.setBackgroundResource(R.drawable.rounded_corner_yellow_green);
+                        } else if (ratingByUser >= 1.0) {
+                            rating.setBackgroundResource(R.drawable.rounded_corner_orange_green);
+                        } else {
+                            rating.setBackgroundResource(R.drawable.rounded_corner_grey);
+                        }
 
-                rating.setText(restaurantDetailViewModel.getRestaurant().getUserRating().getAggregateRating());
+                        rating.setText(restaurantDetailViewModel.getRestaurant().getUserRating().getAggregateRating());
+                    }
+                }
             }
         });
 
