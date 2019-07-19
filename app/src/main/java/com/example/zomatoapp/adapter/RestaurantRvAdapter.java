@@ -78,6 +78,7 @@ public class RestaurantRvAdapter extends RecyclerView.Adapter<RestaurantRvAdapte
                 onClickRestaurant.onPerformClick(restaurantList.get(position).getRestaurant().getId());
             }
         });
+
     }
 
     @Override

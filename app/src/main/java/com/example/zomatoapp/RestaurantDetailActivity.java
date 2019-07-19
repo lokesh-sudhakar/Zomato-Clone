@@ -75,6 +75,8 @@ public class RestaurantDetailActivity extends AppCompatActivity {
     View sheetView;
     View dottedLine;
     View dottedLineUnderMoreInfo;
+    TextView establishmentText;
+    TextView averageCostTextView;
 
 
     @Override
@@ -102,7 +104,8 @@ public class RestaurantDetailActivity extends AppCompatActivity {
         moreInfo = findViewById(R.id.more_info_text_view);
         sheetView =  getLayoutInflater().inflate(R.layout.restaurant_more_info,null);
         cuisinesList =sheetView.findViewById(R.id.cuisines_list);
-
+        establishmentText = sheetView.findViewById(R.id.establishment_text_view);
+        averageCostTextView = sheetView.findViewById(R.id.average_cost_text_view);
 
 
         final BottomSheetDialog mBottomSheetDialog=new BottomSheetDialog(this);
@@ -122,7 +125,6 @@ public class RestaurantDetailActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         mBottomSheetDialog.cancel();
                         mBottomSheetDialog.dismiss();
-
                     }
                 });
             }
@@ -130,7 +132,6 @@ public class RestaurantDetailActivity extends AppCompatActivity {
         mBottomSheetDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
             @Override
             public void onDismiss(DialogInterface dialogInterface) {
-
                 mBottomSheetDialog.cancel();
                 mBottomSheetDialog.dismiss();
             }
@@ -205,7 +206,8 @@ public class RestaurantDetailActivity extends AppCompatActivity {
                         }
                     }
                 });
-
+                String cost = "Rs "+restaurantDetailViewModel.getRestaurant().getAverageCostForTwo()+" for two people(approx.)";
+                averageCostTextView.setText(cost);
 
                 shareRestaurantLink = restaurantDetailViewModel.getRestaurant().getUrl();
                 restaurantName.setText(restaurantDetailViewModel.getRestaurant().getName());
@@ -213,9 +215,15 @@ public class RestaurantDetailActivity extends AppCompatActivity {
                 address.setText(restaurantDetailViewModel.getRestaurant().getLocation().getAddress());
                 restaurantTiming.setText(restaurantDetailViewModel.getRestaurant().getTimings());
                 reviewCount.setText(restaurantDetailViewModel.getRestaurant().getAllReviewsCount()+" reviews");
-
-                Picasso.with(getApplication()).load(restaurantDetailViewModel.getRestaurant().getFeaturedImage())
-                        .placeholder(R.drawable.placeholder_food).into(restaurantPoster);
+                if(!restaurantDetailViewModel.getRestaurant().getEstablishment().isEmpty()) {
+                    establishmentText.setText(restaurantDetailViewModel.getRestaurant().getEstablishment().get(0));
+                }
+                if(!restaurantDetailViewModel.getRestaurant().getFeaturedImage().isEmpty()) {
+                    Picasso.with(getApplication()).load(restaurantDetailViewModel.getRestaurant().getFeaturedImage())
+                            .placeholder(R.drawable.placeholder_food).into(restaurantPoster);
+                }else{
+                    restaurantPoster.setImageResource(R.drawable.placeholder_food);
+                }
                 double ratingByUser = Double.parseDouble(restaurantDetailViewModel.getRestaurant().getUserRating().getAggregateRating());
 
                 if(ratingByUser >= 4.0){

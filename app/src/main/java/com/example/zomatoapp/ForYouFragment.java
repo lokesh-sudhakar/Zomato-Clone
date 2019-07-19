@@ -26,15 +26,23 @@ import com.example.zomatoapp.viewModels.ForYouViewModel;
 
 import java.util.List;
 
-public class ForYouFragment extends Fragment {
+public class ForYouFragment extends Fragment implements EstablishmentInnerRVAdapter.OnClickRestaurantListner {
 
     ForYouViewModel viewModel;
     ForYouAdapter forYouAdapter;
     RecyclerView forYouRecyclerView;
+    RestaurantListFragment.ListItemClickListener listItemClickListener;
+
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        try {
+            listItemClickListener = (RestaurantListFragment.ListItemClickListener) context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString()
+                    + " must implement OnImageClickListener");
+        }
     }
 
     @Nullable
@@ -59,7 +67,7 @@ public class ForYouFragment extends Fragment {
 
 //            viewModel.fetchEstablishment(viewModel.getForYouApiResponse().getEstablishments().get().getEstablishment().getId())
 
-             forYouAdapter = new ForYouAdapter(viewModel.getForYouApiResponse().getEstablishments(), getActivity(),viewModel);
+             forYouAdapter = new ForYouAdapter(viewModel.getForYouApiResponse().getEstablishments(), getActivity(),viewModel,this);
              forYouRecyclerView.setHasFixedSize(true);
              forYouRecyclerView.setItemViewCacheSize(30);
              forYouRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -67,8 +75,11 @@ public class ForYouFragment extends Fragment {
         }
     }
 
-
-//    @Override
+    @Override
+    public void onClickRestaurant(int id) {
+        listItemClickListener.onConnectActivity(String.valueOf(id));
+    }
+    //    @Override
 //    public void onBindPos(final List<Establishment> establishments, final ForYouAdapter.ForYouViewHolder holder, final int position) {
 //        viewModel.fetchEstablishment(establishments
 //                .get(position).getEstablishment().getId())

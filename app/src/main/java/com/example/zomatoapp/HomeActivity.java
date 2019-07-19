@@ -108,9 +108,9 @@ public class HomeActivity extends AppCompatActivity implements RestaurantListFra
     public void onConnectActivity(String id) {
         Intent intent=new Intent(HomeActivity.this, RestaurantDetailActivity.class);
         intent.putExtra(RESTAURANT,id);
-        intent.putExtra(PLACES,currentLocation);
-        Bundle bundle=getIntent().getBundleExtra("locationBundle");
-        intent.putExtra("locationBundle", bundle);
+//        intent.putExtra(PLACES,currentLocation);
+//        Bundle bundle=getIntent().getBundleExtra("locationBundle");
+//        intent.putExtra("locationBundle", bundle);
         startActivity(intent);
     }
 

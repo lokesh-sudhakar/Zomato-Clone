@@ -1,5 +1,6 @@
 package com.example.zomatoapp;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,13 +20,26 @@ import com.example.zomatoapp.model.RestaurantData;
 import com.example.zomatoapp.viewModels.RestaurantListViewModel;
 import java.util.List;
 
-public class SearchFragment extends Fragment {
+public class SearchFragment extends Fragment implements  SearchRvAdapter.OnClickRestaurantListner{
 
     private RecyclerView mRecyclerView;
     private SearchRvAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private RestaurantListViewModel viewModel;
     private SearchView searchView;
+
+    RestaurantListFragment.ListItemClickListener listItemClickListener;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        try {
+            listItemClickListener = (RestaurantListFragment.ListItemClickListener) context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString()
+                    + " must implement OnImageClickListener");
+        }
+    }
 
     @Nullable
     @Override
@@ -64,7 +78,7 @@ public class SearchFragment extends Fragment {
 
     private void setAdapter(List<RestaurantData> restaurantData) {
         if (mAdapter == null) {
-            mAdapter = new SearchRvAdapter(restaurantData, getContext());
+            mAdapter = new SearchRvAdapter(restaurantData, getContext(),this);
             mLayoutManager = new LinearLayoutManager(getContext());
             mRecyclerView.setLayoutManager(mLayoutManager);
             mRecyclerView.setAdapter(mAdapter);
@@ -72,7 +86,11 @@ public class SearchFragment extends Fragment {
             mAdapter.restaurantList = restaurantData;
             mAdapter.notifyDataSetChanged();
         }
-
     }
 
+    @Override
+    public void onClickRestaurant(int id) {
+        Log.d("onclick",""+id);
+        listItemClickListener.onConnectActivity(String.valueOf(id));
+    }
 }
