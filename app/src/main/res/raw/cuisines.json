@@ -1,0 +1,39 @@
+{
+  "cuisine":[
+    {
+      "cuisine_id": 5,
+      "cuisine_name": "Bakery",
+      "image": "bakery"
+    },
+    {
+      "cuisine_id": 270,
+      "cuisine_name": "Beverages",
+      "image": "baverages"
+    },
+    {
+      "cuisine_id": 7,
+      "cuisine_name": "Biryani",
+      "image": "biryani"
+    },{
+      "cuisine_id": 25,
+      "cuisine_name": "Chinese",
+      "image": "chinese"
+    },{
+      "cuisine_id": 100,
+      "cuisine_name": "Desserts",
+      "image": "desserts"
+    },{
+      "cuisine_id": 233,
+      "cuisine_name": "Ice Cream",
+      "image": "ice_cream"
+    },{
+      "cuisine_id": 88,
+      "cuisine_name": "Rajasthani",
+      "image": "rajasthani"
+    },{
+      "cuisine_id": 163,
+      "cuisine_name": "Tea",
+      "image": "tea"
+    }
+  ]
+}

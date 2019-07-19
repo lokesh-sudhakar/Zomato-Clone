@@ -4,7 +4,6 @@ import android.util.Log;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.zomatoapp.di.MyApplication;
-import com.example.zomatoapp.model.cuisines.CuisinesApi;
 import com.example.zomatoapp.model.Restaurant;
 import com.example.zomatoapp.model.RestaurantApi;
 import com.example.zomatoapp.model.ReviewsApi;
@@ -14,6 +13,8 @@ import com.example.zomatoapp.model.foryou.ForYouApiResponse;
 import com.example.zomatoapp.services.RestaurantService;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 import io.reactivex.Observable;
 import io.reactivex.Observer;
@@ -33,14 +34,20 @@ public class RestaurantRepository {
     private static final String COLLECTIONS = "collections";
     public static final String ESTABLISHMENTS = "establishments";
 
+    private List<String> keyList = new ArrayList<>();
     @Inject
     RestaurantService services;
 
     private final String SEARCH = "search";
-    private final String KEY = "7297a1c8f92f9eb0b41e6007dffbf78e";
+    private final String KEY_ONE = "7297a1c8f92f9eb0b41e6007dffbf78e";
+    private final String KEY_Two = "5e7cc4928495f233e070022a72b7de8a";
+    private final String KEY_THREE = "17e3de8473825e5b134932479c395958";
     private final int NUM_OF_RESULT = 10;
     private final double LATTITUDE = 12.9038;
     private final double LONGITUDE = 77.5978;
+
+    private String key = KEY_ONE;
+    private int cuisinesId = 0;
     private MutableLiveData<RestaurantApi> restaurantApiMutableLiveData = new MutableLiveData<>();
     private MutableLiveData<CollectionsApiResponse> collectionsApiResponseMutableLiveData =
             new MutableLiveData<>();
@@ -48,20 +55,22 @@ public class RestaurantRepository {
 
     private MutableLiveData<ReviewsApi> reviewsApiMutableLiveData = new MutableLiveData<>();
 
-    private MutableLiveData<CuisinesApi> cuisinesApiMutableLiveData = new MutableLiveData<>();
-
     private int category;
     private double longitude;
     private double latitude;
 
     public RestaurantRepository() {
         MyApplication.getComponent().inject(this);
+        keyList.add(KEY_ONE);
+        keyList.add(KEY_Two);
+        keyList.add(KEY_THREE);
     }
 
     public void setLongitude(double longitude) {
         DecimalFormat df = new DecimalFormat("#.####");
         this.longitude = Double.valueOf(df.format(longitude));
     }
+
     public void setLatitude(double latitude) {
         DecimalFormat df = new DecimalFormat("#.####");
         this.latitude = Double.valueOf(df.format(latitude));
@@ -69,9 +78,7 @@ public class RestaurantRepository {
 
     }
 
-    public MutableLiveData<CuisinesApi> getCuisinesApiMutableLiveData() {
-        return cuisinesApiMutableLiveData;
-    }
+    public void setCuisinesId(int cuisinesId) { this.cuisinesId = cuisinesId; }
 
     public MutableLiveData<ReviewsApi> getReviewsApiMutableLiveData() {
         return reviewsApiMutableLiveData;
@@ -113,9 +120,14 @@ public class RestaurantRepository {
 
     public void networkCall(final int start) {
 
-        Observable<RestaurantApi> call = services.getRestaurant(SEARCH, KEY, latitude,longitude,
-                              category, start, NUM_OF_RESULT);
-        Log.d("networkCall","on Start" + category+"-" + start + "-" + latitude+"-" + longitude);
+        Observable<RestaurantApi> call;
+        if(cuisinesId != 0){
+            call = services.getRestaurantByCuisines(SEARCH,key,latitude,longitude,cuisinesId,start,NUM_OF_RESULT);
+            Log.d("networkCall","cuisine");
+        } else{
+            call = services.getRestaurant(SEARCH, key, latitude,longitude, category, start, NUM_OF_RESULT);
+            Log.d("networkCall","not cuisine");
+        }
         call.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<RestaurantApi>() {
 
             @Override
@@ -125,16 +137,17 @@ public class RestaurantRepository {
 
             @Override
             public void onNext(RestaurantApi restaurantApi) {
-                Log.d("networkCallLat","on Next" + category+"-" + start + "-" + latitude);
-                Log.d("networkCallLon","on Next" + category+"-" + start + "-" + longitude);
-
+                Log.d("networkCall","on next" + category+"-" + start);
                 restaurantApiMutableLiveData.setValue(restaurantApi);
-
             }
 
             @Override
             public void onError(Throwable e) {
                 restaurantApiMutableLiveData.setValue(null);
+                int pos = keyList.indexOf(key);
+                pos++;
+                pos = pos%3;
+                key=keyList.get(pos);
                 Log.d("networkCall","on Error" + category +"-"+ start+ e.getMessage() + "-" + latitude+"-" + longitude);
             }
 
@@ -147,7 +160,7 @@ public class RestaurantRepository {
     }
 
     public void fetchCollections() {
-        Observable<CollectionsApiResponse> collectionObservable = services.getCollectionsApiResponse(COLLECTIONS,KEY,4);
+        Observable<CollectionsApiResponse> collectionObservable = services.getCollectionsApiResponse(COLLECTIONS,key,4);
 
         collectionObservable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -166,6 +179,10 @@ public class RestaurantRepository {
                     @Override
                     public void onError(Throwable e) {
                          collectionsApiResponseMutableLiveData.setValue(null);
+                        int pos = keyList.indexOf(key);
+                        pos++;
+                        pos = pos%3;
+                        key=keyList.get(pos);
 
                     }
 
@@ -178,7 +195,7 @@ public class RestaurantRepository {
 
     public void fetchEstablishments(){
         Observable<ForYouApiResponse> forYouObservable = services.getForYouApiResponse(ESTABLISHMENTS,
-                KEY,LATTITUDE,LONGITUDE);
+                key,LATTITUDE,LONGITUDE);
 
         forYouObservable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -197,6 +214,10 @@ public class RestaurantRepository {
                     @Override
                     public void onError(Throwable e) {
                         forYouApiResponseMutableLiveData.setValue(null);
+                        int pos = keyList.indexOf(key);
+                        pos++;
+                        pos = pos%3;
+                        key=keyList.get(pos);
                     }
 
                     @Override
@@ -208,7 +229,7 @@ public class RestaurantRepository {
     }
 
     public void fetchEstablishmentList(int id) {
-        Observable<RestaurantApi> establishmentObservable= services.getEstablishment(KEY,LATTITUDE,LONGITUDE,
+        Observable<RestaurantApi> establishmentObservable= services.getEstablishment(key,LATTITUDE,LONGITUDE,
                 id,0, 10);
 
         establishmentObservable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
@@ -233,6 +254,10 @@ public class RestaurantRepository {
                     @Override
                     public void onError(Throwable e) {
                         restaurantApiLiveData.setValue(null);
+                        int pos = keyList.indexOf(key);
+                        pos++;
+                        pos = pos%3;
+                        key=keyList.get(pos);
                         Log.d("error on ","null in call");
                     }
 
@@ -242,9 +267,10 @@ public class RestaurantRepository {
                     }
                 });
     }
+
     public void fetchRestaurantDetail(String restaurantId){
         Log.d("resid in repo",restaurantId);
-        Observable<Restaurant> restaurantObservable= services.getRestaurantDetails("restaurant","5e7cc4928495f233e070022a72b7de8a",restaurantId);
+        Observable<Restaurant> restaurantObservable= services.getRestaurantDetails("restaurant",key,restaurantId);
 
         restaurantObservable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<Restaurant>() {
@@ -261,6 +287,10 @@ public class RestaurantRepository {
                     @Override
                     public void onError(Throwable e) {
                         restaurantMutableLiveData.setValue(null);
+                        int pos = keyList.indexOf(key);
+                        pos++;
+                        pos = pos%3;
+                        key=keyList.get(pos);
                     }
 
                     @Override
@@ -273,7 +303,7 @@ public class RestaurantRepository {
 
     public void fetchReviews(String id){
         Observable<ReviewsApi> reviewsApiObservable = services.getReviews(
-                "reviews","5e7cc4928495f233e070022a72b7de8a",id,0,20);
+                "reviews",key,id,0,20);
         reviewsApiObservable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ReviewsApi>() {
@@ -292,6 +322,10 @@ public class RestaurantRepository {
                     public void onError(Throwable e) {
                         Log.d("review","error");
                         reviewsApiMutableLiveData.setValue(null);
+                        int pos = keyList.indexOf(key);
+                        pos++;
+                        pos = pos%3;
+                        key=keyList.get(pos);
                     }
 
                     @Override
@@ -303,7 +337,7 @@ public class RestaurantRepository {
 
     public void searchCall(String query){
 
-        Observable<RestaurantApi> call = services.getSearch(SEARCH, KEY, query);
+        Observable<RestaurantApi> call = services.getSearch(SEARCH, key, query);
         call.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<RestaurantApi>() {
             @Override
             public void onSubscribe(Disposable d) {
@@ -323,6 +357,10 @@ public class RestaurantRepository {
             public void onError(Throwable e) {
                 Log.d("searchCall","on throwable");
                 restaurantApiMutableLiveData.setValue(null);
+                int pos = keyList.indexOf(key);
+                pos++;
+                pos = pos%3;
+                key=keyList.get(pos);
             }
 
             @Override
@@ -333,38 +371,9 @@ public class RestaurantRepository {
 
     }
 
-    public void getCuisinesList(){
-
-        Observable<CuisinesApi> call = services.getCuisines("cuisines", KEY, LATTITUDE,LONGITUDE);
-
-        call.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<CuisinesApi>() {
-
-            @Override
-            public void onSubscribe(Disposable d) {
-            }
-
-            @Override
-            public void onNext(CuisinesApi cuisinesApi) {
-                cuisinesApiMutableLiveData.setValue(cuisinesApi);
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                restaurantApiMutableLiveData.setValue(null);
-            }
-
-            @Override
-            public void onComplete() {
-
-            }
-        });
-
-
-    }
-
     public void getRestaurantCuisines(int id){
 
-        Observable<RestaurantApi> call = services.getRestaurantByCuisines(SEARCH, KEY, LATTITUDE,LONGITUDE,id,0,1);
+        Observable<RestaurantApi> call = services.getRestaurantByCuisines(SEARCH, key, LATTITUDE,LONGITUDE,id,0,1);
 
         call.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<RestaurantApi>() {
 
@@ -380,6 +389,10 @@ public class RestaurantRepository {
             @Override
             public void onError(Throwable e) {
                 restaurantApiMutableLiveData.setValue(null);
+                int pos = keyList.indexOf(key);
+                pos++;
+                pos = pos%3;
+                key=keyList.get(pos);
             }
 
             @Override

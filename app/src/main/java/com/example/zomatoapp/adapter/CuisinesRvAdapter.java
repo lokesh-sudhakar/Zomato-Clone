@@ -4,25 +4,30 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.zomatoapp.R;
-import com.example.zomatoapp.model.cuisines.Cuisine;
+import com.example.zomatoapp.model.cuisines_model.Cuisines;
+import com.squareup.picasso.Picasso;;
 
 import java.util.List;
 
+import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
+
 public class CuisinesRvAdapter extends RecyclerView.Adapter<CuisinesRvAdapter.CuisinesViewHolder> {
 
-    public List<Cuisine> cuisinesList;
+    private List<Cuisines> cuisinesList;
     private Context context;
+    OnClickCuisine onClickCuisine;
 
-    public CuisinesRvAdapter(List<Cuisine> cuisinesList, Context context) {
+    public CuisinesRvAdapter(List<Cuisines> cuisinesList, Context context, OnClickCuisine onClickCuisine) {
         this.cuisinesList = cuisinesList;
         this.context = context;
+        this.onClickCuisine = onClickCuisine;
     }
 
     @NonNull
@@ -34,29 +39,17 @@ public class CuisinesRvAdapter extends RecyclerView.Adapter<CuisinesRvAdapter.Cu
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CuisinesRvAdapter.CuisinesViewHolder holder, int position) {
-//        holder.mTitle.setText(cuisinesList.get(position).getRestaurant().getName());
-//        holder.mCuisines.setText(cuisinesList.get(position).getRestaurant().getCuisines());
-//        holder.mPerPersonCost.setText("" + restaurantList.get(position).getRestaurant().
-//                getAverageCostForTwo() / 2 + " per person");
-//        holder.mRating.setText(restaurantList.get(position).getRestaurant().getUserRating().
-//                getAggregateRating());
-//        double rating = Double.parseDouble(restaurantList.get(position).getRestaurant().getUserRating().
-//                getAggregateRating());
-//        if(rating >= 4.0){
-//            holder.mRating.setBackgroundResource(R.drawable.rounded_corner_green);
-//        } else if (rating >= 3.5){
-//            holder.mRating.setBackgroundResource(R.drawable.rounded_corner_lime_green);
-//        } else if (rating >= 3.0){
-//            holder.mRating.setBackgroundResource(R.drawable.rounded_corner_yellow_green);
-//        } else if (rating >= 1.0){
-//            holder.mRating.setBackgroundResource(R.drawable.rounded_corner_orange_green);
-//        } else {
-//            holder.mRating.setBackgroundResource(R.drawable.rounded_corner_grey);
-//        }
-//        Picasso.with(context).load(restaurantList.get(position).getRestaurant().getThumb()).
-//                transform(new RoundedCornersTransformation(10, 1)).placeholder(R.drawable.placeholder_food).into(holder.mPoster);
-//
+    public void onBindViewHolder(@NonNull CuisinesRvAdapter.CuisinesViewHolder holder,final int position) {
+        holder.mTitle.setText(cuisinesList.get(position).getCuisineName());
+        int productImageId = context.getResources().getIdentifier(cuisinesList.get(position).getImage(),"drawable", context.getPackageName());
+        Picasso.with(context).load(productImageId).transform(new RoundedCornersTransformation(15, 1)).
+                placeholder(R.drawable.placeholder_food).into(holder.mPoster);
+        holder.frameLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickCuisine.onPerformClick(cuisinesList.get(position).getCuisineId());
+            }
+        });
     }
 
     @Override
@@ -66,14 +59,18 @@ public class CuisinesRvAdapter extends RecyclerView.Adapter<CuisinesRvAdapter.Cu
 
     class CuisinesViewHolder extends RecyclerView.ViewHolder {
         TextView mTitle;
-        TextView mCuisines;
         ImageView mPoster;
+        FrameLayout frameLayout;
 
         private CuisinesViewHolder(@NonNull View itemView) {
             super(itemView);
             mTitle = itemView.findViewById(R.id.title_cuisine);
-//            mCuisines = itemView.findViewById(R.id.restaurant_cuisines);
-//            mPoster = itemView.findViewById(R.id.restaurant_poster);
+            mPoster = itemView.findViewById(R.id.image_cuisine);
+            frameLayout = itemView.findViewById(R.id.cuisines_view);
         }
+    }
+
+    public interface OnClickCuisine{
+        void onPerformClick(int id);
     }
 }

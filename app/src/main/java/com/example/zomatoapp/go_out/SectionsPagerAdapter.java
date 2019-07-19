@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.example.zomatoapp.CollectionsFragment;
+import com.example.zomatoapp.CuisineListFragment;
 import com.example.zomatoapp.ForYouFragment;
 import com.example.zomatoapp.R;
 import com.example.zomatoapp.ui.order_tab_adapter.PlaceholderFragment;
@@ -36,6 +37,9 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
             }
             case 2:{
                 return new CollectionsFragment();
+            }
+            case 4:{
+                return new CuisineListFragment();
             }
         }
         return PlaceholderFragment.newInstance(position + 1);

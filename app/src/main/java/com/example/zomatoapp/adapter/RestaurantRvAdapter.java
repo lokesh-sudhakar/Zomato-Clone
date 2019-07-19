@@ -67,7 +67,6 @@ public class RestaurantRvAdapter extends RecyclerView.Adapter<RestaurantRvAdapte
         } else {
             holder.mRating.setBackgroundResource(R.drawable.rounded_corner_grey);
         }
-        Log.d("restaurant",""+restaurantList.get(position).getRestaurant().getName());
         if(!restaurantList.get(position).getRestaurant().getThumb().isEmpty()) {
             Picasso.with(context).load(restaurantList.get(position).getRestaurant().getThumb()).
                     transform(new RoundedCornersTransformation(10, 1)).placeholder(R.drawable.placeholder_food).into(holder.mPoster);

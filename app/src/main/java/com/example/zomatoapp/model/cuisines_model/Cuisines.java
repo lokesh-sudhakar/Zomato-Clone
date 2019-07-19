@@ -1,9 +1,9 @@
-package com.example.zomatoapp.model.cuisines;
+package com.example.zomatoapp.model.cuisines_model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class CuisineData {
+public class Cuisines {
 
     @SerializedName("cuisine_id")
     @Expose
@@ -11,6 +11,9 @@ public class CuisineData {
     @SerializedName("cuisine_name")
     @Expose
     private String cuisineName;
+    @SerializedName("image")
+    @Expose
+    private String image;
 
     public Integer getCuisineId() {
         return cuisineId;
@@ -28,5 +31,12 @@ public class CuisineData {
         this.cuisineName = cuisineName;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 
 }

@@ -37,6 +37,7 @@ public class RestaurantListFragment extends Fragment implements RestaurantRvAdap
     private RecyclerView.LayoutManager mLayoutManager;
     private RestaurantListViewModel viewModel;
     private int category;
+    private int cuisinesId = 0;
     private ImageView takeAwayImage;
     double latitude;
     double longitude;
@@ -52,7 +53,7 @@ public class RestaurantListFragment extends Fragment implements RestaurantRvAdap
     public RestaurantListFragment(int category, double lat, double lon) {
         this.category = category;
         latitude= lat;
-        Log.d("latitudeInRestaurantListFragment",""+latitude);
+        Log.d("latitudeInRe",""+latitude);
         longitude = lon;
     }
 
@@ -62,7 +63,6 @@ public class RestaurantListFragment extends Fragment implements RestaurantRvAdap
     }
 
     public interface ListItemClickListener {
-
         void onConnectActivity(String id);
     }
 
@@ -104,9 +104,12 @@ public class RestaurantListFragment extends Fragment implements RestaurantRvAdap
         viewModel = ViewModelProviders.of(this).get(RestaurantListViewModel.class);
         viewModel.setCategory(category);
         viewModel.setLatitude(latitude);
-        Log.d("longitudeRestaurantList2"," "+longitude);
-        Log.d("latitudeInRestaurantList2", " "+latitude);
+        Log.d("longitudeRestaura"," "+longitude);
+        Log.d("latitudeInRes", " "+latitude);
         viewModel.setLongitude(longitude);
+        if(cuisinesId !=0){
+            viewModel.setCuisinesId(cuisinesId);
+        }
         viewModel.callNetwork();
         viewModel.getRestaurantApi().observe(this, new Observer<RestaurantApi>() {
             @Override
@@ -167,4 +170,9 @@ public class RestaurantListFragment extends Fragment implements RestaurantRvAdap
     public void onPerformClick(String id) {
             listItemClickListener.onConnectActivity(id);
     }
+
+    public void setCuisinesId(int cuisinesId) {
+        this.cuisinesId = cuisinesId;
+    }
+
 }

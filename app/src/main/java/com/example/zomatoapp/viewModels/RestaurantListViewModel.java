@@ -21,12 +21,19 @@ public class RestaurantListViewModel extends ViewModel {
     private List<RestaurantData> restaurantDataList;
     private int start = 0;
     private boolean loading = true;
-    private int category;
+    private int category;private int cuisinesId = 0;
+
     private double longitude;
     private double latitude;
 
     private final double LATTITUDE = 12.9038;
     private final double LONGITUDE = 77.5978;
+
+
+    public void setCuisinesId(int cuisinesId) {
+        this.cuisinesId = cuisinesId;
+    }
+
 
     public void setLongitude(double longitude) {
         this.longitude = longitude;
@@ -53,12 +60,15 @@ public class RestaurantListViewModel extends ViewModel {
             mRestaurantRepository = new RestaurantRepository();
             mRestaurantRepository.setCategory(category);
             restaurantApi = mRestaurantRepository.connectMutableLiveData();
-            mRestaurantRepository.setLatitude(latitude);
-            Log.d("latitudeInViewModel"," "+latitude);
-            mRestaurantRepository.setLongitude(longitude);
+            mRestaurantRepository.setLatitude(LATTITUDE);
+            mRestaurantRepository.setLongitude(LONGITUDE);
+            if(cuisinesId != 0){
+                mRestaurantRepository.setCuisinesId(cuisinesId);
+            }
             mRestaurantRepository.networkCall(start);
+
         } else {
-            mRestaurantRepository.networkCall(start);
+                mRestaurantRepository.networkCall(start);
         }
     }
 

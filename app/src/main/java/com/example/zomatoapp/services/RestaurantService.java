@@ -1,6 +1,6 @@
 package com.example.zomatoapp.services;
 
-import com.example.zomatoapp.model.cuisines.CuisinesApi;
+
 import com.example.zomatoapp.model.Restaurant;
 import com.example.zomatoapp.model.RestaurantApi;
 import com.example.zomatoapp.model.ReviewsApi;
@@ -20,6 +20,11 @@ public interface RestaurantService {
                                             @Query("category") int cate, @Query("start") int start,
                                             @Query("count") int num
                                             );
+    @GET("/api/v2.1/{type}")
+    Observable<RestaurantApi> getRestaurantByCuisines(@Path("type") String cat, @Query("apikey") String key,
+                                                      @Query("lat") double latitude, @Query("lon") double longitude,
+                                                      @Query("cuisines") int cate, @Query("start") int start,
+                                                      @Query("count") int num);
 
     @GET("/api/v2.1/search")
     Observable<RestaurantApi> getEstablishment(@Query("apikey") String key,
@@ -39,15 +44,6 @@ public interface RestaurantService {
             @Path("type") String cat, @Query("apikey") String key,@Query("lat") double latitude,
             @Query("lon") double longitude);
 
-    @GET("/api/v2.1/{type}")
-    Observable<CuisinesApi> getCuisines(@Path("type") String cat, @Query("apikey") String key,
-                                    @Query("lat") double latitude, @Query("lon") double longitude);
-
-    @GET("/api/v2.1/{type}")
-    Observable<RestaurantApi> getRestaurantByCuisines(@Path("type") String cat, @Query("apikey") String key,
-                                            @Query("lat") double latitude, @Query("lon") double longitude,
-                                            @Query("cuisines") int cate, @Query("start") int start,
-                                            @Query("count") int num);
 
     @GET("/api/v2.1/{type}")
 
