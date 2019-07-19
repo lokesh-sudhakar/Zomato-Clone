@@ -4,7 +4,6 @@ import android.util.Log;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.zomatoapp.di.MyApplication;
-import com.example.zomatoapp.model.cuisines.CuisinesApi;
 import com.example.zomatoapp.model.Restaurant;
 import com.example.zomatoapp.model.RestaurantApi;
 import com.example.zomatoapp.model.ReviewsApi;
@@ -39,14 +38,13 @@ public class RestaurantRepository {
     private final int NUM_OF_RESULT = 10;
     private final double LATTITUDE = 12.9038;
     private final double LONGITUDE = 77.5978;
+    private int cuisinesId = 0;
     private MutableLiveData<RestaurantApi> restaurantApiMutableLiveData = new MutableLiveData<>();
     private MutableLiveData<CollectionsApiResponse> collectionsApiResponseMutableLiveData =
             new MutableLiveData<>();
     private MutableLiveData<Restaurant> restaurantMutableLiveData = new MutableLiveData<>();
 
     private MutableLiveData<ReviewsApi> reviewsApiMutableLiveData = new MutableLiveData<>();
-
-    private MutableLiveData<CuisinesApi> cuisinesApiMutableLiveData = new MutableLiveData<>();
 
     private int category;
 
@@ -63,10 +61,8 @@ public class RestaurantRepository {
     public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
+    public void setCuisinesId(int cuisinesId) { this.cuisinesId = cuisinesId; }
 
-    public MutableLiveData<CuisinesApi> getCuisinesApiMutableLiveData() {
-        return cuisinesApiMutableLiveData;
-    }
 
     public MutableLiveData<ReviewsApi> getReviewsApiMutableLiveData() {
         return reviewsApiMutableLiveData;
@@ -108,8 +104,14 @@ public class RestaurantRepository {
 
     public void networkCall(final int start) {
 
-        Observable<RestaurantApi> call = services.getRestaurant(SEARCH, KEY, latitude,longitude,
-                              category, start, NUM_OF_RESULT);
+        Observable<RestaurantApi> call;
+        if(cuisinesId != 0){
+            call = services.getRestaurantByCuisines(SEARCH,KEY,latitude,longitude,cuisinesId,start,NUM_OF_RESULT);
+            Log.d("networkCall","cuisine");
+        } else{
+            call = services.getRestaurant(SEARCH, KEY, latitude,longitude, category, start, NUM_OF_RESULT);
+            Log.d("networkCall","not cuisine");
+        }
         Log.d("networkCall","on Start" + category+"-" + start);
         call.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<RestaurantApi>() {
 
@@ -120,8 +122,8 @@ public class RestaurantRepository {
 
             @Override
             public void onNext(RestaurantApi restaurantApi) {
+                Log.d("networkCall","on next" + category+"-" + start);
                 restaurantApiMutableLiveData.setValue(restaurantApi);
-
             }
 
             @Override
@@ -234,6 +236,7 @@ public class RestaurantRepository {
                     }
                 });
     }
+
     public void fetchRestaurantDetail(String restaurantId){
         Log.d("resid in repo",restaurantId);
         Observable<Restaurant> restaurantObservable= services.getRestaurantDetails("restaurant","5e7cc4928495f233e070022a72b7de8a",restaurantId);
@@ -322,35 +325,6 @@ public class RestaurantRepository {
                 Log.d("searchCall","on complete");
             }
         });
-
-    }
-
-    public void getCuisinesList(){
-
-        Observable<CuisinesApi> call = services.getCuisines("cuisines", KEY, latitude,longitude);
-
-        call.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<CuisinesApi>() {
-
-            @Override
-            public void onSubscribe(Disposable d) {
-            }
-
-            @Override
-            public void onNext(CuisinesApi cuisinesApi) {
-                cuisinesApiMutableLiveData.setValue(cuisinesApi);
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                restaurantApiMutableLiveData.setValue(null);
-            }
-
-            @Override
-            public void onComplete() {
-
-            }
-        });
-
 
     }
 

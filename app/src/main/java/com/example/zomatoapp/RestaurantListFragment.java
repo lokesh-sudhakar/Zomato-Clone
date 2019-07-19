@@ -35,6 +35,7 @@ public class RestaurantListFragment extends Fragment implements RestaurantRvAdap
     private RecyclerView.LayoutManager mLayoutManager;
     private RestaurantListViewModel viewModel;
     private int category;
+    private int cuisinesId = 0;
     private ImageView takeAwayImage;
     double latitude;
     double longitude;
@@ -47,10 +48,6 @@ public class RestaurantListFragment extends Fragment implements RestaurantRvAdap
         longitude = lon;
     }
 
-    public interface ListItemClickListener {
-
-        void onConnectActivity(String id);
-    }
 
     @Override
     public void onAttach(Context context) {
@@ -91,6 +88,9 @@ public class RestaurantListFragment extends Fragment implements RestaurantRvAdap
         viewModel.setCategory(category);
         viewModel.setLatitude(latitude);
         viewModel.setLongitude(longitude);
+        if(cuisinesId !=0){
+            viewModel.setCuisinesId(cuisinesId);
+        }
         viewModel.callNetwork();
         viewModel.getRestaurantApi().observe(this, new Observer<RestaurantApi>() {
             @Override
@@ -150,5 +150,13 @@ public class RestaurantListFragment extends Fragment implements RestaurantRvAdap
     @Override
     public void onPerformClick(String id) {
             listItemClickListener.onConnectActivity(id);
+    }
+
+    public void setCuisinesId(int cuisinesId) {
+        this.cuisinesId = cuisinesId;
+    }
+
+    public interface ListItemClickListener {
+        void onConnectActivity(String id);
     }
 }
