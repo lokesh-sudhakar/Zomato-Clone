@@ -14,10 +14,13 @@
         >
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        android:id="@+id/openZomatoGold"
         android:layout_height="60dp"
         android:orientation="horizontal"
         android:clickable="true"
-        android:focusable="true">
+        android:focusable="true"
+        android:background="?attr/selectableItemBackground"
+        >
 
         <ImageView
             android:id="@+id/zomato_gold_logo"
