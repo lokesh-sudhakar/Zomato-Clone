@@ -19,6 +19,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.zomatoapp.adapter.EstablishmentInnerRVAdapter;
 import com.example.zomatoapp.adapter.RestaurantRvAdapter;
 import com.example.zomatoapp.model.RestaurantApi;
 import com.example.zomatoapp.viewModels.RestaurantListViewModel;
@@ -28,7 +29,8 @@ import com.squareup.picasso.Picasso;
 import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
 
 
-public class RestaurantListFragment extends Fragment implements RestaurantRvAdapter.OnClickRestaurant{
+public class RestaurantListFragment extends Fragment implements RestaurantRvAdapter.OnClickRestaurant ,
+        EstablishmentInnerRVAdapter.OnClickRestaurantListner {
 
     private RecyclerView mRecyclerView;
     private RestaurantRvAdapter mAdapter;
@@ -45,6 +47,11 @@ public class RestaurantListFragment extends Fragment implements RestaurantRvAdap
         this.category = category;
         latitude= lat;
         longitude = lon;
+    }
+
+    @Override
+    public void onClickRestaurant(int id) {
+        listItemClickListener.onConnectActivity(String.valueOf(id));
     }
 
     public interface ListItemClickListener {

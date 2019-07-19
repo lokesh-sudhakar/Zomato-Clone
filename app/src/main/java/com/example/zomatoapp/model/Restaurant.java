@@ -124,9 +124,9 @@ public class Restaurant {
 ////    @SerializedName("all_reviews")
 ////    @Expose
 ////    private AllReviews allReviews;
-//    @SerializedName("establishment")
-//    @Expose
-//    private List<String> establishment = null;
+    @SerializedName("establishment")
+    @Expose
+    private List<String> establishment = null;
 ////    @SerializedName("establishment_types")
 ////    @Expose
 ////    private List<Object> establishmentTypes = null;
@@ -450,13 +450,13 @@ public class Restaurant {
 ////        this.allReviews = allReviews;
 ////    }
 //
-//    public List<String> getEstablishment() {
-//        return establishment;
-//    }
-//
-//    public void setEstablishment(List<String> establishment) {
-//        this.establishment = establishment;
-//    }
+    public List<String> getEstablishment() {
+        return establishment;
+    }
+
+    public void setEstablishment(List<String> establishment) {
+        this.establishment = establishment;
+    }
 //
 ////    public List<Object> getEstablishmentTypes() {
 ////        return establishmentTypes;

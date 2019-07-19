@@ -37,15 +37,19 @@ public class ForYouAdapter extends RecyclerView.Adapter<ForYouAdapter.ForYouView
     int position_;
     BindCallBack bindCallBack;
     boolean iseEtablishmentsPresent = false;
+    EstablishmentInnerRVAdapter.OnClickRestaurantListner onClickRestaurantListner;
+
 
 
     public interface BindCallBack{
         void onBindPos( List<Establishment> establishments,ForYouViewHolder holder, final int position);
     }
-    public ForYouAdapter(List<Establishment> establishments, Context context,ForYouViewModel forYouViewModel) {
+    public ForYouAdapter(List<Establishment> establishments, Context context,ForYouViewModel forYouViewModel,
+                         EstablishmentInnerRVAdapter.OnClickRestaurantListner onClickRestaurantListner) {
         this.establishments = establishments;
         this.context = context;
         this.viewModel = forYouViewModel;
+        this.onClickRestaurantListner = onClickRestaurantListner;
     }
 
     @NonNull
@@ -79,7 +83,7 @@ public class ForYouAdapter extends RecyclerView.Adapter<ForYouAdapter.ForYouView
                                 holder.establishmentLayout.setVisibility(View.VISIBLE);
                                 EstablishmentInnerRVAdapter establishmentInnerRVAdapter=
                                         new EstablishmentInnerRVAdapter(restaurantFiltered,
-                                                context);
+                                                context,onClickRestaurantListner);
                                 holder_.name.setText(establishments.get(position).getEstablishment().getName());
                                 holder.recyclerView.setHasFixedSize(true);
                                 holder.recyclerView.setItemViewCacheSize(10);

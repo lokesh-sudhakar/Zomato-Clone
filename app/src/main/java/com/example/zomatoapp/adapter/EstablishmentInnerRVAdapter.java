@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -25,9 +26,17 @@ public class EstablishmentInnerRVAdapter extends RecyclerView.Adapter<Establishm
 
     private List<RestaurantData> restaurantList;
     private Context context;
-    public EstablishmentInnerRVAdapter(List<RestaurantData> restaurantList, Context context) {
+    private OnClickRestaurantListner onClickRestaurantListner;
+
+    public interface OnClickRestaurantListner{
+        void onClickRestaurant(int id);
+    }
+
+    public EstablishmentInnerRVAdapter(List<RestaurantData> restaurantList, Context context,
+                                       OnClickRestaurantListner onClickRestaurantListner) {
         this.restaurantList = restaurantList;
         this.context = context;
+        this.onClickRestaurantListner=onClickRestaurantListner;
     }
 
     @NonNull
@@ -40,7 +49,7 @@ public class EstablishmentInnerRVAdapter extends RecyclerView.Adapter<Establishm
     }
 
     @Override
-    public void onBindViewHolder(@NonNull EstablishmentInnerRVAdapter.EstablishmentViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull EstablishmentInnerRVAdapter.EstablishmentViewHolder holder, final int position) {
         if(restaurantList.get(position).getRestaurant()!=null) {
 
             Log.d("lokesh", "in side adapter" + restaurantList.get(position).getRestaurant().getCuisines());
@@ -53,7 +62,15 @@ public class EstablishmentInnerRVAdapter extends RecyclerView.Adapter<Establishm
                         .transform(new GradientTransformation())
                         .transform(new RoundedCornersTransformation(10, 1))
                         .into(holder.restaurantPoster);
+                restaurantList.get(position).getRestaurant().getId();
             }
+            holder.forYouLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onClickRestaurantListner.onClickRestaurant(Integer.parseInt(restaurantList.get(position).getRestaurant().getId()));
+                }
+            });
+
         }
     }
 
@@ -68,6 +85,7 @@ public class EstablishmentInnerRVAdapter extends RecyclerView.Adapter<Establishm
         TextView locality;
         TextView rating;
         TextView cuisines;
+        LinearLayout forYouLayout;
         public EstablishmentViewHolder(@NonNull View itemView) {
             super(itemView);
             restaurantPoster = itemView.findViewById(R.id.restaurant_poster);
@@ -75,6 +93,7 @@ public class EstablishmentInnerRVAdapter extends RecyclerView.Adapter<Establishm
             locality = itemView.findViewById(R.id.locatilty);
             rating = itemView.findViewById(R.id.rating);
             cuisines = itemView.findViewById(R.id.cuisines);
+            forYouLayout = itemView.findViewById(R.id.for_you_layoyt);
         }
     }
 }
