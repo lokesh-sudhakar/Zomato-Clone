@@ -6,9 +6,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
@@ -32,7 +34,8 @@ public class ForYouFragment extends Fragment implements EstablishmentInnerRVAdap
     ForYouAdapter forYouAdapter;
     RecyclerView forYouRecyclerView;
     RestaurantListFragment.ListItemClickListener listItemClickListener;
-
+    ProgressBar progressBar;
+    NestedScrollView nestedScrollView;
 
     @Override
     public void onAttach(Context context) {
@@ -50,6 +53,8 @@ public class ForYouFragment extends Fragment implements EstablishmentInnerRVAdap
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View forYouFragment = inflater.inflate(R.layout.for_you_fragment,container,
                 false);
+        nestedScrollView=forYouFragment.findViewById(R.id.nestedView);
+        progressBar=forYouFragment.findViewById(R.id.progressBar);
         forYouRecyclerView = forYouFragment.findViewById(R.id.for_you_recycler_view);
         viewModel = ViewModelProviders.of(this).get(ForYouViewModel.class);
         viewModel.performNetworkCall().observe(this, new Observer<ForYouApiResponse>() {
@@ -66,12 +71,21 @@ public class ForYouFragment extends Fragment implements EstablishmentInnerRVAdap
         if(viewModel.getForYouApiResponse()!=null){
 
 //            viewModel.fetchEstablishment(viewModel.getForYouApiResponse().getEstablishments().get().getEstablishment().getId())
+            forYouRecyclerView.setHasFixedSize(true);
+            forYouRecyclerView.setItemViewCacheSize(30);
+            forYouRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+            forYouAdapter = new ForYouAdapter(viewModel.getForYouApiResponse().getEstablishments(), getActivity(),viewModel,this);
+             if(forYouAdapter.getItemCount()==0){
+                 progressBar.setVisibility(View.VISIBLE);
+                 nestedScrollView.setVisibility(View.GONE);
+             }
+             else {
+                 progressBar.setVisibility(View.GONE);
+                 nestedScrollView.setVisibility(View.VISIBLE);
+             }
 
-             forYouAdapter = new ForYouAdapter(viewModel.getForYouApiResponse().getEstablishments(), getActivity(),viewModel,this);
-             forYouRecyclerView.setHasFixedSize(true);
-             forYouRecyclerView.setItemViewCacheSize(30);
-             forYouRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
             forYouRecyclerView.setAdapter(forYouAdapter);
+
         }
     }
 
