@@ -33,10 +33,11 @@ public class OrderFragment extends Fragment {
     private ShimmerFrameLayout mShimmerLayout;
     private TextView setLocation;
     private Context context;
-    double latitude;
-    double longitude;
-    String address;
-
+    private double latitude;
+    private double longitude;
+    private String address;
+    View ordrFragmentLayoutView;
+    TabLayout tabLayout;
 
     public OrderFragment(){
     }
@@ -47,11 +48,43 @@ public class OrderFragment extends Fragment {
         this.context = context;
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Bundle bundle = getArguments();
+        if(bundle!=null){
+            latitude=bundle.getDouble("latitude");
+            longitude=bundle.getDouble("longitude");
+//            updateLocationTextView(bundle.getString("place"));
+            Log.d("networkCall","order fragment "+ latitude);
+            address=bundle.getString("place");
+
+        }
+        else {
+            LocationManager locManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+            boolean network_enabled = locManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+            Location location;
+
+            if(network_enabled){
+
+                location = locManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+
+                if(location!=null){
+                    longitude = location.getLongitude();
+                    latitude = location.getLatitude();
+                    MapsViewModel mapsViewModel=new MapsViewModel();
+                    address=mapsViewModel.getAddress(latitude,longitude,getContext());
+//                    updateLocationTextView(address);
+
+                }
+            }
+        }
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View orderFragmentLayout = inflater.inflate(R.layout.fragment_order_home,container,false);
-
 
         Toolbar toolbar = orderFragmentLayout.findViewById(R.id.toolbar);
         final BottomSheetDialog mBottomSheetDialog=new BottomSheetDialog(getActivity());
@@ -59,9 +92,7 @@ public class OrderFragment extends Fragment {
         ((AppCompatActivity) Objects.requireNonNull(getActivity())).setSupportActionBar(toolbar);
         setLocation= orderFragmentLayout.findViewById(R.id.title_location);
         setLocation.setTextColor(ContextCompat.getColor(context,R.color.dark_black));
-        TabLayout tabLayout = getTabLayout(orderFragmentLayout);
-
-        addLabelsToTabs(tabLayout);
+        setLocation.setText(address);
         setLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -94,11 +125,15 @@ public class OrderFragment extends Fragment {
                 mBottomSheetDialog.dismiss();
             }
         });
+        ordrFragmentLayoutView=orderFragmentLayout;
+        tabLayout = getTabLayout(orderFragmentLayout);
+        addLabelsToTabs(tabLayout);
         return orderFragmentLayout;
     }
 
     private TabLayout getTabLayout(View orderFragmentLayout) {
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(context,getChildFragmentManager(),latitude,longitude);
+        Log.d("latitude+longitude= ",""+latitude+" "+longitude);
         ViewPager viewPager = orderFragmentLayout.findViewById(R.id.view_pager);
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabLayout = orderFragmentLayout.findViewById(R.id.tabs);
@@ -109,38 +144,14 @@ public class OrderFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        Bundle bundle = getArguments();
-        if(bundle!=null){
-            updateLocationTextView(bundle.getString("place"));
-            latitude=bundle.getDouble("latitude");
-            longitude=bundle.getDouble("longitude");
-            Log.d("networkCall","order fragment "+ latitude);
-            address=bundle.getString("place");
-            Log.d("latitude and langitude are ",""+latitude+longitude);
-        }
-        else {
-            LocationManager locManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
-            boolean network_enabled = locManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
-            Location location;
 
-            if(network_enabled){
-
-                location = locManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-
-                if(location!=null){
-                    longitude = location.getLongitude();
-                    latitude = location.getLatitude();
-                    MapsViewModel mapsViewModel=new MapsViewModel();
-                    address=mapsViewModel.getAddress(latitude,longitude,getContext());
-                    updateLocationTextView(address);
-                }
-            }
-        }
     }
 
     public void updateLocationTextView(String location){
         TextView setLocation= getActivity().findViewById(R.id.title_location);
         setLocation.setText(location);
+//        TabLayout tabLayout = getTabLayout(onCreateView());
+//      addLabelsToTabs(tabLayout);
     }
 
     private void addLabelsToTabs(TabLayout tabLayout) {

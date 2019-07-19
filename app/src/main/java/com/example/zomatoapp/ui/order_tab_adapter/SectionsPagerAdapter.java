@@ -2,6 +2,7 @@ package com.example.zomatoapp.ui.order_tab_adapter;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
@@ -26,9 +27,10 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     public SectionsPagerAdapter(Context context, FragmentManager fm, double lat, double lon) {
         super(fm);
+        Log.d("latitude+longitudeInPager",""+lat+" "+lon);
         mContext = context;
         latitude = lat;
-        latitude = lon;
+        longitude = lon;
     }
 
     @Override
