@@ -17,17 +17,19 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.zomatoapp.profile_tabbed_adapter.ProfileSectionsPagerAdapter;
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.Objects;
 
-public class ProfileFragment extends Fragment {
+public class ProfileFragment extends Fragment implements NavigationView.OnNavigationItemSelectedListener {
 
     private Context context;
     @Override
@@ -48,7 +50,8 @@ public class ProfileFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View profileLayoutView = inflater.inflate(R.layout.profile_fragment_with_navigation_drawer,container,false);
-
+        NavigationView navigationView = (NavigationView)profileLayoutView.findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
         //setting up toolbar
         Toolbar toolbar = profileLayoutView.findViewById(R.id.toolbar);
         ((AppCompatActivity) Objects.requireNonNull(getActivity())).setSupportActionBar(toolbar);
@@ -59,9 +62,18 @@ public class ProfileFragment extends Fragment {
                 getActivity(), drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         toggle.setDrawerIndicatorEnabled(true);
         drawer.addDrawerListener(toggle);
+        drawer.setDrawerListener(toggle);
         toggle.getDrawerArrowDrawable().setColor(ContextCompat.getColor(context,R.color.dark_black));
         toggle.syncState();
-
+//        ConstraintLayout openZomatoGold=drawer.findViewById(R.id.openZomatoGold);
+//        if(openZomatoGold!=null){
+//        openZomatoGold.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent=new Intent(getActivity(),ZomatoGoldActivity.class);
+//                startActivity(intent);
+//            }
+//        });}
         ProfileSectionsPagerAdapter sectionsPagerAdapter = new ProfileSectionsPagerAdapter(context,getChildFragmentManager() );
         ViewPager viewPager = profileLayoutView.findViewById(R.id.view_pager);
         viewPager.setAdapter(sectionsPagerAdapter);
@@ -115,4 +127,14 @@ public class ProfileFragment extends Fragment {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        int id=menuItem.getItemId();
+        if(id==R.id.openZomatoGold){
+            Toast.makeText(this.getContext(),"lkdfmksldvs",Toast.LENGTH_SHORT).show();
+            Intent intent=new Intent(getActivity(),ZomatoGoldActivity.class);
+            startActivity(intent);
+        }
+        return true;
+    }
 }

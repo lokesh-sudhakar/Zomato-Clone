@@ -48,6 +48,12 @@ public class SearchFragment extends Fragment implements  SearchRvAdapter.OnClick
         final View rootView = inflater.inflate(R.layout.fragment_search, container, false);
         mRecyclerView = rootView.findViewById(R.id.search_rv_list);
         searchView = rootView.findViewById(R.id.search_view);
+        searchView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                searchView.setIconified(false);
+            }
+        });
         viewModel = ViewModelProviders.of(this).get(RestaurantListViewModel.class);
         viewModel.callSearch(null);
         viewModel.getRestaurantApi().observe(this, new Observer<RestaurantApi>() {
