@@ -60,6 +60,7 @@ public class EstablishmentInnerRVAdapter extends RecyclerView.Adapter<Establishm
             if(!restaurantList.get(position).getRestaurant().getThumb().isEmpty()) {
                 Picasso.with(context).load(restaurantList.get(position).getRestaurant().getThumb())
                         .transform(new GradientTransformation())
+                        .placeholder(R.drawable.placeholder_food)
                         .transform(new RoundedCornersTransformation(10, 1))
                         .into(holder.restaurantPoster);
                 restaurantList.get(position).getRestaurant().getId();
