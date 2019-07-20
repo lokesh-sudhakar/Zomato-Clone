@@ -51,6 +51,7 @@ public class SearchFragment extends Fragment implements  SearchRvAdapter.OnClick
         searchView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.d("SearchOnClick","clicked");
                 searchView.setIconified(false);
             }
         });
@@ -69,12 +70,14 @@ public class SearchFragment extends Fragment implements  SearchRvAdapter.OnClick
 
             @Override
             public boolean onQueryTextSubmit(String query) {
+                Log.d("SearchOnClick","submit");
                 viewModel.callSearch(query);
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
+                Log.d("SearchOnClick","text changed");
                 viewModel.callSearch(newText);
                 return false;
             }

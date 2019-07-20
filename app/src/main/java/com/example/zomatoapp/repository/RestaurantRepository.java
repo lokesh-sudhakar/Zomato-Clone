@@ -47,7 +47,7 @@ public class RestaurantRepository {
     private final double LATTITUDE = 12.9038;
     private final double LONGITUDE = 77.5978;
 
-    private String key = KEY_Two;
+    private String key = KEY_THREE;
     private int cuisinesId = 0;
     private MutableLiveData<RestaurantApi> restaurantApiMutableLiveData = new MutableLiveData<>();
     private MutableLiveData<CollectionsApiResponse> collectionsApiResponseMutableLiveData =
@@ -292,17 +292,19 @@ public class RestaurantRepository {
                 .subscribe(new Observer<Restaurant>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-
+                        Log.d("resid in repo","dis");
                     }
 
                     @Override
                     public void onNext(Restaurant restaurant) {
+                        Log.d("resid in repo","next");
                         restaurantMutableLiveData.setValue(restaurant);
                     }
 
                     @Override
                     public void onError(Throwable e) {
                         restaurantMutableLiveData.setValue(null);
+                        Log.d("resid in repo","error"+e.getMessage());
                         int pos = keyList.indexOf(key);
                         pos++;
                         pos = pos%3;
@@ -311,7 +313,7 @@ public class RestaurantRepository {
 
                     @Override
                     public void onComplete() {
-
+                        Log.d("resid in repo","com");
                     }
                 });
 
@@ -351,7 +353,7 @@ public class RestaurantRepository {
                 });
     }
 
-    public void searchCall(String query){
+    public void searchCall(final String query){
 
         Observable<RestaurantApi> call = services.getSearch(SEARCH, key, query);
         call.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<RestaurantApi>() {
@@ -362,8 +364,9 @@ public class RestaurantRepository {
 
             @Override
             public void onNext(RestaurantApi restaurantApi) {
-                Log.d("searchCall","on next"+ restaurantApi.getResultsStart());
+                Log.d("searchCall","on next "+query+ restaurantApi.getResultsFound());
                 if(restaurantApi.getResultsFound()>0){
+                    Log.d("searchCall","non null value set");
                     restaurantApiMutableLiveData.setValue(restaurantApi);
                 }
                 restaurantApiMutableLiveData.setValue(null);

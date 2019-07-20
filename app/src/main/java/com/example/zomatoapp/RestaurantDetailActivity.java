@@ -84,9 +84,9 @@ public class RestaurantDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant_detail);
 
-        menuLayout=findViewById(R.id.menu_layout);
-        directionLayout=findViewById(R.id.direction_layout);
-        reviewLayout=findViewById(R.id.review_layout);
+        menuLayout = findViewById(R.id.menu_layout);
+        directionLayout = findViewById(R.id.direction_layout);
+        reviewLayout = findViewById(R.id.review_layout);
         restaurantPoster = findViewById(R.id.restaurant_poster);
         toolbar = findViewById(R.id.toolbar);
         toolbarLayout = findViewById(R.id.toolbar_layout);
@@ -96,19 +96,19 @@ public class RestaurantDetailActivity extends AppCompatActivity {
         cusinesText = findViewById(R.id.cusines_text);
         rating = findViewById(R.id.rating);
         address = findViewById(R.id.address);
-        restaurantStatus =findViewById(R.id.restaurant_status);
+        restaurantStatus = findViewById(R.id.restaurant_status);
         restaurantTiming = findViewById(R.id.restaurant_timing);
         reviewCount = findViewById(R.id.review_count);
         reviewRv = findViewById(R.id.review_rv);
 
         moreInfo = findViewById(R.id.more_info_text_view);
-        sheetView =  getLayoutInflater().inflate(R.layout.restaurant_more_info,null);
-        cuisinesList =sheetView.findViewById(R.id.cuisines_list);
+        sheetView = getLayoutInflater().inflate(R.layout.restaurant_more_info, null);
+        cuisinesList = sheetView.findViewById(R.id.cuisines_list);
         establishmentText = sheetView.findViewById(R.id.establishment_text_view);
         averageCostTextView = sheetView.findViewById(R.id.average_cost_text_view);
 
 
-        final BottomSheetDialog mBottomSheetDialog=new BottomSheetDialog(this);
+        final BottomSheetDialog mBottomSheetDialog = new BottomSheetDialog(this);
         mBottomSheetDialog.setContentView(sheetView);
         moreInfo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,7 +117,7 @@ public class RestaurantDetailActivity extends AppCompatActivity {
                 String[] cuisinesArray = restaurantDetailViewModel.getRestaurant().getCuisines().split(",");
 
                 CuisineMoreInfoAdapter cuisineMoreInfoAdapter = new CuisineMoreInfoAdapter(cuisinesArray);
-                cuisinesList.setLayoutManager(new LinearLayoutManager(getApplicationContext(), RecyclerView.HORIZONTAL,false));
+                cuisinesList.setLayoutManager(new LinearLayoutManager(getApplicationContext(), RecyclerView.HORIZONTAL, false));
 
                 cuisinesList.setAdapter(cuisineMoreInfoAdapter);
                 sheetView.findViewById(R.id.dismissBottomSheet).setOnClickListener(new View.OnClickListener() {
@@ -136,7 +136,6 @@ public class RestaurantDetailActivity extends AppCompatActivity {
                 mBottomSheetDialog.dismiss();
             }
         });
-
 
 
         restaurantDetailViewModel = ViewModelProviders.of(this).get(RestaurantDetailViewModel.class);
@@ -207,27 +206,27 @@ public class RestaurantDetailActivity extends AppCompatActivity {
                             }
                         }
                     });
-                    if(!restaurantDetailViewModel.getRestaurant().getAverageCostForTwo().equals(null)) {
+                    if (!restaurantDetailViewModel.getRestaurant().getAverageCostForTwo().equals(null)) {
                         String cost = "Rs " + restaurantDetailViewModel.getRestaurant().getAverageCostForTwo() + " for two people(approx.)";
                         averageCostTextView.setText(cost);
                     }
-                    if(!restaurantDetailViewModel.getRestaurant().getUrl().isEmpty()){
+                    if (!restaurantDetailViewModel.getRestaurant().getUrl().isEmpty()) {
 
                         shareRestaurantLink = restaurantDetailViewModel.getRestaurant().getUrl();
                     }
-                    if(!restaurantDetailViewModel.getRestaurant().getName().isEmpty()) {
+                    if (!restaurantDetailViewModel.getRestaurant().getName().isEmpty()) {
                         restaurantName.setText(restaurantDetailViewModel.getRestaurant().getName());
                     }
-                    if(!restaurantDetailViewModel.getRestaurant().getCuisines().isEmpty()) {
+                    if (!restaurantDetailViewModel.getRestaurant().getCuisines().isEmpty()) {
                         cusinesText.setText(restaurantDetailViewModel.getRestaurant().getCuisines());
                     }
-                    if(!restaurantDetailViewModel.getRestaurant().getLocation().getAddress().isEmpty()) {
+                    if (!restaurantDetailViewModel.getRestaurant().getLocation().getAddress().isEmpty()) {
                         address.setText(restaurantDetailViewModel.getRestaurant().getLocation().getAddress());
                     }
-                    if(!restaurantDetailViewModel.getRestaurant().getTimings().isEmpty()) {
+                    if (!restaurantDetailViewModel.getRestaurant().getTimings().isEmpty()) {
                         restaurantTiming.setText(restaurantDetailViewModel.getRestaurant().getTimings());
                     }
-                    if(!restaurantDetailViewModel.getRestaurant().getAllReviewsCount().equals(null) ) {
+                    if (!restaurantDetailViewModel.getRestaurant().getAllReviewsCount().equals(null)) {
                         reviewCount.setText(restaurantDetailViewModel.getRestaurant().getAllReviewsCount() + " reviews");
                     }
                     if (!restaurantDetailViewModel.getRestaurant().getEstablishment().isEmpty()) {
@@ -239,7 +238,7 @@ public class RestaurantDetailActivity extends AppCompatActivity {
                     } else {
                         restaurantPoster.setImageResource(R.drawable.placeholder_food);
                     }
-                    if(!restaurantDetailViewModel.getRestaurant().getUserRating().getAggregateRating().isEmpty()) {
+                    if (!restaurantDetailViewModel.getRestaurant().getUserRating().getAggregateRating().isEmpty()) {
                         double ratingByUser = Double.parseDouble(restaurantDetailViewModel.getRestaurant().getUserRating().getAggregateRating());
 
                         if (ratingByUser >= 4.0) {
@@ -265,20 +264,20 @@ public class RestaurantDetailActivity extends AppCompatActivity {
             public void onChanged(ReviewsApi reviewsApi) {
                 restaurantDetailViewModel.setReviewsApi(reviewsApi);
                 setReviewAdapter();
-                if(reviewsApi==null){
-                    Log.d("review","null");
+                if (reviewsApi == null) {
+                    Log.d("review", "null");
                 }
             }
         });
     }
 
-    public void setReviewAdapter(){
-        if(restaurantDetailViewModel.getReviewsApi()!=null){
-        ReviewAdapter adapter = new ReviewAdapter(restaurantDetailViewModel.getReviewsApi().
-                getUserReviews(),getApplicationContext());
+    public void setReviewAdapter() {
+        if (restaurantDetailViewModel.getReviewsApi() != null) {
+            ReviewAdapter adapter = new ReviewAdapter(restaurantDetailViewModel.getReviewsApi().
+                    getUserReviews(), getApplicationContext());
 
-        reviewRv.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        reviewRv.setAdapter(adapter);
+            reviewRv.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+            reviewRv.setAdapter(adapter);
         }
     }
 
@@ -295,14 +294,15 @@ public class RestaurantDetailActivity extends AppCompatActivity {
                 String url = restaurantDetailViewModel.getRestaurant().getUrl();
 
                 if (!url.equals(null)) {
-                Intent share = new Intent(Intent.ACTION_SEND);
-                share.setType("text/plain");
-                share.putExtra(Intent.EXTRA_TEXT, url);
-                Intent chooser = Intent.createChooser(share, "Share using");
+                    Intent share = new Intent(Intent.ACTION_SEND);
+                    share.setType("text/plain");
+                    share.putExtra(Intent.EXTRA_TEXT, url);
+                    Intent chooser = Intent.createChooser(share, "Share using");
 
-                if (share.resolveActivity(Objects.requireNonNull(this).getPackageManager()) != null) {
-                    startActivity(chooser);
-                }}
+                    if (share.resolveActivity(Objects.requireNonNull(this).getPackageManager()) != null) {
+                        startActivity(chooser);
+                    }
+                }
                 return true;
             }
             case R.id.action_bookmark: {
@@ -313,8 +313,9 @@ public class RestaurantDetailActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void animateView(View v){
-        if(v!=null){
-        v.startAnimation(AnimationUtils.loadAnimation(getBaseContext(),R.anim.slide_from_left));
-    }}
+    public void animateView(View v) {
+        if (v != null) {
+            v.startAnimation(AnimationUtils.loadAnimation(getBaseContext(), R.anim.slide_from_left));
+        }
+    }
 }

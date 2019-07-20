@@ -74,9 +74,11 @@ public class RestaurantListViewModel extends ViewModel {
 
     public void callSearch(String query){
         if (restaurantApi == null) {
+            Log.d("SearchOnClick","vm- first call");
             mRestaurantRepository = new RestaurantRepository();
             restaurantApi = mRestaurantRepository.connectMutableLiveData();
         } else {
+            Log.d("SearchOnClick","vm- other call");
             mRestaurantRepository.searchCall(query);
         }
 

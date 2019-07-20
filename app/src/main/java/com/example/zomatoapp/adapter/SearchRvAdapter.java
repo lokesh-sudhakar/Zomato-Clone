@@ -23,8 +23,7 @@ import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
 public class SearchRvAdapter extends RecyclerView.Adapter<SearchRvAdapter.RestaurantViewHolder>{
     public List<RestaurantData> restaurantList;
     private Context context;
-    OnClickRestaurantListner onClickRestaurantListner;
-
+    private OnClickRestaurantListner onClickRestaurantListner;
 
     public interface OnClickRestaurantListner{
         void onClickRestaurant(int id);
