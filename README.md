@@ -1,4 +1,4 @@
-# Zomato-Clone
+# Zomato-Clone - Food Deliver Application with location and login features
 Zomato App Clone Project - using Zomato API
 
 I have developed the Food Deliver application which is a clone of the actual Zomato 
